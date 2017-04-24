@@ -1,35 +1,14 @@
 *****************************
-Homestead-Guide
+Homestead-Guide-CN（Homestead指南中文版）
 *****************************
-|Gitter|
+The Ethereum Homestead Guide-CN is the Chinese version of the reference documentation accompanying the Homestead release of the Ethereum project, which is an unofficial project created by Rivers Yang, a programmer with 15+ years experience in software technology.
 
-.. |Gitter| image:: https://badges.gitter.im/ethereum/homestead-guide.svg
-   :target: https://gitter.im/ethereum/homestead-guide?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-
-The Ethereum Homestead Guide is the reference documentation accompanying the Homestead release of the Ethereum project.
-
-`Hosted on ReadTheDocs`_
+The Original English version is `Hosted on ReadTheDocs`_
 
 HOW YOU CAN HELP
 ================================================================================
-**Homestead Documentation Initiative**
+I start this project just for my personal interest and for the tech learning in Smart Contract (Blockchain) area. I welcome any contributor for this project, and you better are Chinese too. :-)
 
-It doesn't matter if you are a beginner or an expert, there are many ways to help.
-
-Write Content to the Guide
---------------------------------------------------------------------------------
-Help transfer and update content from the Ethereum Wiki, Ethereum Frontier Guide, the Ethereum Stack Exchange, or any other reputable source to relevant pages of the Homestead guide. Alternatively, write your own content for the guide based on experience.
-
-Make sure the documentation you are porting over is still accurate and follows our guidelines for the Homestead docs (https://ethereum-homestead.readthedocs.org/en/latest/about.html).
-
-Review What Has Been Written
---------------------------------------------------------------------------------
-Have a look at our guide (https://ethereum-homestead.readthedocs.org/en/latest/) and give us feedback by visiting our Gitter Chatroom (https://gitter.im/ethereum/homestead-guide) or submit a pull request or issue to this repo. Too EZ.
-
-What's In It For Me?
---------------------------------------------------------------------------------
-Your name will forever be immortalized, both in my heart and on the Contributors page in the guide.
-As a side effect, you may also get those good feels that you get when you help improve documentation :-)
 
 GETTING STARTED
 ======================
