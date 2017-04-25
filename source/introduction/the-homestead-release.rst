@@ -1,35 +1,32 @@
 ********************************************************************************
-The Homestead Release
+Homestead版本
 ********************************************************************************
 
-Homestead is the second major version of the Ethereum platform and is the first production release of Ethereum. It includes several protocol changes and a networking change that provides the ability to do further network upgrades. The first version of Ethereum, called the Frontier release, was essentially a beta release that allowed developers to learn, experiment, and begin building Ethereum decentralized apps and tools. 
+Homestead是以太坊平台的第二个主要版本，也是第一个产品级的发布。 它包含了很多协议和网络上的变动以支持未来的网络升级。以太坊的第一个版本，Frontier版本，是一个本质上的beta版本，供开发者学习和体验并开始初步构建去中心化的应用和工具。 
 
-Milestones of the Ethereum development roadmap
+以太坊开发路线图中的里程碑
 -----------------------------------------------
 
-The `original development roadmap <https://blog.ethereum.org/2015/03/03/ethereum-launch-process/>`_ laid out before Ethereum went live specified the following milestones:
+在以太坊上线前发表的 `初始的开发路线图 <https://blog.ethereum.org/2015/03/03/ethereum-launch-process/>`_ 指出了以下几个里程碑：
 
-* Prerelease Step 0: Olympic testnet - launched May 2015
-* Release Step One: Frontier - launched 30 July 2015
-* Release Step Two: Homestead - launches 14 March 2016 (Pi Day)
-* Release Step Three: Metropolis - TBA
-* Release Step Four: Serenity - TBA
+* 预发布 步骤 0: Olympic测试网络 - 2015年5月
+* 发布 步骤 １: Frontier - 2015年7月30日
+* 发布 步骤 ２: Homestead - 2016年3月14日（圆周率日，Pi Day）
+* 发布 步骤 ３: Metropolis - 待定
+* 发布 步骤 ４: Serenity - 待定
 
 
-While still valid, the substance behind it has changed somewhat.
-The `Olympic testnet <olympic-testnet>`_ phase (before the `Frontier release <history-of-ethereum.html#the-ethereum-frontier-launch>`_) saw a lot of major improvements, followed by Frontier which was launched immediately after. Homestead marks the exit from a beta product to a stable release.
-Homestead is introduced automatically at block number 1,150,000 which should occur roughly around March 14th, 2016, Pi Day.
+尽管以上里程碑仍然有效，但它们的实质已经从某种程度上改变了。 `Olympic测试网络 <olympic-testnet>`_ 发现了很多重大改进点，于是 `Frontier版本 <history-of-ethereum.html#the-ethereum-frontier-launch>`_ 在其后很快就发布了。而Homestead则是由beta产品阶段退出进入稳定版本的标志。Homestead已经被于2016年3月14日（圆周率日）左右产生的1,150,000号区块所自动引入了。
 
-If you are running a node connected to the live network, it is important that you upgrade to a Homestead-compatible client. Such clients with their versions are listed under :ref:`Ethereum Clients`. Otherwise you will end up on the wrong fork and will no longer be in sync with the rest of the network.
+如果你正在运行一个已连接到网络的节点，你需要尽快升级到兼容Homestead版本的客户端。这些客户端可以在 :ref:`Ethereum Clients` 找到。否则你将会在一个错误的分叉上终止，无法再与整个网络同步。
 
-Once the Ethereum blockchain reaches block 1,150,000, the Ethereum network will undergo a hardfork enabling a few major changes such as explained in the following section.
+一旦以太坊区块链达到1,150,000号区块，以太坊网络将经历一次硬分叉来使以下几个重大变动生效。
 
 .. _homestead-hard-fork-changes:
 
-Homestead hard fork changes
+Homestead硬分叉变动
 ----------------------------------
-Ethereum in the narrow formal sense is a suite of protocols.
-Homestead comes with a few backward-incompatible protocol changes, and therefore will require a hard fork. These changes that made their way through the process for :ref:`Ethereum Improvement Proposals <Ethereum Improvement Proposals>` and included are:
+以太坊从狭义上讲就是一组协议。Homestead包含几个向前兼容的协议变动，故而需要一次硬分叉。这些变动用它们特定的方式实现了 :ref:`以太坊改进建议 <Ethereum Improvement Proposals>` 包含以下几点：
 
 * `EIP 2: <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.mediawiki>`_
 
@@ -40,7 +37,7 @@ Homestead comes with a few backward-incompatible protocol changes, and therefore
 * `EIP 7: DELEGATECALL <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-7.md>`_: Add a new opcode, ``DELEGATECALL`` at ``0xf4``, which is similar in idea to ``CALLCODE``, except that it propagates the sender and value from the parent scope to the child scope, ie. the call created has the same sender and value as the original call. This means contracts can store pass through information while following msg.sender and ``msg.value`` from its parent contract. Great for contracts which create contracts but don’t repeat additional information which saves gas. See `comments on EIP 7 <https://github.com/ethereum/EIPs/issues/23>`_
 * `EIP 8: devp2p Forward Compatibility compliance with the Robustness Principle <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-8.md>`_ Changes to the RLPx Discovery Protocol and RLPx TCP transfer protocol to ensure that all client software in use on the Ethereum network can cope with future network protocol upgrades. For older versions of an Ethereum client, updates to the network protocol weren’t being accepted by older clients and would refuse communication if the hello packets didn’t meet expectations. This update means all future versions of the client will accept incoming network upgrades and handshakes.
 
-The changes have the following benefits:
+这些变动有如下一些优点：
 
 * EIP-2/1 eliminates the excess incentive to create contracts via transactions, where the cost is 21000, rather than contracts, where the cost is 32000.
 * EIP-2/1 also fixes the protocol "bug" that with the help of suicide refunds, it is currently possible to make a simple ether value transfer using only 11664 gas.
@@ -51,6 +48,6 @@ The changes have the following benefits:
 * EIP-8 makes sure that all client software in use on the Ethereum network can cope with future network protocol upgrades.
 
 
-Additional resources:
+参考资源：
 - `Reddit discussion on Homestead Release <https://www.reddit.com/r/ethereum/comments/48arax/homestead_release_faq/>`_
 - :ref:`Ethereum Improvement Proposals`
