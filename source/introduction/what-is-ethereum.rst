@@ -38,7 +38,7 @@
 
 与比特币区块链中单纯的交易流水不同， :ref:`以太坊区块链中的基础单元是账户（account） <Accounts>`。以太坊区块链跟踪每个账户的状态；以太坊区块链上的所有状态转换，都是账户间的价值或者信息转移。 以太坊中的账户有两种类型：
 
-- 由私钥控制的外部管理账户(Externally Owned Account，即EOA)
+- 由私钥控制的外部管理账户（Externally Owned Account，即EOA）
 - 由自身的合约代码控制的合约账户，这钟账户只能由EOA“激活”
 
 对大多数用户来讲，它们最基础的区别就是人控制EOA，因为人能通过私钥控制EOA上的行为；而合约账户则由它们内部的代码来管理。对于合约账户，我们可以说他们是有人“控制”的，因为他们 *被编制为*由一个有特定地址的EOA所控制，而这个EOA则由掌握其私钥的“人”所控制。当一个交易发送到合约账户上时，合约账户中的特定代码会被触发并执行，这些代码既是通常意义上的“智能合约”。用户可以在区块链上发布代码来创建新的合约。
@@ -57,14 +57,14 @@
 
 [待续]
 
-PR videos with some pathos:
+宣传视频
 ---------------------------------
 
 * `Ethereum: the World Computer <https://www.youtube.com/watch?v=j23HnORQXvs>`_
 * `Ethereum -- your turn <https://vimeo.com/88959651>`_
 
 
-Blockchain and Ethereum 101
+区块链和以太坊基础
 ----------------------------------
 
 * `Explain bitcoin like I'm five <https://medium.com/@nik5ter/explain-bitcoin-like-im-five-73b4257ac833>`_ - an excellent introduction to blockchain technology and bitcoin to the mildly techsavvy layperson.
@@ -95,12 +95,12 @@ Blockchain and Ethereum 101
 `[19] <https://www.reddit.com/r/ethereum/comments/43exre/what_are_the_advantages_of_ethereum_over_other/>`_
 
 
-Videos
+视频
 ----------------------
 
 * http://change.is/video/ethereum-the-world-computer-featuring-dr-gavin-wood
 
-Infographics
+图解资讯
 --------------------------------
 
 * `Ethereum explained...[to your mother] <https://blog.ethereum.org/wp-content/uploads/2015/06/Ethereum-image-infographic-beginners-guide.png>`_
@@ -108,7 +108,7 @@ Infographics
 * https://medium.com/@angelomilan/ethereum-explained-to-my-mom-infographic-673e32054c1c#.n9kzhme6v
 
 
-Comparison to alternatives
+竞品比较
 ---------------------------------
 
 * `NXT <https://www.reddit.com/r/ethereum/comments/23aejv/eli5_what_is_the_qnce_between_ethereum_and/>`_
