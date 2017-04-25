@@ -12,26 +12,26 @@
 
 区块链技术是比特币的基础技术，在神秘的作者中本聪（Satoshi Nakamoto）于2008年发表的的白皮书"Bitcoin: A Peer-to-Peer Electronic Cash System"中被首次描述。尽管在这篇最初的论文中已经提及了区块链技术的泛用性，但区块链作为通用术语出现，还是在几年之后的事。区块链是一个分布式的计算架构，每个网络节点都执行和记录同样的交易流水，这些流水数据被组织到所谓区块之中。在同一时间，只有一个区块可以被添加到链中， 每个区块都包含一个数学证明，来证实它是在它之前的所有区块之后产生的。用这种方法，使区块链的“分布式数据库”在整个网络中达到共识。用户与账本（交易流水）的交互通过强大的加密方式保证其安全性。负责维持和校验整个网络状态的节点，将获得由编码到协议中的经济学奖励算法计算得出的奖励。
 
-In Bitcoin's case the distributed database is conceived of as a table of account balances, a ledger, and transactions are transfers of the bitcoin token to facilitate trustless finance between individuals. But as bitcoin began attracting greater attention from developers and technologists, novel projects began to use the bitcoin network for purposes other than transfers of value tokens. Many of these took the form of "alt coins" - separate blockchains with cryptocurrencies of their own which improved on the original bitcoin protocol to add new features or capabilities. In late 2013, Ethereum's inventor Vitalik Buterin proposed that a single blockchain with the capability to be reprogrammed to perform any arbitrarily complex computation could subsume these many other projects.
+对于比特币而言，分布式数据库被设想成通过比特币代币在账户间的转移来使个人用户间的去信任金融变得可能的一种账户结算表、账本和交易流水的集合。但随着比特币吸引了越来越多的开发者和技术专家，一些新奇的项目开始用比特币网络来做一些代币价值转移以外的工作。其中一些项目采用了"alt coins"的模式，通过改进原始的比特币协议形成自己的加密货币，从而将区块链分离以增加新的特性和功能。在2013年底，以太坊（Ethereum）的发明人Vitalik Buterin正式提出了一个设想，这是一个具有再编程能力来执行任意复杂计算的单一区块链，可以将很多其他的项目纳入其内。 
 
-In 2014, Ethereum founders Vitalik Buterin, Gavin Wood and Jeffrey Wilcke began work on a next-generation blockchain that had the ambitions to implement a general, fully trustless smart contract platform.
-
-================================================================================
-Ethereum Virtual Machine
-================================================================================
-
-Ethereum is a programmable blockchain. Rather than give users a set of pre-defined operations (e.g. bitcoin transactions), Ethereum allows users to create their own operations of any complexity they wish. In this way, it serves as a platform for many different types of decentralized blockchain applications, including but not limited to cryptocurrencies.
-
-Ethereum in the narrow sense refers to a suite of protocols that define a platform for decentralised applications. At the heart of it is the :ref:`Ethereum Virtual Machine ("EVM") <the-EVM>`, which can execute code of arbitrary algorithmic complexity. In computer science terms, Ethereum is "Turing complete". Developers can create applications that run on the EVM using friendly programming languages modelled on existing languages like JavaScript and Python.
-
-Like any blockchain, Ethereum also includes a peer-to-peer network protocol. The Ethereum blockchain database is maintained and updated by many nodes connected to the network. Each and every node of the network runs the EVM and executes the same instructions. For this reason, Ethereum is sometimes described evocatively as a "world computer".
-
-This massive parallelisation of computing across the entire Ethereum network is not done to make computation more efficient. In fact, this process makes computation on Ethereum far slower and more expensive than on a traditional "computer". Rather, every Ethereum node runs the EVM in order to maintain consensus across the blockchain. Decentralized consensus gives Ethereum extreme levels of fault tolerance, ensures zero downtime, and makes data stored on the blockchain forever unchangeable and censorship-resistant.
-
-The Ethereum platform itself is featureless or value-agnostic. Similar to programming languages, it is up to entrepreneurs and developers to decide what it should be used for. However, it is clear that certain application types benefit more than others from Ethereum's capabilities. Specifically, ethereum is **suited for applications that automate direct interaction between peers or facilitate coordinated group action across a network**. For instance, applications for coordinating peer-to-peer marketplaces, or the automation of complex financial contracts. Bitcoin allows for individuals to exchange cash without involving any middlemen like financial institutions, banks, or governments. Ethereum’s impact may be more far-reaching. In theory, financial interactions or exchanges of any complexity could be carried out automatically and reliably using code running on Ethereum. Beyond financial applications, any environments where trust, security, and permanence are important – for instance, asset-registries, voting, governance, and the internet of things – could be massively impacted by the Ethereum platform.
+在2014年，以太坊（Ethereum）的创始人Vitalik Buterin, Gavin Wood和Jeffrey Wilcke就开始致力于构建下一代的区块链技术的工作，以实现一个通用的、完全去信任的智能合约平台（smart contract platform）。
 
 ================================================================================
-How does Ethereum work?
+以太坊虚拟机
+================================================================================
+
+以太坊是一个可编程的区块链。以太坊允许用户根据自己的设想创建任意复杂的操作，而不是只给用户一些预设好的操作（例如比特币的交易操作）。用这种方法，它成为了一个支撑许多不同类型的去中心化区块链应用的平台，包含但不仅限于加密货币。
+
+狭义上说，以太坊是定义了去中心化应用平台的一套协议。其核心就是可以运行任意的复杂算法代码的 :ref:`以太坊虚拟机("EVM") <the-EVM>`。用计算机科学术语来讲，以太坊是“图灵完备”的。开发者可以使用友好的编程语言在EVM上创建应用程序，比如使用JavaScript或Python。
+
+与其他任何区块链一样，以太坊也包含一个P2P（peer-to-peer）网络协议。以太坊区块链数据库，由众多的连接到此网络的节点维护和更新。每个节点都会运行EVM并执行相同的操作序列。因此，以太坊有时也被形象的描述为“全球计算机”（“world computer”）。
+
+这种跨越整个以太坊网络的超大规模并行计算，并不会使计算更加高效。事实上，这样的过程，使以太坊上的普通的计算远比使用传统的“计算机”来的更慢、更昂贵。但是，由于每个以太坊节点都会运行EVM来在区块链上达成共识，这种去中心化的共识，也给了以太坊极致的容错性（fault tolerance）、零宕机时间（zero downtime）、使存储在区块链上的数据永远无法更改（forever unchangeable）和抗审查（censorship-resistant）。
+
+以太坊平台本身是无特性（featureless）或价值未知（value-agnostic）的。与编程语言一样，是企业家和开发者决定它应该用来做什么。然而根据以太坊本身的能力，某些特定的应用显然要比其他类型更能受益。具体来讲，以太坊 **适合于那些旨在解决点到点之间直接交互，或者跨网络的团体协作问题的应用程序**。 例如特定的点到点（peer-to-peer）交易市场应用，或者自动化的复杂金融合约应用等等。 比特币，允许个人在不引入任何中介，像金融机构、银行或政府的情况下进行货币交易。而以太坊的影响会更加深远。从理论上讲，任意复杂度的金融交互或交易（financial interactions or exchanges）都可以自动化的、可靠的使用以太坊上的代码来实现。而除金融应用以外，任何注重信任、安全、持久性的场合，比如资产注册、投票、管辖和物联网，都可以大范围的嵌入以太坊平台。
+
+================================================================================
+以太坊是如何运作的？
 ================================================================================
 
 Ethereum incorporates many features and technologies that will be familiar to users of Bitcoin, while also introducing many modifications and innovations of its own.
@@ -52,10 +52,10 @@ These transaction fees are collected by the nodes that validate the network. The
 Just as in the Bitcoin network, miners are tasked with solving a complex mathematical problem in order to successfully "mine" a block. This is known as a "Proof of Work". Any computational problem that requires orders of magnitude more resources to solve algorithmically than it takes to verify the solution is a good candidate for proof of work. In order to discourage centralisation due to the use of specialised hardware (e.g. ASICs), as has occurred in the Bitcoin network, Ethereum chose a memory-hard computational problem. If the problem requires memory as well as CPU, the ideal hardware is in fact the general computer. This makes Ethereum's Proof of Work ASIC-resistant, allowing a more decentralized distribution of security than blockchains whose mining is dominated by specialized hardware, like Bitcoin.
 
 
-Learn about Ethereum
+学习以太坊
 ==============================
 
-[to be extended]
+[待续]
 
 PR videos with some pathos:
 ---------------------------------
