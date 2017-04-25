@@ -1,16 +1,15 @@
-
-Web 3: A platform for decentralized apps
+********************************************************************************
+Web 3.0：一个去中心化应用的平台
 ********************************************************************************
 
 
+Web 3.0，指的是一个像DNS、数字身份标识之类的核心互联网服务已经去中心化的、使人们可以通过与他人进行经济上的交往而紧密的结合起来的，新一代的互联网。而越来越多的事实使我们相信，像以太坊这样开放的、去信任的区块链平台，已经可以完美的适合作为去中心化的安全互联网，Web 3.0，的共享“后端”支撑平台了。
 
-Many have come to believe that an open, trustless blockchain platform like Ethereum is perfectly suited to serve as the shared "back end" to a decentralized, secure internet - Web 3.0. An internet where core services like DNS and digital identity are decentralized, and where individuals can engage in economic interactions with each other.
+就像以太坊的开发者设想的那样，以太坊是一个空白的画布，可以使你用它创造任何你想要的东西。以太坊协议是抽象设计的，以便使核心特性可以随意的进行组合。 理论上讲，以太坊上的去中心化应用（dapp）项目，将借助以太坊区块链去创造那些先前不可能实现的、基于去中心化共识的新产品或服务。
 
-As intended by the Ethereum developers, Ethereum is a blank canvas and you have the freedom to build whatever you want with it. The Ethereum protocol is meant to be generalized so that the core features can be combined in arbitrary ways. Ideally, dapp projects on Ethereum will leverage the Ethereum blockchain to build solutions that rely on decentralized consensus to provide new products and services that were not previously possible.
+也许对以太坊最合适的描述是将其视为一个生态系统：由各种各样的基础设施、代码和社区所共同支持的核心协议构成了以太坊项目。以太坊也可以被理解为使用它的那些项目的集合。 现在，像Augur、Digix、Maker和其他很多（参考 :ref:`dapps`）备受瞩目的项目已经在以太坊上构建了起来。另外还有很多开发团队也已经创建了很多开源组件供人们使用。尽管这些组织是独立于以太坊基金会之外的、都有他们自己的目标，但他们毫无疑问的都已经从以太坊的生态系统中获益了。
 
-Ethereum is perhaps best described as an ecosystem: the core protocol is supported by various pieces of infrastructure, code, and community that together make up the Ethereum project. Ethereum can also be understood by looking at the projects that use Ethereum. Already, there are a number of high-profile projects built on Ethereum such as Augur, Digix, Maker, and many more (see :ref:`dapps`). In addition, there are development teams that build open source components that anyone can use.  While each of these organizations are separate from the Ethereum Foundation and have their own goals, they undoubtedly benefit the overall Ethereum ecosystem.
-
-Further Watching/Reading:
+进一步了解：
 
 * Vitalik Buterin - TNABC 2015: https://www.youtube.com/watch?v=Fjhe0MVRHO4
 
