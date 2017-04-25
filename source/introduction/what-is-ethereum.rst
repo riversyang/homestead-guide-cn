@@ -34,22 +34,22 @@
 以太坊是如何运作的？
 ================================================================================
 
-Ethereum incorporates many features and technologies that will be familiar to users of Bitcoin, while also introducing many modifications and innovations of its own.
+以太坊中包含了很多比特币用户很熟悉的特性和技术，与此同时它也引入了很多的修改和创新。
 
-Whereas the Bitcoin blockchain was purely a list of transactions, :ref:`Ethereum's basic unit is the account <Accounts>`. The Ethereum blockchain tracks the state of every account, and all state transitions on the Ethereum blockchain are transfers of value and information between accounts. There are two types of accounts:
+与比特币区块链中单纯的交易流水不同， :ref:`以太坊区块链中的基础单元是账户（account） <Accounts>`。以太坊区块链跟踪每个账户的状态；以太坊区块链上的所有状态转换，都是账户间的价值或者信息转移。 以太坊中的账户有两种类型：
 
-- Externally Owned Accounts (EOAs), which are controlled by private keys
-- Contract Accounts, which are controlled by their contract code and can only be "activated" by an EOA
+- 由私钥控制的外部管理账户(Externally Owned Account，即EOA)
+- 由自身的合约代码控制的合约账户，这钟账户只能由EOA“激活”
 
-For most users, the basic difference between these is that human users control EOAs - because they can control the private keys which give control over an EOA. Contract accounts, on the other hand, are governed by their internal code. If they are "controlled" by a human user, it is because they are *programmed* to be controlled by an EOA with a certain address, which is in turn controlled by whoever holds the private keys that control that EOA. The popular term "smart contracts" refers to code in a Contract Account – programs that execute when a transaction is sent to that account. Users can create new contracts by deploying code to the blockchain.
+对大多数用户来讲，它们最基础的区别就是人控制EOA，因为人能通过私钥控制EOA上的行为；而合约账户则由它们内部的代码来管理。对于合约账户，我们可以说他们是有人“控制”的，因为他们 *被编制为*由一个有特定地址的EOA所控制，而这个EOA则由掌握其私钥的“人”所控制。当一个交易发送到合约账户上时，合约账户中的特定代码会被触发并执行，这些代码既是通常意义上的“智能合约”。用户可以在区块链上发布代码来创建新的合约。
 
-Contract accounts only perform an operation when instructed to do so by an EOA. So it is not possible for a Contract account to be performing native operations like random number generation or API calls – it can do these things only if prompted by an EOA. This is because Ethereum requires nodes to be able to agree on the outcome of computation, which requires a guarantee of strictly deterministic execution.
+仅当合约账户接到一个EOA的指示的时候，它才会去执行一个操作。所以合约账户不可能去做一些自发的操作，比如生成随机数或调用API，除非被EOA指定去做。这是因为以太坊中的节点需要一个严格确定的执行确认，来承认外来的计算要求。
 
-Like in Bitcoin, users must pay small transaction fees to the network. This protects the Ethereum blockchain from frivolous or malicious computational tasks, like DDoS attacks or infinite loops. The sender of a transaction must pay for each step of the "program" they activated, including computation and memory storage.  These fees are paid in amounts of Ethereum's native value-token, ether.
+与比特币一样，用户需要向网络支付小额的交易费。这个机制是用来保护以太坊网络不被一些无价值或恶意的计算任务所影响，比如DDoS攻击或者无限循环。交易的发送者必须为他们所激活的每一步“程序”支付相应的费用，包括计算和存储。这些费用是用一定量的以太坊原生代币，以太币，来体现的。
 
-These transaction fees are collected by the nodes that validate the network. These "miners" are nodes in the Ethereum network that receive, propagate, verify, and execute transactions. The miners then group the transactions – which include many updates to the "state" of accounts in the Ethereum blockchain – into what are called "blocks", and miners then compete with one another for *their* block to be the next one to be added to the blockchain. Miners are rewarded with ether for each successful block they mine. This provides the economic incentive for people to dedicate hardware and electricity to the Ethereum network.
+这些交易费用，是由验证整个网络的节点们所收集的。这些以太坊网络中接受、传播、验证和执行交易的节点，即是所谓的“矿工”。包含了以太坊区块链中账户“状态”变动的所有交易信息，由矿工们归集到“区块”中，然后开始互相竞争，以使 *他们自己产生的*区块成为区块链中的下一个区块。矿工每成功挖到一个矿，都将获得奖励。这就是对那些为以太坊网络贡献硬件和算力的人的经济上的激励。
 
-Just as in the Bitcoin network, miners are tasked with solving a complex mathematical problem in order to successfully "mine" a block. This is known as a "Proof of Work". Any computational problem that requires orders of magnitude more resources to solve algorithmically than it takes to verify the solution is a good candidate for proof of work. In order to discourage centralisation due to the use of specialised hardware (e.g. ASICs), as has occurred in the Bitcoin network, Ethereum chose a memory-hard computational problem. If the problem requires memory as well as CPU, the ideal hardware is in fact the general computer. This makes Ethereum's Proof of Work ASIC-resistant, allowing a more decentralized distribution of security than blockchains whose mining is dominated by specialized hardware, like Bitcoin.
+与比特币网络一样，矿工们想要成功“挖到”一个区块也需要解决一个复杂的数学问题。这就是被熟知的“工作量证明”（"Proof of Work"）。任何一个从算法上解决所消耗的资源大于验证结果所消耗资源的计算问题，都是工作量证明的良好选择。为了弱化比特币网络中使用特定硬件（比如 ASICs，一种专门用于计算的集成电路硬件，译者注）所带来的中心化趋势，以太坊选择了一个memory-hard计算问题。如果一个问题就像需求CPU一样需求内存，那可以支撑的硬件会更趋近于通常的计算机。这使以太坊的工作量证明“抗ASIC”；并且与比特币的可能受制于特定硬件的挖矿过程相比，这种工作量证明更加有利于去中心化分布的安全性。
 
 
 学习以太坊
