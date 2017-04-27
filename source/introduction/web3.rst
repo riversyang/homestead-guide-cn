@@ -17,26 +17,25 @@ Web 3.0，指的是一个像DNS、数字身份标识之类的核心互联网服�
 
 * Ethereum London Meetup (best detailed here): https://www.youtube.com/watch?v=GJGIeSCgskc
 
-Smart contracts
+智能合约
 ================================================================================
 
-by Alex:
+来自Alex：
 
-Would you enter in a contract with someone you've never met? Would you agree to lend money to some farmer in Ethiopia? Would you become an investor in a minority-run newspaper in a war zone? Would you go to the hassle of writing up a legal binding contract for a $5 dollar purchase over the internet?
+你会加入某个陌生人的合约么？你会同意把钱借给埃塞俄比亚的某个农场主么？你会成为战乱地区的小众报纸的投资人么？你会花费精力写一个合法绑定的合约在互联网上申请5美元么？
 
-The answer is no for most of these questions, the reason being that a contract requires a large infrastructure: sometimes you need a working trust relationship between the two parties, sometimes you rely on a working legal system, police force and lawyer costs.
+回答显然是：不。其原因也很简单：一个合约，需要很多的基础设施来支撑。有时需要合约双方有互信的联系，有时需要依赖于一个合法的系统，乃至警察、律师的介入。
 
-In Ethereum you don't need any of that: if all the requisites to the contract can be put in the blockchain then they will, in a trustless environment for almost no cost.
+在以太坊中，你不再需要那么多其他的支持。如果合约中的所有要素都能被放到区块链中，那么他们就将进入一个去信任的环境，也将几乎不会花费任何成本。
 
-Instead of thinking of moving your current contracts to the blockchain, think of all the thousand little contracts that you would never agree to simply because they weren't economically feasible or there was not enough legal protection..
+原先那些不计其数的小型合约，因为没有经济上的可行性或者没有足够的法律保护，而使我们永远不能接受，现在它们有了实现的可能。但这并不是说要去考虑将我们现有的合约全都迁移到区块链上。
 
-
-DAO
+DAO（Decentralized Autonomous Organizations，即去中心化自治组织，译者注）
 ================================================================================
 
-Here is just one example: imagine you own a small business with your friends. Lawyers and accountants are expensive, and trusting a single partner to oversee the books can be a source of tension (even an opportunity for fraud). Complying strictly with a system in which more than one partner oversees the books can be trying and is subject to fraud whenever the protocol isn't followed exactly.
+这里正好有个例子：想象你和你的朋友们共同拥有一个小业务。雇佣律师和会计师是很昂贵的，但信任一个单独的合伙人来监督账簿也是个令人紧张的因素（有时甚至是给别有用心的人提供机会）。严格的遵从一个系统，是比信任一个合伙人对账簿的监管更值得尝试的；然而，当系统中的协议没有被正确遵守的时候，就有了一种变相欺诈的倾向。
 
-Using a smart contract, ownership in your company and terms for the disbursal of funds can be specified at the outset. The smart contract can be written such that it is only changeable given the approval of a majority of owners. Smart contracts like these will likely be available as open source software, so you won't even need to hire your own programmer instead of an accountant/lawyer.
+这时，使用一个由你的公司掌握的智能合约来解释所有资金的支出，就成为了一个很好的开端。这个智能合约可以被设定为仅当取得其大多数所有者的同意才能被支出。像这样的智能合约可以通过开源软件的方式轻易地获得，你甚至不需要去雇佣你自己的程序员去代替会计师或律师。
 
-A smart contract like this scales instantly. A couple of teenagers can split revenue from a lemonade stand just as transparently as a sovereign wealth fund can disburse funds to the hundred million citizens who are entitled to it. In both cases the price of this transparency is likely to be fractions of a penny per dollar.
+像这样的智能合约是可以直接度量的。几个年轻人可以透明的分配从他们经营的水吧中获得的收入；就像一个主权财富基金为其有资格的上亿成员发放资金一样透明。在这两种情况下，这种透明化的成本都不足1%。
 
