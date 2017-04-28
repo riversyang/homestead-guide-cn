@@ -16,3 +16,4 @@
 # IntelliJ project files
 *.iml
 .idea
+.pydevproject
