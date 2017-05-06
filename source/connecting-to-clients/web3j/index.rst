@@ -6,19 +6,18 @@ web3j
 
 **web3j**
 
-web3j is a lightweight Java library for integrating with clients (nodes) on the Ethereum network.
+web3j是一个轻量级的Java库以支持与以太坊网络上的客户端（节点）进行集成。
 
-Core features:
- - Interaction with Ethereum clients over JSON-RPC via Java types
- - Supports all JSON-RPC method types
- - Supports all Geth and Parity methods for managing accounts and signing transactions
- - Sending of client requests both asynchronously and synchronously
- - Auto-generation of Java smart contract function wrappers from Solidity ABI files
+核心特性：
+ - 以Java语言的类型，通过JSON-RPC与以太坊客户端进行交互
+ - 支持所有的JSON-RPC方法类型
+ - 支持所有的Geth和Parity中用于管理账户及签署交易的方法
+ - 传输客户端请求时支持同步和异步两种方式
+ - 可以根据Solidity ABI文件自动生成Java智能合约方法的包装（Java smart contract function warpper）
 
-Currently, the :ref:`go-ethereum` and :ref:`Parity` clients are supported.
+现在支持 :ref:`go-ethereum` 和 :ref:`Parity` 客户端。
 
-
-Links:
+相关资源：
 
 * GitHub: https://github.com/web3j/web3j
 * Website: http://web3j.io

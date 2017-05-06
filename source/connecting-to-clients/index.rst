@@ -1,17 +1,17 @@
 .. _Connecting to Clients:
 
 ################################################################################
-Connecting to Ethereum Clients
+连接到以太坊客户端
 ################################################################################
 
-Ethereum clients expose a number of methods over `JSON-RPC <https://github.com/ethereum/wiki/wiki/JSON-RPC>`_ for interacting with them from within an application. However, interacting directly over JSON-RPC passes on a number of burdens to the application developers, such as:
+以太坊客户端通过 `JSON-RPC <https://github.com/ethereum/wiki/wiki/JSON-RPC>`_ 的方式暴露了很多方法来与应用程序进行交互。然而对于应用开发者而言，直接通过JSON-RPC进行交互会有一些额外的负担，比如：
 
- - JSON-RPC protocol implementation
- - Binary format encoding/decoding for creating and interacting with smart contracts
- - 256 bit numeric types
- - Admin command support - e.g. create/manage addresses, sign transactions
+ - JSON-RPC协议的实现
+ - 创建智能合约和与智能合约交互所需的二进制码的编码/解码
+ - 256位的数值类型处理
+ - 一些管理功能的支持 - 比如创建/管理地址、对交易进行签名等
 
-A number of libraries have been written to help address these issues, allowing application developers to focus on their applications, instead of the underlying plumbing to interact with Ethereum clients and the wider ecosystem.
+于是一些相关功能库被开发出来帮助解决这些问题，使应用开发者能专注于他们的应用程序，而不是去花时间进行与以太坊客户端乃至生态系统交互管道疏通上的一些基础性工作。
 
 +----------------------+------------+-----------------------------------------------+
 | Library              | Language   | Project Page                                  |
@@ -25,7 +25,7 @@ A number of libraries have been written to help address these issues, allowing a
 | :ref:`ethereum-ruby` | Ruby       | https://github.com/DigixGlobal/ethereum-ruby  |
 +----------------------+------------+-----------------------------------------------+
 
-Information on each library is provided in the following sections:
+每个工具库的介绍请参考以下章节：
 
 .. toctree::
    :maxdepth: 2
@@ -35,4 +35,4 @@ Information on each library is provided in the following sections:
    nethereum/index.rst
    ethereum-ruby/index.rst
 
-For an overview of creating and interacting with smart contracts and transactions via the web3.js library, please refer to the section :ref:`Accessing Contracts and Transactions`.
+关于通过使用web3.js进行智能合约的创建和交互的总体介绍，请参考 :ref:`Accessing Contracts and Transactions` 。
