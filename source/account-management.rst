@@ -1,36 +1,33 @@
 ********************************************************************************
-Account Management
+账户管理
 ********************************************************************************
 
 .. _Accounts:
 
-Accounts
+账户
 ================================================================================
+账户在以太坊中扮演了一个核心角色。账户有两种类型： *externally owned accounts* （EOAs，即外部拥有的账户，译者注）和 *contract accounts* （合约账户，译者注）。这里我们聚焦在外部拥有的账户上，简称为 *账户* 。合约账户将被简称为 *合约* ，在 :ref:`合约的章节里详细讨论 <Contracts>` 。结合外部拥有的账户和合约，这个概念上的账户实体可以归结为 *状态对象* 。 这些实体是有状态的：账户有余额，合约账户既有余额也有合约数据的存储。所有账户的状态，就是一个以太坊网络中伴随着每个区块的更新所达成共识的状态。账户就是所有的实际用户通过交易与以太坊进行交互的必需媒介。
 
-Accounts play a central role in Ethereum. There are two types of accounts: *externally owned accounts* (EOAs) and *contract accounts*. Here we focus on externally owned accounts, which will be referred to simply as *accounts*. Contract accounts will be referred to as *contracts* and are :ref:`discussed in detail in Contracts <Contracts>`. This generic notion of account subsuming both externally owned accounts and contracts is justified in that these entities are so called *state objects*. These entities have a state: accounts have balance and contracts have both balance and contract storage. The state of all accounts is the state of the Ethereum network which is updated with every block and which the network really needs to reach a consensus about.
-Accounts are essential for users to interact with the Ethereum blockchain via transactions.
+如果我们把以太坊限定为只有外部拥有的账户，只允许它们之间的交易，那我们就做成了一个“altcoin”（即山寨币，译者注）系统，本身并不如比特币网络强大，只能用来交易以太币。
 
-If we restrict Ethereum to only externally owned accounts and allow only transactions between them, we arrive at an "altcoin" system that is less powerful than bitcoin itself and can only be used to transfer ether.
+账户代表着外部代理人的实体（比如真人用户、挖矿的节点或自动化的代理等）。账户使用公钥加密的方法对交易进行签名，以便EVM可以安全的校验交易发送者的身份。
 
-Accounts represent identities of external agents (e.g., human personas, mining nodes or automated agents). Accounts use public key cryptography to sign transaction so that the EVM can securely validate the identity of a transaction sender.
-
-Keyfiles
+秘钥文件
 ================================================================================
+每个账户都由一对秘钥所定义，就是私钥和公钥。账户根据由其公钥的后20字节导出的 *地址* 进行索引编排。每一个私钥/地址对被编码在一个 *秘钥文件* 中，这个文件是JSON格式的文本文件，可以用任意文本编辑器修改。你账号的私钥是你的秘钥文件中最紧要的内容，它会由你创建账号时输入的密码进行加密处理。秘钥文件保存在你本地节点的data目录的 ``keystore`` 子目录下。请确保有定期备份你的秘钥文件。更多信息请参考 :ref:`backup-and-restore-accounts` 。
 
-Every account is defined by a pair of keys, a private key and public key. Accounts are indexed by their *address* which is derived from the public key by taking the last 20 bytes. Every private key/address pair is encoded in a *keyfile*. Keyfiles are JSON text files which you can open and view in any text editor. The critical component of the keyfile, your account’s private key, is always encrypted, and it is encrypted with the password you enter when you create the account. Keyfiles are found in the ``keystore`` subdirectory of your Ethereum node’s data directory. Make sure you backup your keyfiles regularly! See the section :ref:`backup-and-restore-accounts` for more information.
+创建一个秘钥就相当于创建了一个账户。
 
-Creating a key is tantamount to creating an account.
+* 你不需要告诉任何人你做了这件事
+* 你不需要和区块链做任何同步
+* 你不需要运行一个客户端
+* 你甚至不需要接入互联网
 
-* You don't need to tell anybody else you're doing it
-* You don't need to synchronize with the blockchain
-* You don't need to run a client
-* You don't even need to be connected to the internet
+当然，你的新账户不会包含任何以太币；但它已经是你的了。没有你的秘钥和密码，任何人都无法访问它。
 
-Of course your new account will not contain any Ether. But it'll be yours and you can be certain that without your key and your password, nobody else can ever access it.
+在以太坊节点间拷贝单独的秘钥文件乃至整个目录是安全的。
 
-It is safe to transfer the entire directory or any individual keyfile between Ethereum nodes.
-
-.. Warning:: Note that in case you are adding keyfiles to your node from a different node, the order of accounts may change. So make sure you do not rely or change the index in your scripts or code snippets.
+.. Warning:: 请注意，如果你从其他节点添加了秘钥文件，账户的顺序可能会变化。所以请确保你没有在脚本或代码段中依赖或改变账户的索引。
 
 .. _creating_an_account:
 
