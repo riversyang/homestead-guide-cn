@@ -31,17 +31,17 @@
 
 .. _creating_an_account:
 
-Creating an account
+创建账户
 ================================================================================
 
-.. Warning:: **Remember your passwords and :ref:`backup your keyfiles <backup-and-restore-accounts>`.** In order to send transactions from an account, including sending ether, you must have BOTH the keyfile and the password. Be absolutely sure to have a copy of your keyfile AND remember the password for that keyfile, and store them both as securely as possible. There are no escape routes here; lose the keyfile or forget your password and all your ether is gone. It is NOT possible to access your account without a password and there is no *forgot my password* option here. Do not forget it.
+.. Warning:: **记住你的密码并备份你的秘钥文件。** 你必须同时拥有秘钥文件和密码才能从一个账户中发起交易，包括发送以太币。请绝对地确保你有一个秘钥文件的拷贝并记住它的密码，把它们尽可能安全的保存。如果你丢失了秘钥文件或者忘记了你的密码，你将会失去账户中的所有以太币，这里没有任何迂回的方法。没有密码，想访问你的账户是不可能的，这里并没有 *忘记密码* 这样的选项。所以请别忘了它。
 
-Using ``geth account new``
+使用 ``geth account new``
 --------------------------------------------------------------------------------
 
-Once you have the geth client installed, creating an account is merely a case of executing the ``geth account new`` command in a terminal.
+在安装了geth客户端之后，你就可以简单地在命令行终端上执行  ``geth account new`` 来创建账户。
 
-Note that you do not have to run the geth client or sync up with the blockchain to use the ``geth account`` command.
+你不需要运行geth客户端或者同步区块链数据就可以使用  ``geth account`` 命令。
 
 .. code-block:: Bash
 
@@ -52,13 +52,13 @@ Note that you do not have to run the geth client or sync up with the blockchain 
     Repeat Passphrase:
     Address: {168bc315a2ee09042d83d7c5811b533620531f67}
 
-For non-interactive use you supply a plaintext password file as argument to the ``--password`` flag. The data in the file consists of the raw bytes of the password optionally followed by a single newline.
+你也可以使用非交互方式来使用这个命令，只需要为 ``--password`` 选项增加一个纯文本密码文件的参数即可。文件内容直接为密码文本，也可以在最后加一个换行。
 
 .. code-block:: Bash
 
   $ geth --password /path/to/password account new
 
-..  Warning:: Using the ``--password`` flag is meant to be used only for testing or automation in trusted environments. It is a bad idea to save your password to file or expose it in any other way. If you do use the ``--password`` flag with a password file, make sure the file is not readable or even listable for anyone but you. You can achieve this in Mac/Linux systems with:
+..  Warning::  ``--password`` 选项应该仅在可信环境中做测试或自动化时使用。把你的密码存到文件里或用其他方式暴露，通常不是个好主意。如果你一定要使用这个选项，请保证没有其他人能访问保存密码的文件。你可以在Mac/Linux系统中用以下方法实现这点。
 
 .. code-block:: Bash
 
@@ -67,8 +67,7 @@ For non-interactive use you supply a plaintext password file as argument to the 
   cat > /path/to/password
   >I type my pass
 
-
-To list all the accounts with keyfiles currently in you’re ``keystore`` folder use the ``list`` subcommand of the ``geth account`` command:
+在  ``geth account`` 命令后加上 ``list`` 子命令，即可列出你的 ``keystore`` 目录下保存的所有账户信息。
 
 .. code-block:: Bash
 
@@ -78,14 +77,13 @@ To list all the accounts with keyfiles currently in you’re ``keystore`` folder
   account #1: {c385233b188811c9f355d4caec14df86d6248235}
   account #2: {7f444580bfef4b9bc7e14eb7fb2a029336b07c9d}
 
+账户信息文件的文件名格式为： ``UTC--<created_at UTC ISO8601>-<address hex>`` 。列表中数据的显示顺序是以字母为序，但因为时间戳是在最前边的，所以实际上就是以创建时间为序。
 
-The filenames of keyfiles has the format ``UTC--<created_at UTC ISO8601>-<address hex>``. The order of accounts when listing, is lexicographic, but as a consequence of the timestamp format, it is actually order of creation.
 
-
-Using geth console
+使用geth控制台
 --------------------------------------------------------------------------------
 
-In order to create a new account using geth, we must first start geth in console mode (or you can use ``geth attach`` to attach a console to an already running instance):
+要使用geth，我们必须先用控制台模式启动geth。（或者你可以使用 ``geth attach`` 把geth关联到一个已经运行的控制台。）
 
 .. code-block:: Bash
 
@@ -95,7 +93,7 @@ In order to create a new account using geth, we must first start geth in console
   at block: 865174 (Mon, 18 Jan 2016 02:58:53 GMT)
   datadir: /home/USERNAME/.ethereum
 
-The console allows you to interact with your local node by issuing commands. For example, try the command to list your accounts:
+控制台是你可以通过命令行的方式访问你的本地节点的地方。例如，你可以用以下命令列出你的账户。
 
 .. code-block:: Javascript
 
@@ -106,7 +104,7 @@ The console allows you to interact with your local node by issuing commands. For
   message: "no keys in store"
   }
 
-This shows that you have no accounts. You can also create an account from the console:
+以上结果显示出你还没有账户。你可以在控制台创建账户。
 
 .. code-block:: Javascript
 
@@ -115,9 +113,9 @@ This shows that you have no accounts. You can also create an account from the co
   Repeat passphrase:
   "0xb2f69ddf70297958e582a0cc98bce43294f1007d"
 
-.. Note:: Remember to use a strong and randomly generated password.
+.. Note:: 记住：要使用安全性高、最好有随机性的密码。
 
-We just created our first account. If we try to list our accounts again we can see our new account:
+我们刚刚创建了第一个账户。如果再尝试列出账户的话，我们就能看到这个新账户。
 
 .. code-block:: Javascript
 
@@ -127,18 +125,18 @@ We just created our first account. If we try to list our accounts again we can s
 
 .. _using-mist-ethereum-wallet:
 
-Using Mist Ethereum wallet
+使用Mist以太坊钱包
 --------------------------------------------------------------------------------
 
-For the command line averse, there is now a GUI-based option for creating accounts: The “official” Mist Ethereum wallet. The Mist Ethereum wallet, and its parent Mist project, are being developed under the auspices of the Ethereum Foundation, hence the “official” status. Versions of the wallet app are available for Linux, Mac OS X, and Windows.
+由于普通用户对命令行的厌恶，现在有了个基于GUI（图形用户界面）的方法：“官方的”Mist以太坊钱包。Mist以太坊钱包和它的双亲Mist项目是由以太坊基金会所资助的，所以也就有了“官方的”说法。钱包应用程序支持Linux、Mac OS X和Windows操作系统。
 
-.. Warning:: The Mist wallet is beta software. Please beware and use it at your own risk.
+.. Warning:: Mist钱包仍是个Beta版本，请意识到你需要自行承担相关风险。
 
-Creating an account using the GUI Mist Ethereum wallet couldn’t be easier. In fact, your first account is created during the installation of the app.
+使用GUI的Mist以太坊钱包创建账户不能再简单了。事实上，你的第一个账户已经在安装过程中创建出来了。
 
-1. `Download the latest version of the wallet app <https://github.com/ethereum/mist/releases>`_  for your operating system. Opening the Wallet App will kick off syncing a full copy of the Ethereum blockchain on your computer, since you will in effect be running a full geth node.
+1、为你的操作系统 `下载最新版的钱包应用 <https://github.com/ethereum/mist/releases>`_ 。因为实际上你是在运行一个geth全节点，所以第一次打开钱包应用时会触发一次与以太坊区块链的完全同步过程。
 
-2. Unzip the downloaded folder and run the Ethereum-Wallet executable file.
+2、解压下载的文件，运行以太坊钱包可执行文件。
 
 .. image:: img/51Downloading.png
    :width: 582px
@@ -147,9 +145,9 @@ Creating an account using the GUI Mist Ethereum wallet couldn’t be easier. In 
    :alt: downloading-mist
    :align: center
 
-3. Wait for the blockchain to fully sync, then follow the instructions on the screen and your first account will be created.
+3、等待区块链的完全同步，然后跟随页面向导完成设置，你的第一个账户也会被创建出来。
 
-4. When you launch the Mist Ethereum wallet for the first time, you will see the account you created during the installation process. By default it will be named MAIN ACCOUNT (ETHERBASE).
+4、当你第一次运行Mist以太坊钱包的时候，你会看到在安装过程中创建的账户。它会被默认的命名为 MAIN ACCOUNT (ETHERBASE)。
 
 .. image:: img/51OpeningScreen.png
    :width: 1024px
@@ -158,53 +156,53 @@ Creating an account using the GUI Mist Ethereum wallet couldn’t be easier. In 
    :alt: opening-screen
    :align: center
 
-5. Creating additional accounts is easy; just click on ADD ACCOUNT in the app’s main screen and enter the required password.
+5、创建额外的账户很容易，你只需要在应用界面中点击“ADD ACCOUNT”并输入密码即可。
 
-.. Note:: The Mist wallet is still in active development, so details of the steps outlined above may change with upgrades.
+.. Note:: Mist钱包还在不断开发更新中，所以以上步骤也许会有变动。
 
 
-Creating a Multi-Signature Wallet in Mist
+在Mist中创建一个多重签名（Multi-Signature）的钱包
 --------------------------------------------------------------------------------
 
-The Mist Ethereum wallet has an option to secure your wallet balance with a multisig wallet. The advantage of using a multisig wallet is that it requires authorization from more than one account to withdrawal larger amounts from your balance. Before you can create a multisig wallet, you'll need to create more than one account.
+Mist以太坊钱包有一个选项，可以使用多重签名的钱包来保护你的钱包余额。多重签名钱包的好处就是当从你的账户余额中取出较大数额的结余时，需要多个账户的共同授权。为了使用多重签名钱包，你需要创建多个账户。
 
-It's very easy to create account files in Mist. In the 'Accounts' section click 'Add Account'. Pick a strong yet easy-to-remember password (remember there is no password recovery option), confirm it, and your account is created. Create at least 2 accounts. Secondary accounts can be created on separate computers running Mist if you prefer (and theoretically make your multisig more secure doing it this way). You only need the public keys (your deposit addresses) of your secondary accounts when creating the multisig wallet (copy/paste them, do not ever type them by hand). Your primary account will be needed to create the multisig wallet contract, so it must be on the computer you are creating the multisig wallet on.
+在Mist中创建账户文件非常简单。在'Accounts'中点击'Add Account'，选择一个容易记住的强密码（记住，没有忘记密码的选项），确认，你的账户就创建出来了。至少创建两个账户。第二个账户也可以创建到另外一台独立的计算机上（这么做，理论上更安全）。要创建多重签名钱包，你只需要第二个账户的公钥（账户地址，最好拷贝/粘贴，不要用手工录入，以免出错）。你的主账户会被用来创建多重签名的钱包合约，它应该在你想要创建多重签名钱包的计算机上。
 
-Now that you have your accounts setup, be safe and back them up (if your computer crashes, you will lose your balance if you do not have a backup). Click 'Backup' in the top menu. Choose the 'keystore' folder, opposite-click on it / choose 'copy' (do NOT choose 'cut', that would be very bad). Navigate to your desktop, opposite-click in a blank area and choose 'paste'. You may want to rename this new copy of the 'keystore' folder to something like 'Ethereum-keystore-backup-year-month-day' so you have quick recognition of it later. At this point you can then add the folder contents to a zip / rar file (and even password-protect the archive with another strong yet easy-to-remember password if backing up online), copy it to a USB Drive, burn it to a CD / DVD, or upload it to online storage (Dropbox / Google Drive / etc).
+现在你已经安全的创建了你的账户，记得备份它们。（如果你没做备份，一旦你的计算机坏掉，你讲失去你的所有账户余额。）在顶部菜单点击'Backup'选择'keystore'文件夹，选中它用拷贝命令（不要用剪切，这非常糟糕）。然后切换到桌面，右击空白区域，选择粘贴。你也许应该把这个新的'keystore'文件夹改名为'Ethereum-keystore-backup-year-month-day'，这样你以后可以很快的找到它。这时，你也可以把这个目录添加到一个zip/rar压缩包（甚至给压缩包加上密码，如果你要把它保存到线上的话），保存到U盘、刻录到CD或者上传到云存储服务中（比如Dropbox，Google Drive之类）。
 
-You now should add approximately no less than 0.02 ETH to your primary account (the account you will initiate creation of a multisig wallet with). This is required for the transaction fee when you create the multisig wallet contract. An additional 1 ETH (or more) is also needed, because Mist currently requires this to assure wallet contract transactions have enough 'gas' to execute properly...so no less than about 1.02 ETH total for starters.
+你现在应该至少添加0.02以太币到你的主账户中（就是你要用来创建多重签名钱包的账户），这是你创建多重签名钱包所需的交易费。此外还需要1以太币以上的余额，因为Mist需要这个余额来确保有足够的'gas'来执行钱包中的合约交易。所以对于新用户来讲，你至少要有1.02以上的以太币。
 
-You will be entering the full addresses of all the accounts you are attaching to this multisig wallet, when you create it. I recommend copying / pasting each address into a plain text editor (notepad / kedit / etc), after going to each account's details page in Mist, and choosing 'copy address' from the right-side column of buttons. Never type an address by hand, or you run a very high risk of typos and could lose your balance sending transactions to the wrong address.
+当你创建一个多重签名钱包时，你需要输入与其关联的所有账户地址。建议你从Mist中各个账户的详情界面中拷贝/粘贴这些地址到一个文本编辑器（用记事本、kedit之类）。请不要手工输入这些地址，以免因为输入错误致使交易被发送到错误的地址而使你损失掉你的账户余额。
 
-We are now ready to create the multisig wallet. Under 'Wallet Contracts', select 'Add Wallet Contract'. Give it a name, select the primary account owner, and choose 'Multisignature Wallet Contract'. You will see something like this appear:
+我们现在已经可以来创建多重签名钱包了。在'Wallet Contracts'下选择'Add Wallet Contract'，给它起个名字，选择账户的拥有者，选择'Multisignature Wallet Contract'，你将看到类似下面这样的消息：
 
 "This is a joint account controlled by X owners. You can send up to X ether per day. Any transaction over that daily limit requires the confirmation of X owners."
 
-Set whatever amount of owners (accounts) you are attaching to this multisig wallet, whatever you want for a daily withdrawal limit (that only requires one account to withdrawal that amount), and how many owners (accounts) are required to approve any withdrawal amount over the daily limit.
+设置你想关联到这个多重签名钱包的任意数量的拥有者（账户），设置一个每日提取的上限（单独账户的提取数额），以及需要多少账户来批准超过这个上限的提取。
 
-Now add the addresses of the accounts that you copied / pasted into your text editor earlier, confirm all your settings are correct, and click 'Create' at the bottom. You will then need to enter your password to send the transaction. In the 'Wallet Contracts' section it should show your new wallet, and say 'creating'.
+现在，把刚刚拷贝/粘贴到文本编辑器中的账户地址添加进来，确认所有的设置，然后点击下方的'Create'按钮。你需要输入你的账户密码来发送交易。而后就可以在'Wallet Contracts'中看到这个新钱包的状态为'creating'。
 
-When wallet creation is complete, you should see your contract address on the screen. Select the entire address, copy / paste it into a new text file in your text editor, and save the text file to your desktop as 'Ethereum-Wallet-Address.txt', or whatever you want to name it.
+当钱包创建成功之后，你将可以看到合约地址。选中这个地址，把它拷贝/粘贴到文本编辑器，保存成新的文本文件'Ethereum-Wallet-Address.txt'或者任何你喜欢的名字。
 
-Now all you need to do is backup the 'Ethereum-Wallet-Address.txt' file the same way you backed up your account files, and then you are ready to load your new multisig wallet with ETH using this address.
+现在，你要做的就是备份这个文件，就像你备份账户文件一样，之后你就可以在Eth中用这个地址加载你的多重签名钱包了。
 
-If you are restoring from backup, simply copy the files inside the 'Ethereum-keystore-backup' folder over into the 'keystore' folder mentioned in the first section of this walkthrough. FYI, you may need to create the 'keystore' folder if it's a brand new install of Mist on a machine it was never installed on before (the first time you create an account is when this folder is created). As for restoring a multisig wallet, instead of choosing 'Multisignature Wallet Contract' like we did before when creating it, we merely choose 'Import Wallet' instead.
+如果你要恢复你的备份，可以简单的将'Ethereum-keystore-backup'拷贝回'keystore'目录，就像本节第一段讲的那样。如果在一台没有安装过Mist的计算机上全新安装Mist的话，你可能需要手工创建'keystore'目录。当我们要恢复一个多重签名钱包时，不用像我们之前创建它那样选择'Multisignature Wallet Contract'，我们可以直接选择'Import Wallet'。
 
-Troubleshooting:
+故障排除：
 
-* Mist won't sync. One solution that works well is syncing your PC hardware clock with an NTP server so the time is exactly correct...then reboot.
+* Mist没有同步。一个方案是通过NTP服务同步你的本地计算机硬件时间，然后重启。
 
-* Mist starts after syncing, but is a blank white screen. Chances are you are running the "xorg" video drivers on a Linux-based OS (Ubuntu, Linux Mint, etc). Try installing the manufacturer's video driver instead.
+* Mist在同步之后启动了，但却显示了一个空白界面。如果你是在使用一个基于Linux的操作系统（比如Ubuntu，Linux Mint之类）在运行第三方的视频驱动程序，那你可以试试安装厂商官方的视频驱动程序。
 
-* "Wrong password" notice. This seems to be a false notice on occasion on current Mist versions. Restart Mist and the problem should go away (if you indeed entered the correct password).
+* "Wrong password"提示。这应该是Mist当前版本的一个错误提示。重启Mist，这个问题应该就消失了（当然，你要输入正确的密码）。
 
 
-Using Eth
+使用Eth
 --------------------------------------------------------------------------------
 
-Every options related to key management available using geth can be used the same way in eth.
+geth中与秘钥管理相关选项都可以在eth中以同样的方式使用。
 
-Below are "account" related options:
+以下是与账户相关的选项：
 
 .. code-block:: Javascript
 
@@ -213,15 +211,15 @@ Below are "account" related options:
   > eth account update [<uuid>|<address> , ... ]  // Decrypt and re-encrypt given keys.
   > eth account import [<uuid>|<file>|<secret-hex>] // Import keys from given source and place in wallet.
 
-Below are "wallet" related option:
+以下是与钱包相关的选项：
 
 .. code-block:: Javascript
 
   > eth wallet import <file> //Import a presale wallet.
 
-.. Note:: the 'account import' option can only be used to import generic key file. the 'wallet import' option can only be used to import a presale wallet.
+.. Note:: 'account import'仅能用来导入通用的秘钥文件。'wallet import'选项只能用来导入预售的钱包。
 
-It is also possible to access keys management from the integrated console (using the built-in console or geth attach):
+通过集成的控制台也是可以进行秘钥管理的（比如内置的控制台或者geth关联的）：
 
 .. code-block:: Javascript
 
