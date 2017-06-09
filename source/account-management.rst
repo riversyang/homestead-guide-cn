@@ -232,25 +232,24 @@ geth中与秘钥管理相关选项都可以在eth中以同样的方式使用。
 	unlockAccount: function()
   }
 
-
-Using EthKey (deprecated)
+使用EthKey（将不再支持）
 --------------------------------------------------------------------------------
 
-Ethkey is a CLI tool of the C++ implementation that allows you to interact with the Ethereum wallet. With it you can list, inspect, create, delete and modify keys and inspect, create and sign transactions.
+EthKey是个用C++实现的CLI（Command Line Interfaces，即命令行交互接口，译者注）工具，使你可以与以太坊钱包进行交互。你可以用它列出、核对、创建、删除和修改秘钥，也可以对交易进行核对、创建和签名。
 
-We will assume you have not yet run a client such as eth or anything in the Aleth series of clients. If you have, you can skip this section.
-To create a wallet, run ``ethkey`` with the ``createwallet`` command:
+我们假定你没有运行一个像eth这样的客户端或者其他的Aleth系列的客户端，如果有，你可以跳过这段。
+要创建一个钱包，可以使用``ethkey``的``createwallet``命令：
 
 .. code-block:: Bash
 
   > ethkey createwallet
 
-Please enter a MASTER passphrase to protect your key store (make it strong!):
-You'll be asked for a "master" passphrase. This protects your privacy and acts as a default password for any keys. You'll need to confirm it by entering the same text again.
+请输入一个“超级管理员”密码来保护你的秘钥（让密码很健壮，即很难猜到，译者注）：
+你会被要求输出“超级管理员”密码，它将保护你的隐私，作为你的所有秘钥的缺省密码。你需要再同样输入一次以确认密码。
 
-.. Note:: Use a strong randomly generated password.
+.. Note:: 使用一个安全性高、最好有随机性的密码。
 
-We can list the keys within the wallet simply by using the list command:
+我们可以简单地用以下命令列出所有秘钥：
 
 .. code-block:: Bash
 
@@ -258,20 +257,20 @@ We can list the keys within the wallet simply by using the list command:
 
   No keys found.
 
-We haven't yet created any keys, and it's telling us so! Let's create one.
+它告诉我们，还没有创建任何秘钥。我们接下来将创建一个。
 
-To create a key, we use the ``new`` command. To use it we must pass a name - this is the name we'll give to this account in the wallet. Let's call it "test":
+我们可以用``new``命令创建秘钥。使用这个命令，我们必须指定一个名字，就是在钱包里的账户名字。让我们把它叫做“test”。
 
 .. code-block:: Bash
 
   > ethkey new test
 
-Enter a passphrase with which to secure this account (or nothing to use the master passphrase).
-It will prompt you to enter a passphrase to protect this key. If you just press enter, it'll use the default "master" passphrase. Typically this means you won't need to enter the passphrase for the key when you want to use the account (since it remembers the master passphrase). In general, you should try to use a different passphrase for each key since it prevents one compromised passphrase from giving access to other accounts. However, out of convenience you might decide that for low-security accounts to use the same passphrase.
+输入一个密码来保护这个账户（或者不输入，使用“超级管理员”密码）。
+系统会提示你输入密码来保护这个秘钥，如果你直接按回车，它就将使用缺省的“超级管理员”密码。通常，这样的做就使你使用这个密钥时不再需要输入密码（因为系统记住了“超级管理员”密码）。 一般来讲，你应该使用不同的密码以保护你的账号，当一个密码被破解之后不会导致其他账户也被访问；但出于使用上的方便，对于一些不太重要的账户，你也许会决定使用同一个密码。
 
-Here, let's give it the incredibly imaginative passphrase of 123. (Never ever use simple passwords like this for anything else than ephemeral test accounts).
-Once you enter a passphrase, it'll ask you to confirm it by entering again. Enter 123 a second time.
-Because you gave it its own passphrase, it'll also ask you to provide a hint for this password which will be displayed to you whenever it asks you to enter it. The hint is stored in the wallet and is itself protected by the master passphrase. Enter the truly awful hint of 321 backwards.
+这里，让我们用一个极富想象力的密码‘123’。（除了对于临时的测试账户，永远不要使用这么简单地密码。）
+输入密码之后，系统会要求你再确认，所以再输入一次‘123’。
+这里还需要你提供一个密码提示信息，它将会在要求你输入密码时显示。这个提示也会保存在钱包中，并由“超级管理员”密码所保护。这里我们使用一个极其糟糕的提示“321 backwards”（把321倒过来）。
 
 .. code-block:: Bash
 
@@ -286,30 +285,30 @@ Because you gave it its own passphrase, it'll also ask you to provide a hint for
     ICAP: XE472EVKU3CGMJF2YQ0J9RO1Y90BC0LDFZ
     Raw hex: 0092e965928626f8880629cec353d3fd7ca5974f
 
-All normal (aka direct) ICAP addresses begin with XE so you should be able to recognize them easily. Notice also that the key has another identifier after Created key. This is known as the UUID. This is a unique identifier for the key that has absolutely nothing to do with the account itself. Knowing it does nothing to help an attacker discover who you are on the network. It also happens to be the filename for the key, which you can find in either ~/.web3/keys (Mac or Linux) or $HOME/AppData/Web3/keys (Windows).
-Now let's make sure it worked properly by listing the keys in the wallet:
+所有正常的ICAP（即Inter Exchange Client Address Protocol，译者注）地址都会由‘XE’开头，这样你可以很容易的辨认出来。同时也请注意，这个秘钥还有一个额外的标识，也就是所谓的UUID（即Universal Unique Identifier，译者注）。这是一个秘钥的统一唯一标识，不会对账户有任何影响，也不会帮助攻击者揭示任何关于你本人的信息。它也会反映到可以在~/.web3/keys(Mac or Linux)或$HOME/AppData/Web3/keys(Windows)目录下找到的秘钥文件名上。
+现在我们列出钱包中的的秘钥，确认它已经创建好了。
 
 .. code-block:: Bash
 
   > ethkey list
   055dde03-47ff-dded-8950-0fe39b1fa101 0092e965… XE472EVKU3CGMJF2YQ0J9RO1Y90BC0LDFZ  test
 
-It reports one key on each line (for a total of one key here). In this case our key is stored in a file 055dde... and has an ICAP address beginning XE472EVK.... Not especially easy things to remember so rather helpful that it has its proper name, test, too.
+这里会每行显示一个秘钥。在上边的例子中，秘钥会保存在文件【055dde...】中，ICAP地址为【XE472EVK...】。显然这很难记住，于是它还有个简单的名字“test”。
 
-Importing your presale wallet
+
+导入预售钱包
 ================================================================================
 
-
-Using Mist Ethereum wallet
+使用Mist以太坊客户端
 --------------------------------------------------------------------------------
 
-Importing your presale wallet using the GUI Mist Ethereum wallet is very easy. In fact, you will be asked if you want to import your presale wallet during the installation of the app.
+使用Mist以太坊钱包的GUI来导入预售钱包非常容易。事实上在安装过程中你就会被询问是否需要导入预售钱包。
 
-.. Warning:: Mist wallet is beta software. Beware and use it at your own risk.
+.. Warning:: Mist钱包仍是个beta版本的软件，请意识到相关风险需要由你自行承担。
 
-Instructions for installing the Mist Ethereum wallet are given in the section :ref:`Creating an account: Using Mist Ethereum wallet <using-mist-ethereum-wallet>`.
+关于安装Mist以太坊钱包请参考之前的章节 :ref:`使用Mist以太坊钱包创建账户 <using-mist-ethereum-wallet>` 。
 
-Simply drag-and-drop your ``.json`` presale wallet file into the designated area and enter your password to import your presale account.
+你可以简单地拖拽你的 ``.json`` 预售钱包文件到指定的区域，输入你的密码来导入你的预售账户。
 
 .. image:: img/51PresaleImportInstall.png
    :width: 582px
@@ -318,42 +317,44 @@ Simply drag-and-drop your ``.json`` presale wallet file into the designated area
    :alt: presale-import
    :align: center
 
-If you choose not to import your presale wallet during installation of the app, you can import it at any time by selecting the ``Accounts`` menu in the app’s menu bar and then selecting ``Import Pre-sale Accounts``.
+如果你没有在安装客户端时导入预售钱包，你也可以在任何时候从 ``Accounts`` 菜单中选择 ``Import Pre-sale Accounts`` 来做这件事。
 
-.. Note:: The Mist wallet is still in active development, so details of the steps outlined above may change with upgrades.
+.. Note:: Mist钱包仍然在持续开发，所以以上说明的细节可能会有所更改。
 
-Using geth
+
+使用geth
 --------------------------------------------------------------------------------
 
-If you have a standalone installation of geth, importing your presale wallet is accomplished by executing the following command in a terminal:
+如果你有个独立的geth安装，你可以通过如下命令完成预售钱包的导入：
 
 .. code-block:: Bash
 
   geth wallet import /path/to/my/presale-wallet.json
 
-You will be prompted to enter your password.
+你会被要求输入密码。
 
-Updating an account
+
+更新一个账户
 ================================================================================
 
-You are able to upgrade your keyfile to the latest keyfile format and/or upgrade your keyfile password.
+你可以更新你的秘钥文件到最新的秘钥文件格式，或更改秘钥文件的密码。
 
-Using geth
+使用geth
 --------------------------------------------------------------------------------
 
-You can update an existing account on the command line with the ``update`` subcommand with the account address or index as parameter. Remember that the account index reflects the order of creation (lexicographic order of keyfile names containing the creation time).
+你可以使用 ``update`` 子命令，带上账户地址或索引作为参数来更新一个既有账户。记住，账户的索引反映了账户的创建顺序（包含了时间信息的秘钥文件名的字母顺序）。
 
 .. code-block:: Bash
 
   geth account update b0047c606f3af7392e073ed13253f8f4710b08b6
 
-or
+或者
 
 .. code-block:: Bash
 
   geth account update 2
 
-For example:
+例如:
 
 .. code-block:: Bash
 
@@ -368,51 +369,51 @@ For example:
   Repeat Passphrase:
   0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b
 
-The account is saved in the newest version in encrypted format, you are prompted for a passphrase to unlock the account and another to save the updated file. This same command can be used to migrate an account of a deprecated format to the newest format or change the password for an account.
+账户会被用加密格式保存为新的版本，你会被询问相应的密码以解锁账户，而后要输入一个新密码来保护更新后的文件。相同的方法也适用于将一个不再支持的秘钥文件格式更新为最新，或者修改账户的密码。
 
-For non-interactive use the passphrase can be specified with the ``--password`` flag:
+你也可以使用 ``--password`` 选项来指定密码文件，而不再手工输入密码。
 
 .. code-block:: Bash
 
   geth --password <passwordfile> account update a94f5374fce5edbc8e2a8697c15331677e6ebf0bs
 
-Since only one password can be given, only format update can be performed, changing your password is only possible interactively.
+由于只能指定一个密码文件，所以这种方式仅可用于更新账户秘钥文件格式，如果要修改密码，只能使用两次交互的方式。
 
-.. Note:: account update has the side effect that the order of your accounts may change. After a successful update, all previous formats/versions of that same key will be removed!
+.. Note:: 账户更新会有个副作用，就是会导致你的账户顺序变化。在一次更新完成之后，更新的这个秘钥所有之前版本的文件都会被删除。
 
 
 .. _backup-and-restore-accounts:
 
-Backup and restore accounts
+备份和恢复账户
 ================================================================================
 
-Manual backup/restore
+手工备份/恢复
 --------------------------------------------------------------------------------
 
-You must have an account’s keyfile to be able to send any transaction from that account. Keyfiles are found in the keystore subdirectory of your Ethereum node’s data directory. The default data directory locations are platform specific:
+你必须拥有一个账户的秘钥文件来使你可以从这个账户中发送交易。秘钥文件可以在以太坊节点目录下的【keystore】子目录下找到。各平台中缺省的数据目录位置如下：
 
 - Windows: ``C:\Users\username\%appdata%\Roaming\Ethereum\keystore``
 - Linux: ``~/.ethereum/keystore``
 - Mac: ``~/Library/Ethereum/keystore``
 
-To backup your keyfiles (accounts), copy either the individual keyfiles within the ``keystore`` subdirectory or copy the entire ``keystore`` folder.
+要备份秘钥文件（账户），可以拷贝 ``keystore`` 目录下的文件，或者直接整个拷贝 ``keystore`` 目录。
 
-To restore your keyfiles (accounts), copy the keyfiles back into the ``keystore`` subdirectory, where they were originally.
+要恢复秘钥文件（账户），把秘钥文件拷贝回 ``keystore`` 目录即可。
 
-Importing an unencrypted private key
+导入非加密的私钥
 --------------------------------------------------------------------------------
 
-Importing an unencrypted private key is supported by ``geth``
+ ``geth`` 支持导入一个非加密的私钥。
 
 .. code-block:: Bash
 
   geth account import /path/to/<keyfile>
 
-This command imports an unencrypted private key from the plain text file ``<keyfile>`` and creates a new account and prints the address.
-The keyfile is assumed to contain an unencrypted private key as canonical EC raw bytes encoded into hex.
-The account is saved in encrypted format, you are prompted for a passphrase. You must remember this passphrase to unlock your account in the future.
+这个命令会从文本文件 ``<keyfile>`` 导入一个非加密的私钥，创建一个新账户并打印其地址。
+这个秘钥文件应该包含转换为16进制的合法的EC（Ellipse Curve，即椭圆曲线，译者注）字节数据（也就是由椭圆曲线加密算法生成的原始私钥二进制数值的16进制表示，译者注）。
+账户会被保存为加密格式，你会被要求输入一个密码。请务必记住这个密码以便以后能解锁你的账户。
 
-An example where the data directory is specified. If the ``--datadir`` flag is not used, the new account will be created in the default data directory, i.e., the keyfile will be placed in the ``keystore`` subdirectory of the data directory.
+以下是一个指定了数据目录的例子。如果未使用 ``--datadir`` 选项，新账户会被创建到缺省的数据目录，秘钥文件会保存在 ``keystore`` 子目录下。
 
 .. code-block:: Bash
 
@@ -423,13 +424,13 @@ An example where the data directory is specified. If the ``--datadir`` flag is n
   Repeat Passphrase:
   Address: {7f444580bfef4b9bc7e14eb7fb2a029336b07c9d}
 
-For non-interactive use the passphrase can be specified with the ``--password`` flag:
+你也可以使用 ``--password`` 选项指定密码文件。
 
 .. code-block:: Bash
 
   geth --password <passwordfile> account import <keyfile>
 
 
-.. Note:: Since you can directly copy your encrypted accounts to another Ethereum instance, this import/export mechanism is not needed when you transfer an account between nodes.
+.. Note:: 由于你可以直接拷贝你的加密账户到不同的以太坊节点，所以这种导入/导出操作在这种情况下就不需要了。
 
-.. Warning:: When you copy keys into an existing node's ``keystore``, the order of accounts you are used to may change. Therefore you make sure you either do not rely on the account order or double-check and update the indexes used in your scripts.
+.. Warning:: 当你拷贝秘钥文件到某个节点的 ``keystore`` 目录下时，账户的顺序可能会发生变化。所以请确保你没有在脚本中依赖账户的顺序，或者仔细检查并更新脚本中使用的索引。
