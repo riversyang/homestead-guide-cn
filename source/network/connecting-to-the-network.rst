@@ -1,40 +1,37 @@
 .. _sec:connecting-to-the-network:
 
 ********************************************************************************
-Connecting to the Network
+连接到网络
 ********************************************************************************
 
-This section
-
-The Ethereum network
+以太坊网络
 ================================================================================
 
-The basis for decentralised consensus is the peer-to-peer network of participating nodes which maintain and secure the blockchain. See :ref:`mining`.
+保持和保护区块链的相互协作的节点所组成的P2P（peer-to-peer）网络，是去中心化一致性的基础。参见  :ref:`mining` 。
 
-Ethereum network stats
+以太坊网络状态
 --------------------------------------------------
 
-`EthStats\.net <https://ethstats.net/>`_ is a dashboard of live statistics of the Ethereum network. This dashboard displays important information such as the current block, hash difficulty, gas price, and gas spending. The nodes shown on the page are only a selection of actual nodes on the network.
-Anyone is allowed to add their node to the EthStats dashboard. The `Eth\-Netstats README on Github <https://github.com/cubedro/eth-netstats>`_ describes how to connect.
+`EthStats\.net <https://ethstats.net/>`_ 是以太坊网络实时统计数据的仪表盘。它显示了一些重要的信息，比如当前区块、哈希难度、气的价格以及气的消耗。在这个页面显示的节点，仅是网络中实际节点的一部分。任何人都可以将他们的节点添加到这个仪表盘。 `Eth\-Netstats README on Github <https://github.com/cubedro/eth-netstats>`_ 记述了如何进行连接。
 
-`EtherNodes\.com <https://www.ethernodes.org/>`_ displays current and historical data on node count and other information on both the Ethereum mainnet and Morden testnet.
+`EtherNodes\.com <https://www.ethernodes.org/>`_ 显示以太坊主网络和最新测试网络中当前及历史节点统计以及一些其他信息。
 
-`Distribution of client implementations on the current live network <https://etherchain.org/nodes>`_ - Realtime stats on EtherChain.
+`当前活动网络的一些统计信息 <https://etherchain.org>`_ - EtherChain上的实时状态信息。
 
-Public, private, and consortium blockchains
+公链、私有链和联盟链
 ------------------------------------------------
 
-Most Ethereum projects today rely on Ethereum as a public blockchain, which grants access to a larger audience of users, network nodes, currency, and markets.  However, there are often reasons to prefer a private blockchain or consortium blockchain (among a group of trusted participants). For example, a number of companies in verticals, like banking, are looking to Ethereum as a platform for their own private blockchains.
+目前，大多数以太坊项目都将以太坊作为一个提供了大量用户接入、网络节点、货币和市场的公共的区块链。然而，也通常会有些特定的原因，使人们也倾向于使用一个私有链或联盟链（某些内部相互信任的团体）。例如一些垂直领域的公司团体，像银行，正把以太坊视为他们自己的私有链的基础平台。
 
-Below is an excerpt from the blog post `On Public and Private Blockchains <https://blog.ethereum.org/2015/08/07/on-public-and-private-blockchains/>`_ that explains the difference between the three types of blockchains based on permissioning:
+以下是一位发表了 `On Public and Private Blockchains <https://blog.ethereum.org/2015/08/07/on-public-and-private-blockchains/>`_ 的专家，根据访问权限的不同所给出的以上三种区块链的区别。
 
-- **Public blockchains**: a public blockchain is a blockchain that anyone in the world can read, anyone in the world can send transactions to and expect to see them included if they are valid, and anyone in the world can participate in the consensus process – the process for determining what blocks get added to the chain and what the current state is. As a substitute for centralized or quasi-centralized trust, public blockchains are secured by cryptoeconomics – the combination of economic incentives and cryptographic verification using mechanisms such as proof of work or proof of stake, following a general principle that the degree to which someone can have an influence in the consensus process is proportional to the quantity of economic resources that they can bring to bear. These blockchains are generally considered to be “fully decentralized”.
+- **公链（Public blockchains）**：公链，是一个世界上的任何人都可以读取的，任何人都可以向它发送交易，并在交易合法之后就能被记录的区块链；并且世界上的任何人都可以参与到共识过程（一个决定哪个区块会被加到链上并反映当前数据状态的过程）。作为中心化/准中心化信任体系的替代，公链基于加密经济学原理确保其安全可信，即将经济学原理与加密校验相结合，使用工作量证明或权益证明算法，并基于一个抽象概念：一个人能对共识过程施加的影响的程度，是与他可以运用的经济资源的数量相称的。这些区块链通常被认为是“完全去中心化”的。
 
-- **Consortium blockchains**: a consortium blockchain is a blockchain where the consensus process is controlled by a pre-selected set of nodes; for example, one might imagine a consortium of 15 financial institutions, each of which operates a node and of which 10 must sign every block in order for the block to be valid. The right to read the blockchain may be public, or restricted to the participants, and there are also hybrid routes such as the root hashes of the blocks being public together with an API that allows members of the public to make a limited number of queries and get back cryptographic proofs of some parts of the blockchain state. These blockchains may be considered “partially decentralized”.
+- **联盟链（Consortium blockchains）**：联盟链，是一个共识过程由预先确定好的若干节点来控制的区块链。例如，我们可以想象一个由15个金融机构所组成的联盟链，需要其中10个以上机构控制的节点签名承认某个区块才能使该区块有效。读取这个区块链的权限可以是公开的，或者限制为仅联盟成员，并且还可能有混合路由来访问。这种混合路由是指联盟链上节点的根哈希与特定的API一起公开，以使公共成员可以做某些特定的查询，取得关于区块链状态的某些数据。这些区块链可以被认为是“部分去中心化”的。
 
-- **Private blockchains**: a fully private blockchain is a blockchain where write permissions are kept centralized to one organization. Read permissions may be public or restricted to an arbitrary extent. Likely applications include database management, auditing, etc internal to a single company, and so public readability may not be necessary in many cases at all, though in other cases public auditability is desired.
+- **私有链（Private blockchains）**：私有链，是一个写入权限由中心化的某一个组织所控制的区块链。而读取权限可以是公开的或者任意扩展的。就像现在的大多数应用程序一样，数据库的维护和审计等等工作由一个单独的公司负责。这样，在很多情况下，公开的数据读取就完全没必要了，尽管也有一些情况会希望可以有公开的审计能力。
 
-While these private/consortium blockchains may not have any connection to the public blockchain, they still contribute to the overall Ethereum ecosystem by investing in Ethereum software development. Over time, this translates into software improvements, shared knowledge, and job opportunities.
+尽管这些私有链/联盟链也许没有到公链的连接，但他们依然可以通过资助以太坊软件的开发来共建以太坊生态系统。随着时间的推移，这些终将变为软件的改进、知识的分享以及相应的工作机会。
 
 
 How to connect
