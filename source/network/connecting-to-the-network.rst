@@ -34,17 +34,17 @@
 尽管这些私有链/联盟链也许没有到公链的连接，但他们依然可以通过资助以太坊软件的开发来共建以太坊生态系统。随着时间的推移，这些终将变为软件的改进、知识的分享以及相应的工作机会。
 
 
-How to connect
+如何连接
 ================================================================================
 
-Geth continuously attempts to connect to other nodes on the network until it has peers. If you have UPnP enabled on your router or run Ethereum on an Internet-facing server, it will also accept connections from other nodes.
+Geth会不停地尝试连接到网络上其他节点直到连接到若干端点上。如果你的路由器允许UPnP连接，或者在一个有Internet连接的服务器上运行以太坊的话，它也会接受来自其他节点的连接请求。
 
-Geth finds peers through something called the *discovery protocol*. In the discovery protocol, nodes are gossipping with each other to find out about other nodes on the network. In order to get going initially, geth uses a set of bootstrap nodes whose endpoints are recorded in the source code.
+Geth通过 *发现协议（discovery protocol）* 来找到其他节点。在发现协议中，节点间会互相通信以感知网络中的其他节点。为了相应的初始化，Geth会使用一些记录在源代码中的端点来找到一些引导节点。
 
-Checking connectivity and ENODE IDs
+检查连通性和ENODE ID
 --------------------------------------------------------------------------------
 
-To check how many peers the client is connected to in the interactive console, the ``net`` module has two attributes that give you info about the number of peers and whether you are a listening node.
+``net`` 模块有两个属性可以告诉你当前客户端已经与多少端点相连接，以及你是否是监听节点。
 
 .. code-block:: Javascript
 
@@ -54,7 +54,7 @@ To check how many peers the client is connected to in the interactive console, t
   > net.peerCount
   4
 
-To get more information about the connected peers, such as IP address and port number, supported protocols, use the ``peers()`` function of the ``admin`` object. ``admin.peers()`` returns the list of currently connected peers.
+使用 ``admin`` 对象的 ``peers()`` 函数来获取更多信息，比如IP地址、端口号以及所支持的协议。 ``admin.peers()`` 会返回当前已连接的所有节点信息。
 
 .. code-block:: Javascript
 
@@ -86,7 +86,7 @@ To get more information about the connected peers, such as IP address and port n
    } ]
 
 
-To check the ports used by geth and also find your enode URI run:
+要检查Geth使用的端口以及你的enode URI，执行：
 
 .. code-block:: Javascript
 
@@ -102,40 +102,41 @@ To check the ports used by geth and also find your enode URI run:
     ListenAddr: '[::]:30303'
   }
 
-Download the blockchain faster
+更快的下载区块链
 ================================================================================
 
-When you start an Ethereum client, the Ethereum blockchain is automatically downloaded. The time it takes to download the Ethereum blockchain can vary based on client, client settings, connection speed, and number of peers available. Below are some options for more quickly obtaining the Ethereum blockchain.
+当你启动以太坊客户端是，以太坊区块链就开始自动下载了。下载所消耗的时间将基于你的客户端、客户端设置、网络速度以及可用节点数而有很大不同。以下是一些可选项来更快的获得以太坊区块链。
 
-Using geth
+使用geth
 --------------------------------------------------------------------------------
 
-If you are using the geth client, there are some things you can do to speed up the time it takes to download the Ethereum blockchain. If you choose to use the ``--fast`` flag to perform an Ethereum fast sync, you will not retain past transaction data.
+如果你使用geth客户端，会有些事情可以帮你提升下载以太坊区块链的时间。如果你使用 ``--fast`` 参数来进行快速同步，你将不会获取历史交易数据。
 
-.. note:: You cannot use this flag after performing all or part of a normal sync operation, meaning you should not have any portion of the Ethereum blockchain downloaded before using this command. `See this Ethereum Stack\.Exchange answer for more information <http://ethereum.stackexchange.com/questions/1845/why-isnt-fast-sync-the-default>`_.
+.. note:: 在已经开始全部或部分普通同步处理之后，你就不能使用这个参数了。也就是说使用这个参数之前，你不应该做过任何以太坊区块链的数据分配处理。 `更多信息请参考 Ethereum Stack\.Exchange 的文章<http://ethereum.stackexchange.com/questions/1845/why-isnt-fast-sync-the-default>`_ 。
 
-Below are some flags to use when you want to sync your client more quickly.
+以下是一些参数可以帮你更快的同步你的客户端数据。
 
 ``--fast``
 
-This flag enables fast syncing through state downloads rather than downloading the full block data. This will also reduce the size of your blockchain dramatically.
-NOTE: ``--fast`` can only be run if you are syncing your blockchain from scratch and only the first time you download the blockchain for security reasons. `See this Reddit post for more information <https://www.reddit.com/r/ethereum/comments/3y9316/geth_fast_option_question/>`_.
+这个参数允许快速同步数据状态，而不是下载整个区块数据。这也会极大的降低你本地的区块链数据大小。
+注意：  ``--fast`` 出于安全的考虑，该参数仅在你第一次同步区块链数据时可以使用。 `更多信息请参考这个Reddit帖子 <https://www.reddit.com/r/ethereum/comments/3y9316/geth_fast_option_question/>`_ 。
 
 ``--cache=1024``
 
-Megabytes of memory allocated to internal caching (min 16MB / database forced). Default is 16MB, so increasing this to 256, 512, 1024 (1GB), or 2048 (2GB) depending on how much RAM your computer has should make a difference.
+以兆字节（MB）为单位的内部缓存大小。缺省为16MB，可以根据你的计算机内存容量增加到256、512、1024（1GB）或2048（2GB），这将会有较大的区别。
 
 ``--jitvm``
 
-This flag enables the JIT VM.
+该参数将打开JIT VM（即Just-In-Time Virtual Machine，可以提高某些高频使用指令的执行效率，译者注）模式。
 
-Full example command with console:
+完整的命令行样例：
 
 .. code-block:: Bash
 
   geth --fast --cache=1024 --jitvm console
 
-For more discussion on fast syncing and blockchain download times, `see this Reddit post <https://www.reddit.com/r/ethereum/comments/46c4ga/lets_benchmark_the_clients/>`_.
+更多关于快速同步和区块链下载次数的讨论， `请参考这篇Reddit帖子 <https://www.reddit.com/r/ethereum/comments/46c4ga/lets_benchmark_the_clients/>`_ 。
+
 
 Exporting/Importing the blockchain
 --------------------------------------------------------------------------------
