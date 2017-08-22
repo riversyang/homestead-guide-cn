@@ -1,62 +1,60 @@
 .. _test-networks:
 
 ********************************************************************************
-Test Networks
+测试网络
 ********************************************************************************
 
-Morden testnet
+Morden测试网络
 ================================================================================
-Morden is a public Ethereum alternative testnet. It is expected to
-continue throughout the Frontier and Homestead milestones of the software.
+Morden是一个公开的以太坊备选测试网络。它将在以太坊的Frontier到Homestead里程碑期间一直存在。
 
-Usage
+使用方法
 --------------------------------------------------------------------------------
 
-eth (C++ client)
+eth（C++客户端）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is supported natively on 0.9.93 and above. Pass the ``--morden`` argument in when starting any of the clients. e.g.:
+从0.9.93及以上版本支持，可以在启动客户端时使用 ``--morden`` 以选择测试网络。例如：
 
 .. code:: Console
 
    > eth --morden
 
-PyEthApp (Python client)
+PyEthApp（Python客户端）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-PyEthApp supports the morden network from v1.0.5 onwards:
+PyEthApp从1.0.5版本开始支持Morden网络：
 
 .. code:: Console
 
    > pyethapp --profile morden run
 
-geth (Go client)
+geth（Go客户端）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: Console
 
    > geth --testnet
 
-Details
+详情
 --------------------------------------------------------------------------------
+除了以下参数外，所有参数都与以太坊主网络相同：
 All parameters are the same as the main Ethereum network except:
 
--  Network Name: **Morden**
--  Network Identity: 2
--  genesis.json (given below);
--  Initial Account Nonce (``IAN``) is 2^20 (instead of 0 in all previous
-   networks).
+-  网络名称： **Morden**
+-  网络标识： 2
+-  genesis.json （下边会给出）
+-  初始账户Nonce（ ``IAN`` ）为2^20（而不是像之前的网络那样为0）
 
-   -  All accounts in the state trie have nonce >= ``IAN``.
-   -  Whenever an account is inserted into the state trie it is
-      initialised with nonce = ``IAN``.
+   -  在状态前缀树中的所有账户Nonce均 >= ``IAN`` 。
+   -  每当一个账户被加入状态前缀树时，Nonce都会被初始化为 = ``IAN`` 。
 
--  Genesis generic block hash:
+-  初始区块哈希：
    ``0cd786a2425d16f152c658316c423e6ce1181e15c3295826d7c9904cba9ce303``
--  Genesis generic state root:
+-  初始状态前缀树根：
    ``f3f4696bbf3b3b07775128eb7a3763279a394e382130f27c21e70233e04946a9``
 
-Morden's genesis.json
+Morden的genesis.json
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: JSON
@@ -79,34 +77,31 @@ Morden's genesis.json
 			}
 	}
 
-Getting Morden testnet ether
+获得Morden测试网络的以太币
 --------------------------------------------------------------------------------
 
-Two ways to obtain Morden testnet ether:
+有两种途径可以获得Morden测试网络的以太币：
 
-- Mine using your CPU/GPU, (see :ref:`mining`).
-- Use the `Ethereum wei faucet <https://zerogox.com/ethereum/wei_faucet>`__.
+- 用你的CPU/GPU来挖矿。（参考 :ref:`mining` ）
+- 使用 `Ethereum wei faucet <https://zerogox.com/ethereum/wei_faucet>`__ 。
 
 
 ********************************************************************************
-Setting up a local private testnet
+配置一个本地的测试网络
 ********************************************************************************
 
 .. _custom-networks-eth:
 
-eth (C++ client)
+eth（C++客户端）
 ================================================================================
 
-
-It is possible to connect to or create a new network by using the --genesis and --config.
+可以使用 --genesis 和 --config 参数来连接或创建一个新的网络。
 
 .. code:: Console
 
   > eth --private "customChain" --config config.json --genesis genesis.json
 
-It is possible to use both --config and --genesis.
-
-In that case, the genesis block description provided by --config will be overwritten by the --genesis option.
+也可以同时使用 --config 和 --genesis 。在这种情况下，由 --config 提供的初始区块描述会被 --genesis 选项的设定所覆盖。
 
 .. code:: Console
 
@@ -116,21 +111,21 @@ In that case, the genesis block description provided by --config will be overwri
 
   --config <filename>
 
-.. note:: <filename> contains a JSON description of the network:
+.. note:: <filename> 包含了一个网络信息的JSON描述：
 
-	- sealEngine (engine use to mine block)
+	- sealEngine （挖矿引擎）
 
-		"Ethash" is the Ethereum proof of work engine (used by the live network).
+		"Ethash" 是以太坊工作量证明引擎（被当前网络使用）。
 
-		"NoProof" no proof of work is needed to mine a block.
+		"NoProof" 挖矿时不需要工作量证明。
 
-	- params (general network information like minGasLimit, minimumDifficulty, blockReward, networkID)
+	- params （网络的一般信息，比如minGasLimit、minimumDifficulty、blockReward、networkID）
 
-	- genesis (genesis block description)
+	- genesis （初始区块描述）
 
-	- accounts (setup an original state that contains accounts/contracts)
+	- accounts （设置账户/合约的初始状态）
 
-Here is a Config sample (used by the Olympic network):
+这里是个Config样例（使用Olympic网络）：
 
 .. code:: JSON
 
@@ -181,9 +176,7 @@ Here is a Config sample (used by the Olympic network):
 
   --genesis <filename> (optional if the config option is provided and contains the genesis description).
 
-.. note:: <filename> contains a JSON description of the genesis block:
-
-The content is the same as the genesis field provided by the 'config' parameter:
+.. note:: <filename> 包含了一个初始区块的JSON描述，内容与‘config’参数提供的genesis字段相同：
 
 .. code:: JavaScript
 
@@ -199,11 +192,8 @@ The content is the same as the genesis field provided by the 'config' parameter:
   }
 
 
-
-
 geth (Go client)
 ================================================================================
-
 
 You either pre-generate or mine your own ether on a private
 testnet. It is a much more cost effective way of trying out
