@@ -1,35 +1,31 @@
 .. _mining:
 
 ********************************************************************************
-Mining
+挖矿
 ********************************************************************************
 
-Introduction
+引言
 ================================================================================
 
-The word mining originates in the context of the gold analogy for crypto currencies. Gold or precious metals are scarce, so are digital tokens, and the only way to increase the total volume is through mining. This is appropriate to the extent that in Ethereum too, the only mode of issuance post launch is via mining. Unlike these examples however, mining is also the way to secure the network by creating, verifying, publishing and propagating blocks in the blockchain.
+挖矿一词，源自针对加密货币的淘金行为。金子或者珍贵的金属是罕见的，数字代币也是一样，而挖矿是唯一能增加其数量的方式。这也同样适用于以太坊，发布交易的唯一模式就是挖矿。然而与这些例子不同的是，挖矿也是一种通过在区块链上创建、校验、发布和广播区块来确保网络安全方式。
 
-- Mining ether = Securing the Network = Verifying Computation
+- 挖以太币 = 确保网络安全 = 校验计算结果 （Mining ether = Securing the Network = Verifying Computation）
 
-What is mining?
+什么是挖矿？
 --------------------------------------------------------------------------------
 
-Ethereum, like all blockchain technologies, uses an incentive-driven model of security. Consensus is based on choosing the block with the highest total difficulty. Miners produce blocks which the others check for validity. Among other well-formedness criteria, a block is only valid if it contains *proof of work* (PoW) of a given *difficulty*. Note that in the Ethereum Serenity milestone, this is likely going to be replaced by a  (see :ref:`proof of stake model <POS vs POW>` ).
+以太坊与其他区块链技术一样，采用了一个动机驱动（incentive-driven）的安全模型。共识是通过选择总体难度值最高的区块来实现的。矿工产出的区块，由其他节点检查其合法性。在遵从数据格式的前提之下，只有一个区块包含给定 *难度（difficulty）* 的 *工作量证明（Proof of Work）* 时，它才是合法的。注意，在以太坊的Serenity里程碑，这将被替换为 :ref:`权益证明（proof of stake）模式 <POS vs POW>` 。 
 
-The Ethereum blockchain is in many ways similar to the Bitcoin blockchain, although it does have some differences. The main difference between Ethereum and Bitcoin with regard to the blockchain architecture is that, unlike Bitcoin, Ethereum blocks contain a copy of both the transaction list and the most recent state (the root hash of the merkle patricia trie encoding the state to be more precise). Aside from that, two other values, the block number and the difficulty, are also stored in the block.
+尽管以太坊区块链在很多方面都与比特币区块链相同，但还是有些其他的区别。从区块链架构上看，以太坊和比特币的主要区别在于以太坊的区块既包含了交易列表，也包含了最新的状态信息（通过merkle patricia树的根节点哈希来对状态信息编码以使其更加精确，merkle patricia树是一种改进的二叉树，可以确保每个叶子节点的变化都会导致根节点哈希变化，从而可以精确地判断整个树上数据的状态是否有变动，译者注）。除此之外，区块号和难度值也会被存储到区块中。
 
-The proof of work algorithm used is called `Ethash <https://github.com/ethereum/wiki/wiki/Ethash>`_ (a modified version of `the Dagger-Hashimoto algorithm <https://github.com/ethereum/wiki/wiki/Dagger-Hashimoto>`_) and involves finding a *nonce* input to the algorithm so that the result is below a certain difficulty threshold. The point in PoW algorithms is that there is no better strategy to find such a nonce than enumerating the possibilities, while verification of a solution is trivial and cheap. Since outputs have a uniform distribution (as they are the result of the application of a hash function), we can guarantee that, on average, the time needed to find such a nonce depends on the difficulty threshold. This makes it possible to control the time of finding a new block just by manipulating the difficulty.
+以太坊使用的工作量证明（Proof of Work）算法被称为 `Ethash <https://github.com/ethereum/wiki/wiki/Ethash>`_ （ `Dagger-Hashimoto algorithm <https://github.com/ethereum/wiki/wiki/Dagger-Hashimoto>`_ 的修改版本）包含了为算法找到一个 *随机数（nonce）* 输入以确保计算结果满足当前的难度限定。PoW算法的关键是没有比枚举所有的可能来找到这样的随机数更好的方式，尽管验证答案是简单容易的。由于输出结果有一个统一的分布（因为他们都是哈希函数的输出结果），我们可以确保平均来讲，找到这个随机数所需要的时间是依赖于当前难度限定的。这就使通过控制难度值来控制区块产生的时间成为可能。
 
-As dictated by the protocol, the difficulty dynamically adjusts in such a way that on average one block is produced by the entire network every 15 seconds. We say that the network produces a blockchain with a *15 second block time*.
-This "heartbeat" basically punctuates the synchronisation of system state
-and guarantees that maintaining a fork (to allow double spend) or
-rewriting history by malicious actors are impossible unless the attacker possesses more than half of the network mining power (this is the so called *51% attack*).
+由协议所控制，难度值会自动调整，以使整个网络产生区块的平均时间在每15秒左右。我们称之为：网络用 *15秒的区块时间* 来生成区块链。这个“心跳”从基础上不断同步系统状态，并确保除非攻击者拥有超过全网挖矿能力一半的算力（即所谓的 *51%攻击* ），否则想要维持一个分叉（来允许双花，即double spend，一个虚拟货币交易的关键问题，译者注）或让恶意用户篡改交易历史是不可能的。
 
-Any node participating in the network can be a miner and their expected revenue from mining will be directly proportional to their (relative) mining power or *hashrate*, i.e., the number of nonces tried per second normalised by the total hashrate of the network.
+任意参与到网络中的节点都可以成为矿工，他们挖矿的收入是与他们的挖矿能力或 *哈希效率（hashrate）* 成比例的，也就是每秒尝试计算随机数的次数与全网整体哈希效率的比例。
 
-Ethash PoW is *memory hard*, making it *ASIC resistant*. Memory hardness is achieved with a proof of work algorithm that requires choosing subsets of a fixed resource dependent on the nonce and block header. This resource (a few gigabyte size data) is called a **DAG**. The `DAG <https://github.com/ethereum/wiki/wiki/Ethash-DAG>`_ is totally different every 30000 blocks, a 125-hour window called *epoch* (roughly 5.2 days) and takes a while to generate. Since the DAG only depends on block height, it can be pregenerated but if its not, the client needs to wait until the end of this process to produce a block. If clients do not pregenerate and cache DAGs ahead of time the network may experience massive block delay on each epoch transition. Note that the DAG does not need to be generated for verifying the PoW essentially allowing for verification with both low CPU and small memory.
 
-As a special case, when you start up your node from scratch, mining will only start once the DAG is built for the current epoch.
+作为一个特殊情况，当你从scratch（一个由麻省理工学院设计开发的编程工具，译者注）中启动节点的时候，仅当当前epoch对应的DAG创建完毕之后才能开始挖矿。
 
 Mining rewards
 --------------------------------------------------------------------------------
