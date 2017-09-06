@@ -14,7 +14,7 @@
 什么是挖矿？
 --------------------------------------------------------------------------------
 
-以太坊与其他区块链技术一样，采用了一个动机驱动（incentive-driven）的安全模型。共识是通过选择总体难度值最高的区块来实现的。矿工产出的区块，由其他节点检查其合法性。在遵从数据格式的前提之下，只有一个区块包含给定 *难度（difficulty）* 的 *工作量证明（Proof of Work）* 时，它才是合法的。注意，在以太坊的Serenity里程碑，这将被替换为 :ref:`权益证明（proof of stake）模式 <POS vs POW>` 。 
+以太坊与其他区块链技术一样，采用了一个动机驱动（incentive-driven）的安全模型。共识是通过选择总体难度值最高的区块来实现的。矿工产出的区块，由其他节点检查其合法性。在遵从数据格式的前提之下，只有当一个区块包含给定 *难度（difficulty）* 的 *工作量证明（Proof of Work）* 时，它才是合法的。注意，在以太坊的Serenity里程碑，这将被替换为 :ref:`权益证明（proof of stake）模式 <POS vs POW>` 。 
 
 尽管以太坊区块链在很多方面都与比特币区块链相同，但还是有些其他的区别。从区块链架构上看，以太坊和比特币的主要区别在于以太坊的区块既包含了交易列表，也包含了最新的状态信息（通过merkle patricia树的根节点哈希来对状态信息编码以使其更加精确，merkle patricia树是一种改进的二叉树，可以确保每个叶子节点的变化都会导致根节点哈希变化，从而可以精确地判断整个树上数据的状态是否有变动，译者注）。除此之外，区块号和难度值也会被存储到区块中。
 
@@ -28,39 +28,36 @@ Ethash工作量证明是有 *存储难度（memory hard）* 的，以使它具�
 
 作为一个特殊情况，当你从scratch（一个由麻省理工学院设计开发的编程工具，译者注）中启动节点的时候，仅当当前epoch对应的DAG创建完毕之后才能开始挖矿。
 
-Mining rewards
+挖矿奖励
 --------------------------------------------------------------------------------
 
-The successful PoW miner of the winning block receives:
+矿工依靠成功的工作量证明确认区块之后将收到：
 
-* a *static block reward* for the 'winning' block, consisting of exactly 5.0 Ether
-* cost of the gas expended within the block – an amount of ether that depends on the current gas price
-* an extra reward for including uncles as part of the block, in the form of an extra 1/32 per uncle included
+* 为‘获胜的’区块提供的一份*固定的区块奖励*：5.0以太币
+* 包含在区块中的扩展该区块所花费的气 - 基于当前气的价格换算的一定量以太币
+* 因将uncles包含到区块中所产生的一份额外奖励，以每包含一个uncle就额外获得1/32的形式
 
-All the gas consumed by the execution of all the transactions in the block submitted by the winning miner is paid by the senders of each transaction. The gas cost incurred is credited to the miner's account as part of the consensus protocol. Over time, it is expected these will dwarf the static block reward.
+对这个区块所包含的所有交易进行的计算中消耗的气，将由每个交易的发送者支付给挖到这个区块的矿工。根据共识协议，这些计算所引起的气的消耗会被记入矿工的账号。随着时间的推移，这将会减少固定的区块奖励。
 
-*Uncles* are stale blocks i.e. with parents that are ancestors (max 6 blocks back) of the including block. Valid uncles are rewarded in order to neutralise the effect of network lag on the dispersion of mining rewards, thereby increasing security (this is called the GHOST protocol). Uncles included in a block formed by the successful PoW miner receive 7/8 of the static block reward (=4.375 ether). A maximum of 2 uncles are allowed per block.
+*Uncles* 是一些废区块，也就是一些父区块是当前区块祖先（最多回溯6个区块）的区块。有效的uncle区块将被奖励，以抵消因网络延迟所产生的挖矿奖励差值，从而增加安全性。这也被称为幽灵协议，即GHOST（Greedy Heaviest Observed SubTree，译者注） Protocol。由成功的工作量证明矿工写入区块的uncle区块，会得到7/8的静态区块奖励（即4.375以太币）。每个区块最多允许有两个uncle。
 
     * `Uncles ELI5 on reddit <https://www.reddit.com/r/ethereum/comments/3c9jbf/wtf_are_uncles_and_why_do_they_matter/>`_
     * `Forum thread explaining uncles <https://forum.ethereum.org/discussion/2262/eli5-whats-an-uncle-in-ethereum-mining>`_
 
-
-Mining success depends on the set block difficulty. Block difficulty dynamically adjusts each block in order to regulate the network hashing power to produce a 12 second blocktime. Your chances of finding a block therefore follows from your hashrate relative to difficulty.
+挖矿的成功依赖于给定的区块难度。这个难度会动态的调整以控制整个网络的哈希能力来产生12秒区块时间。所以你找到区块的几率是由你所拥有的针对区块难度的哈希效率所决定的。
 
 Ethash DAG
 --------------------------------------------------------------------------------
 
-Ethash uses a *DAG* (directed acyclic graph) for the proof of work algorithm, this is generated for each *epoch*, i.e., every 30000 blocks (125 hours, ca. 5.2 days). The DAG takes a long time to generate. If clients only generate it on demand, you may see a long wait at each epoch transition before the first block of the new epoch is found. However, the DAG only depends on the block number, so it can and should be calculated in advance to avoid long wait times at each epoch transition. Both ``geth`` and ``ethminer`` implement automatic DAG generation and maintains two DAGs at a time for smooth epoch transitions. Automatic DAG generation is turned on and off when mining is controlled from the console. It is also turned on by default if ``geth`` is launched with the ``--mine`` option. Note that clients share a DAG resource, so if you are running multiple instances of any client, make sure automatic dag generation is switched off in all but one instance.
+Ethash为工作量证明算法使用 *DAG* （Directed acycle graph，即无回路有向图，译者注），它会在每个 *epoch* 期间生成，也就是每30000个区块（125小时|5.2天）。生成DAG会花费较长时间。如果客户端只在需要时才生成它，那么你将会在每个新的epoch周期中第一个区块产生前看到一个很长的等待。然而由于DAG只与区块号有关，所以它可以，也应该被提前生成，以免在每个epoch期间都要等待较长时间。 ``geth`` 和 ``ethminer`` 客户端实现都会自动计算并维持两个DAG以使epoch切换可以顺畅地进行。当挖矿由控制台控制的时候，自动DAG生成是可以被打开和关闭的。当用 ``--mine`` 参数启动 ``geth`` 的时候，自动生成DAG是默认打开的。注意，客户端是共享DAG资源的，如果你在同时运行多个客户端实例，请确保只有其中一个打开了DAG自动生成设置。
 
-To generate the DAG for an arbitrary epoch:
+要为任意一个epoch生成DAG：
 
 .. code-block:: bash
 
     geth makedag <block number> <outputdir>
 
-For instance ``geth makedag 360000 ~/.ethash``. Note that ethash uses
-``~/.ethash`` (Mac/Linux) or ``~/AppData/Ethash`` (Windows) for the DAG
-so that it can shared between different client implementations as well as multiple running instances.
+比如 ``geth makedag 360000 ~/.ethash`` 。 注意，ethash使用 ``~/.ethash`` （Mac/Linux）或 ``~/AppData/Ethash`` （Windows）作为DAG文件以使其能在不同的客户端实例之间共享。 
 
 The algorithm
 ================================================================================
