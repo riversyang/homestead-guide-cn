@@ -81,15 +81,13 @@ CPU挖矿
 
 .. note:: 测试网络的以太币除了测试目的以外别无它用。（参考 :ref:`test-networks` 。）
 
-Using geth
+使用geth
 -------------------------------
-When you start up your ethereum node with ``geth`` it is not mining by
-default. To start it in CPU mining mode, you use the ``--mine`` `command line option <https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options>`__.
-The ``-minerthreads`` parameter can be used to set the number parallel mining threads (defaulting to the total number of processor cores).
+当你使用geth启动你的以太坊客户端时，它并不会默认开始挖矿。要以CPU挖矿模式启动它，你需要使用 ``--mine`` `命令行选项 <https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options>`__ 。你也可以同时使用 ``-minerthreads`` 参数来指定并行挖矿的线程数（默认会设定为CPU内核总数）。
 
 ``geth --mine --minerthreads=4``
 
-You can also start and stop CPU mining at runtime using the `console <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#adminminerstart>`__. ``miner.start`` takes an optional parameter for the number of miner threads.
+你也可以使用 `控制台 <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#adminminerstart>`__ 在运行时启动、停止CPU挖矿。 ``miner.start`` 接受一个用以指定矿工线程数的参数。 
 
 .. code-block:: Javascript
 
@@ -98,26 +96,26 @@ You can also start and stop CPU mining at runtime using the `console <https://gi
     > miner.stop()
     true
 
-Note that mining for real ether only makes sense if you are in sync with the network (since you mine on top of the consensus block). Therefore the eth blockchain downloader/synchroniser will delay mining until syncing is complete, and after that mining automatically starts unless you cancel your intention with ``miner.stop()``.
+请注意，如果你与真实网络同步，你才可以挖到真实的以太币（因为你会在达到共识的区块顶部挖矿）。区块链的下载/同步会推迟挖矿，挖矿会在同步完成之后自动开始，除非你用 ``miner.stop()`` 取消。
 
-In order to earn ether you must have your **etherbase** (or **coinbase**) address set. This etherbase defaults to your primary account. If you don't have an etherbase address, then ``geth --mine`` will not start up.
+为了获取以太币，你必须有你的 **etherbase** （或 **coinbase** ）地址。etherbase会默认使用你的主账号。如果你没有一个etherbase地址， ``geth --mine`` 将不会开始挖矿。 
 
-You can set your etherbase on the command line:
+你可以在命令行设置你的etherbase：
 
 .. code-block:: bash
 
     geth --etherbase 1 --mine  2>> geth.log // 1 is index: second account by creation order OR
     geth --etherbase '0xa4d8e9cae4d04b093aac82e6cd355b6b963fb7ff' --mine 2>> geth.log
 
-You can reset your etherbase on the console too:
+你也可以在控制台重置你的etherbase：
 
 .. code-block:: javascript
 
     miner.setEtherbase(eth.accounts[2])
 
-Note that your etherbase does not need to be an address of a local account, just an existing one.
+请注意你的etherbase不需要是一个本地账号地址，只需要是一个存在的账号即可。
 
-There is an option `to add extra Data <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#minersetextra>`__ (32 bytes only) to your mined blocks. By convention this is interpreted as a unicode string, so you can set your short vanity tag.
+有一个选项可以为你挖到的区块 `添加额外的数据 <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#minersetextra>`__ （仅32字节）。基于协议，这会被视为一个unicode字符串，所以你可以随意设定你的虚拟标签。
 
 .. code-block:: javascript
 
@@ -135,21 +133,21 @@ There is an option `to add extra Data <https://github.com/ethereum/go-ethereum/w
     ...
     }
 
-You can check your hashrate with `miner.hashrate <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#adminminerhashrate>`_, the result is in H/s (Hash operations per second).
+你可以使用 `miner.hashrate <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#adminminerhashrate>`_ 检查你的哈希效率（hashrate），结果的单位是H/s（每秒的哈希操作数）。
 
 .. code-block:: javascript
 
     > miner.hashrate
     712000
 
-After you successfully mined some blocks, you can check the ether balance of your etherbase account. Now assuming your etherbase is a local account:
+当你成功挖到区块之后，你可以检查你的etherbase中的以太币余额。假设你的etherbase是一个本地账户：
 
 .. code-block:: javascript
 
     > eth.getBalance(eth.coinbase).toNumber();
     '34698870000000'
 
-In order to spend your earnings on gas to transact, you will need to have this account unlocked.
+为了在交易中用气（gas）消费你的收入，你需要解锁这账户。
 
 .. code-block:: javascript
 
@@ -157,7 +155,7 @@ In order to spend your earnings on gas to transact, you will need to have this a
     Password
     true
 
-You can check which blocks are mined by a particular miner (address) with the following code snippet on the console:
+你可以在控制台使用以下命令检查特定的矿工（地址）挖到了哪些区块：
 
 .. code-block:: javascript
 
@@ -179,7 +177,7 @@ You can check which blocks are mined by a particular miner (address) with the fo
     minedBlocks(1000, eth.coinbase);
     //[352708, 352655, 352559]
 
-Note that it will happen often that you find a block yet it never makes it to the canonical chain. This means when you locally include your mined block, the current state will show the mining reward credited to your account, however, after a while, the better chain is discovered and we switch to a chain in which your block is not included and therefore no mining reward is credited. Therefore it is quite possible that as a miner monitoring their coinbase balance will find that it may fluctuate quite a bit.
+请注意，你挖到一个区块，然而它并没有被当前的标准链所认可的情况（即其可能没有被包含在当前网络中的最长分叉上，译者注）是经常会发生的。这意味着，当你本地包含了你挖到的区块之后，当前状态会显示相应的挖矿报酬添加到你的账户，然而过了一段时间，不包含你的区块的更好的链（即更长的、被更多节点认可的分叉，译者注）被接受并切换到其上之后，你将不会实际获得挖矿报酬。也就是说，一个矿工会发现自己的coinbase余额非常可能会有一些上下浮动。
 
 GPU mining
 ================================================================================
