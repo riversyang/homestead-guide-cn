@@ -59,28 +59,27 @@ Ethash为工作量证明算法使用 *DAG* （Directed acycle graph，即无回�
 
 比如 ``geth makedag 360000 ~/.ethash`` 。 注意，ethash使用 ``~/.ethash`` （Mac/Linux）或 ``~/AppData/Ethash`` （Windows）作为DAG文件以使其能在不同的客户端实例之间共享。 
 
-The algorithm
+算法
 ================================================================================
 
-Our algorithm, `Ethash <https://github.com/ethereum/wiki/wiki/Ethash>`__ (previously known as Dagger-Hashimoto), is based around the provision of a large, transient, randomly generated dataset which forms a DAG (the Dagger-part), and attempting to solve a particular constraint on it, partly determined through a block's header-hash.
+我们使用的算法 `Ethash <https://github.com/ethereum/wiki/wiki/Ethash>`__ （也就是被称为Dagger-Hashimoto的算法）是基于以组成DAG的巨大的、临时的、随机生成的数据集合（也就是Dagger的部分）为数据供应，来解决一个特定的限制条件（通过一个区块的头哈希来部分决定）的算法。
 
-It is designed to hash a fast verifiability time within a slow CPU-only environment, yet provide vast speed-ups for mining when provided with a large amount of memory with high-bandwidth. The large memory requirements mean that large-scale miners get comparatively little super-linear benefit. The high bandwidth requirement means that a speed-up from piling on many super-fast processing units sharing the same memory gives little benefit over a single unit. This is important in that pool mining have no benefit for nodes doing verification, thus discourageing centralisation.
+它被设计为可以在一个较慢的仅CPU环境中可以快速的进行哈希验证，同时可以在一个有大量内存及高带宽支持的环境中提供针对挖矿的巨大速度提升。巨大的内存需求意味着那些大规模集成的矿工相对而言仅会获得非常小的提升。高带宽需求意味着由众多超级计算单元所组成的但共享内存的方式，其速度提升较单一计算单元并不显著。这也是个重要的特性，使矿池挖矿对于那些进行验证的节点而言没有任何益处，从而阻碍了整个网络的中心化趋势。（也就是说，这种算法可以使最终提供合法区块的节点更多的分散到网络中的各个节点上，而不是趋向于集中在那些计算能力最强的节点上，译者注。）
 
-Communication between the external mining application and the Ethereum daemon for work provision and submission happens through the JSON-RPC API. Two RPC functions are provided; ``eth_getWork`` and ``eth_submitWork``.
+外部挖矿应用和以太坊伺服机（Ethereum daemon）的协同工作，是通过JSON-RPC API实现的。这两个RPC函数是 ``eth_getWork`` 和 ``eth_submitWork`` 。
 
-These are formally documented on the `JSON-RPC API <https://github.com/ethereum/wiki/wiki/JSON-RPC>`_ wiki article under `miner <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#miner>`_.
+这些被正式地记录在 `miner <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console#miner>`_ 之下的wiki文章 `JSON-RPC API <https://github.com/ethereum/wiki/wiki/JSON-RPC>`_ 之中。
 
+你需要一个完全同步的允许挖矿的以太坊客户端和一个以太坊账号来开始挖矿。这个账号是用来接受挖矿报酬并且通常会被作为 *coinbase* 或 *etherbase* 。请访问 ":ref:`creating_an_account`" 这个章节来了解如何创建一个账号。
 
-In order to mine you need a fully synced Ethereum client that is enabled for mining and at least one ethereum account. This account is used to send the mining rewards to and is often referred to as *coinbase* or *etherbase*. Visit the ":ref:`creating_an_account`" section of this guide to learn how to create an account.
+.. warning:: 在开始挖矿之前请确保你的区块链已经和主链完全同步，否则你将无法在主链上挖矿。
 
-.. warning:: Ensure your blockchain is fully synchronised with the main chain before starting to mine, otherwise you will not be mining on the main chain.
-
-CPU mining
+CPU挖矿
 ================================================================================
 
-You can use your computer's central processing unit (CPU) to mine ether. This is no longer profitable, since GPU miners are roughly two orders of magnitude more efficient. However, you can use CPU mining to mine on the Morden testnet or a private chain for the purposes of creating the ether you need to test contracts and transactions without spending your real ether on the live network.
+你可以使用你的计算机的CPU来挖取以太币。由于GPU矿工在计算速度和内存上都更有效，所以这不再能帮你赚到钱。但是，你可以在Morden测试网络或者私有网络使用CPU挖矿来创造你用于测试合约和交易的以太币，而不是在当前的主网络上花费真的以太币来做这些测试工作。
 
-.. note:: The testnet ether has no value other than using it for testing purposes (see :ref:`test-networks`).
+.. note:: 测试网络的以太币除了测试目的以外别无它用。（参考 :ref:`test-networks` 。）
 
 Using geth
 -------------------------------
