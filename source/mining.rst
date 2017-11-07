@@ -179,34 +179,31 @@ CPU挖矿
 
 请注意，你挖到一个区块，然而它并没有被当前的标准链所认可的情况（即其可能没有被包含在当前网络中的最长分叉上，译者注）是经常会发生的。这意味着，当你本地包含了你挖到的区块之后，当前状态会显示相应的挖矿报酬添加到你的账户，然而过了一段时间，不包含你的区块的更好的链（即更长的、被更多节点认可的分叉，译者注）被接受并切换到其上之后，你将不会实际获得挖矿报酬。也就是说，一个矿工会发现自己的coinbase余额非常可能会有一些上下浮动。
 
-GPU mining
+GPU挖矿
 ================================================================================
 
-Hardware
+硬件
 -------------------------------
 
-The algorithm is memory hard and in order to fit the DAG into memory, it needs 1-2GB of RAM on each GPU. If you get ``Error GPU mining. GPU memory fragmentation?`` you do not have enough memory.
-The GPU miner is implemented in OpenCL, so AMD GPUs will be 'faster' than same-category NVIDIA GPUs.
-ASICs and FPGAs are relatively inefficient and therefore discouraged.
-To get openCL for your chipset and platform, try:
+我们的算法是强内存（memory hard）的，以在内存中适配DAG，每个GPU都需要1到2GB内存。如果你收到 ``Error GPU mining. GPU memory fragmentation?`` 这样的消息，说明你没有足够的内存。GPU矿工是由OpenCL实现的，所以AMD的GPU回比同系列的NVIDIA的GPU快一些。ASIC（即Application Specific Integrated Circuit，特定应用的集成电路，译者注）和FPGA（即Field－Programmable Gate Array，一种半定制ASIC，译者注）则相对不够有效，所以不推荐。要获取针对你的芯片和平台的openCL，可以尝试：
 
 - `AMD SDK openCL <http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk>`_
 - `NVIDIA CUDA openCL <https://developer.nvidia.com/cuda-downloads>`_
 
-Ubuntu Linux set-up
+Ubuntu Linux上的安装
 -------------------------
 
-For this quick guide, you'll need Ubuntu 14.04 or 15.04 and the fglrx graphics drivers. You can use NVidia drivers and other platforms, too, but you'll have to find your own way to getting a working OpenCL install with them, such as `Genoil's ethminer fork <http://cryptomining-blog.com/tag/ethminer/>`_.
+你需要Ubuntu 14.04或15.04以及fglrx图形驱动来使用这个快速向导。你当然也可以使用NVidia驱动和其他平台，但你就需要自己找到可用的openCL了，比如  `Genoil's ethminer fork <http://cryptomining-blog.com/tag/ethminer/>`_ 。
 
-If you're on 15.04, Go to "Software and Updates > Additional Drivers" and set it to "Using video drivers for the AMD graphics accelerator from fglrx".
+如果你使用15.04，你可以在 "Software and Updates > Additional Drivers" 中设置 "Using video drivers for the AMD graphics accelerator from fglrx" 。
 
-If you're on 14.04, go to "Software and Updates > Additional Drivers" and set it to "Using video drivers for the AMD graphics accelerator from fglrx". Unfortunately, for some of you this will not work due to a known bug in Ubuntu 14.04.02 preventing you from switching to the proprietary graphics drivers required to GPU mine.
+如果你使用14.04，你可以在 "Software and Updates > Additional Drivers" 中设置 "Using video drivers for the AMD graphics accelerator from fglrx" 。不幸的的是，这在有些人机器上会出现问题，因为一个已知的Ubuntu 14.04.02的bug，它会阻止你切换到这个特定的GPU挖矿所需的显示驱动上。
 
-So, if you encounter this bug, and before you do anything else, go to "Software and updates > Updates" and select "Pre-released updates trusty proposed". Then, go back to "Software and Updates > Additional Drivers" and set it to "Using video drivers for the AMD graphics accelerator from fglrx"). After rebooting, it's well worth having a check that the drivers have now indeed been installed correctly (For example by going to "Additional Drivers" again).
+所以如果你遇到了这个bug，在你尝试其他方法之前，进入 "Software and updates > Updates" 选择 "Pre-released updates trusty proposed" 。然后回到 "Software and Updates > Additional Drivers" 再次设置 "Using video drivers for the AMD graphics accelerator from fglrx" 。重启之后，再检查下是否所需的驱动已经被安装好了（比如再进入 "Additional Drivers" 进行检查）。 
 
-Whatever you do, if you are on 14.04.02 do not alter the drivers or the drivers configuration once set. For example, the usage of aticonfig --initial (especially with the -f, --force option) can 'break' your setup. If you accidentally alter their configuration, you'll need to de-install the drivers, reboot, reinstall the drivers and reboot.
+无论你做什么，如果你在使用14.04.02版本，不要在设置好驱动后再更改驱动或更改驱动的设置。例如，使用 aticonfig --initial （特别是用-f、--force选项）会影响你的安装。如果你以外的更改了他们的配置，你将需要卸载这些驱动，重启并重新安装，然后再重启。
 
-Mac set-up
+Mac上的安装
 -------------------------------
 
 .. code-block:: bash
@@ -217,22 +214,22 @@ Mac set-up
  brew tap ethereum/ethereum
  brew reinstall cpp-ethereum --with-gpu-mining --devel --headless --build-from-source
 
-You check your cooling status:
+你应该检查温度状态：
 
 .. code-block:: bash
 
   aticonfig --adapter=0 --od-gettemperature
 
-Windows set-up
+Windows上的安装
 -------------------------------
-`Download the latest Eth\+\+ installation <https://github.com/ethereum/webthree-umbrella/releases>`_ and choose ethminer at the "Choose Components" screen of the installation screen.
+`下载最新的 Eth\+\+ 安装程序 <https://github.com/ethereum/webthree-umbrella/releases>`_ 在安装页面的 "Choose Components" 中选择ethminer。
 
 ..  image:: img/eth_miner_setup.png
 ..   :height: 513px
 ..   :width: 399 px
    :alt: ethereum-ethminer-set-upfdg
 
-Using ethminer with geth
+在geth中使用ethminer
 -------------------------------
 
 .. code-block:: bash
@@ -242,11 +239,11 @@ Using ethminer with geth
     ethminer -G  // -G for GPU, -M for benchmark
     tail -f geth.log
 
-``ethminer`` communicates with geth on port 8545 (the default RPC port in geth). You can change this by giving the ``--rpcport`` option to ``geth``. Ethminer will find geth on any port. Note that you need to set the CORS header with ``--rpccorsdomain localhost``. You can also set port on ``ethminer`` with ``-F http://127.0.0.1:3301``. Setting the ports is necessary if you want several instances mining on the same computer, although this is somewhat pointless. If you are testing on a private chain, we recommend you use CPU mining instead.
+``ethminer`` 通过8545端口（geth中默认的PRC端口）与geth通信。你可以用 ``geth`` 的 ``--rpcport`` 来修改它。Ethminer会在所有端口上查找geth。注意，你需要用 ``--rpccorsdomain localhost`` 来设置CORS header。你也可以用 ``ethminer`` 的 ``-F http://127.0.0.1:3301`` 来设置端口。如果你需要在同一台机器上用多个实例挖矿，你就需要来设置端口了，虽然这有些不得要领（因为算法的强内存限制，多个矿工在同一机器上并不会更加有效，译者注）。如果你在私链上做测试，我们建议你使用CPU挖矿。 
 
-.. note:: You do **not** need to give ``geth`` the ``--mine`` option or start the miner in the console unless you want to do CPU mining on TOP of GPU mining.
+.. note:: 你 **不** 需要在控制台中给 ``geth`` 指定 ``--mine`` 选项来开启挖矿，除非你希望使用CPU挖矿而不是GPU挖矿。
 
-If the default for ``ethminer`` does not work try to specify the OpenCL device with: ``--opencl-device X`` where X is {0, 1, 2,...}. When running ``ethminer`` with ``-M`` (benchmark), you should see something like:
+如果默认的 ``ethminer`` 没有正常工作，你可以使用``--opencl-device X`` X为{0, 1, 2, ...}来尝试指定特定的openCL设备。当你用 ``-M`` （benchmark，即性能评估模式，译者注）运行 ``ethminer`` 时，你会看到类似于下边这样的消息：
 
 .. code-block:: bash
 
@@ -255,64 +252,60 @@ If the default for ``ethminer`` does not work try to specify the OpenCL device w
 
     Benchmarking on platform: { "platform": "Apple", "device": "Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz", "version": "OpenCL 1.2 " }
 
-To debug ``geth``:
+Debug ``geth``：
 
 .. code-block:: bash
 
     geth  --rpccorsdomain "localhost" --verbosity 6 2>> geth.log
 
-To debug the miner:
+Debug矿工程序：
 
 .. code-block:: bash
 
     make -DCMAKE_BUILD_TYPE=Debug -DETHASHCL=1 -DGUI=0
     gdb --args ethminer -G -M
 
-..  note:: hashrate info is not available in ``geth`` when GPU mining.
+..  note:: 在 ``geth`` 中使用GPU挖矿时，哈希率（hashrate）信息不可用。
 
-Check your hashrate with ``ethminer``, ``miner.hashrate`` will always report 0.
+可以用 ``ethminer`` 检查哈希率，  ``miner.hashrate`` 将总是返回0。
 
-Using ethminer with eth
+在eth中使用ethminer
 -------------------------------
 
-Mining on a single GPU
+在单GPU上挖矿
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In order to mine on a single GPU all that needs to be done is to run eth with the following arguments:
+用如下参数运行eth即可实现单GPU挖矿：
 
 .. code-block:: bash
 
  eth -v 1 -a 0xcadb3223d4eebcaa7b40ec5722967ced01cfc8f2 --client-name "OPTIONALNAMEHERE" -x 50 -m on -G
 
-- ``-v 1`` Set verbosity to 1. Let's not get spammed by messages.
-- ``-a YOURWALLETADDRESS`` Set the coinbase, where the mining rewards will go to. The above address is just an example. This argument is really important, make sure to not make a mistake in your wallet address or you will receive no ether payout.
-- ``--client-name "OPTIONAL"`` Set an optional client name to identify you on the network
-- ``-x 50`` Request a high amount of peers. Helps with finding peers in the beginning.
-- ``-m on`` Actually launch with mining on.
-- ``-G`` set GPU mining on.
+- ``-v 1`` 把verbosity设置为1。我们不要那些垃圾消息。
+- ``-a YOURWALLETADDRESS`` 设置coinbase，用来接收挖矿报酬。这里仅是个例子。这个参数非常重要，请确保这个地址是正确的，否则你将收不到挖矿报酬。 
+- ``--client-name "OPTIONAL"`` 设置一个可选的客户端名称以在网络上标识你自己。
+- ``-x 50`` 请求较大量的节点，这有助于在初始阶段找到节点。
+- ``-m on`` 设置为启动时即开始挖矿。
+- ``-G`` 设置为允许GPU挖矿。
 
-While the client is running you can interact with it using either
-geth attach` or [ethconsole](https://github.com/ethereum/ethereum-console).
+如果客户端已经在运行，你可以使用geth attach或者[ethconsole]（https://github.com/ethereum/ethereum-console）与之交互。
 
-Mining on a multiple GPUs
+在多GPU上挖矿
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Mining with multiple GPUs and eth is very similar to mining with geth and multiple GPUs.
-Ensure that an eth node is running with your coinbase address properly set:
+用多GPU和eth进行挖矿，与用多GPU和geth进行挖矿非常相近。确定一个eth节点在用你的coinbase地址运行：
 
 .. code-block:: bash
 
    eth -v 1 -a 0xcadb3223d4eebcaa7b40ec5722967ced01cfc8f2 --client-name "OPTIONALNAMEHERE" -x 50 -j
 
-Notice that we also added the -j argument so that the client can have the JSON-RPC server enabled to communicate with the ethminer instances. Additionally we removed the mining related arguments since ethminer will now do the mining for us.
-For each of your GPUs execute a different ethminer instance:
+请注意我们也增加了-j参数，以便客户端具有JSON-RPC服务，来允许与ethminer实例的通信。此外我们还移除了与挖矿相关的参数因为ethminer现在会为我们开始挖矿了。为了使每个GPU都执行一个不同的ethminer实例：
 
 .. code-block:: bash
 
    ethminer --no-precompute -G --opencl-device X
 
-Where X is the index number corresponding to the openCL device you want the ethminer to use  {0, 1, 2,...}.
-In order to easily get a list of OpenCL devices you can execute ``ethminer --list-devices`` which will provide a list of all devices OpenCL can detect, with also some additional information per device.
+这里的X是你希望ethminer来使用的openCL设备索引号{0, 1, 2, ...}。你可以执行 ``ethminer --list-devices`` 来简单地获得所有支持openCL的设备列表，并且附带一些额外信息。
 
-Below is a sample output:
+以下是一个输出示例：
 
 .. code-block:: console
 
@@ -322,9 +315,9 @@ Below is a sample output:
      CL_DEVICE_MAX_MEM_ALLOC_SIZE: 1071586304
      CL_DEVICE_MAX_WORK_GROUP_SIZE: 1024
 
-Finally the ``--no-precompute`` argument requests that the ethminers don't create the DAG of the next epoch ahead of time. Although this is not recommended since you'll have a mining interruption every time when there's an epoch transition.
+最后， ``--no-precompute`` 参数要求ethminer不要预先创建DAG。尽管这已经不推荐了，因为在每个DAG切换周期时你的挖矿都会被打断。
 
-Benchmarking
+性能评估
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Mining power tends to scale with memory bandwidth. Our implementation is written in OpenCL, which is typically supported better by AMD GPUs over NVidia. Empirical evidence confirms that AMD GPUs offer a better mining performance in terms of price than their NVidia counterparts.
 
