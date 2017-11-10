@@ -105,14 +105,14 @@ Geth通过 *发现协议（discovery protocol）* 来找到其他节点。在发
 更快的下载区块链
 ================================================================================
 
-当你启动以太坊客户端是，以太坊区块链就开始自动下载了。下载所消耗的时间将基于你的客户端、客户端设置、网络速度以及可用节点数而有很大不同。以下是一些可选项来更快的获得以太坊区块链。
+当你启动以太坊客户端时，以太坊区块链就开始自动下载了。下载所消耗的时间将基于你的客户端、客户端设置、网络速度以及可用节点数而有很大不同。以下是一些可选项来更快的获得以太坊区块链。
 
 使用geth
 --------------------------------------------------------------------------------
 
 如果你使用geth客户端，会有些事情可以帮你提升下载以太坊区块链的时间。如果你使用 ``--fast`` 参数来进行快速同步，你将不会获取历史交易数据。
 
-.. note:: 在已经开始全部或部分普通同步处理之后，你就不能使用这个参数了。也就是说使用这个参数之前，你不应该做过任何以太坊区块链的数据分配处理。 `更多信息请参考 Ethereum Stack\.Exchange 的文章<http://ethereum.stackexchange.com/questions/1845/why-isnt-fast-sync-the-default>`_ 。
+.. note:: 在已经开始全部或部分普通同步处理之后，你就不能使用这个参数了。也就是说使用这个参数之前，你不应该做过任何以太坊区块链的数据分配处理。 `更多信息请参考 Ethereum Stack\.Exchange 的文章 <http://ethereum.stackexchange.com/questions/1845/why-isnt-fast-sync-the-default>`_ 。
 
 以下是一些参数可以帮你更快的同步你的客户端数据。
 
@@ -138,18 +138,18 @@ Geth通过 *发现协议（discovery protocol）* 来找到其他节点。在发
 更多关于快速同步和区块链下载次数的讨论， `请参考这篇Reddit帖子 <https://www.reddit.com/r/ethereum/comments/46c4ga/lets_benchmark_the_clients/>`_ 。
 
 
-Exporting/Importing the blockchain
+导出/导入区块链
 --------------------------------------------------------------------------------
 
-If you already have a full Ethereum node synced, you can export the blockchain data from the fully synced node and import it into your new node. You can accomplish this in geth by exporting your full node with the command ``geth export filename`` and importing the blockchain into your node using ``geth import filename``.
-see `this link <staticnodes>`_
+如果你已经同步了以太坊全节点数据，你可以把这些数据导出，然后再导入到一个新的节点中。在Geth中，你可以使用 ``geth export filename`` 命令导出全节点数据，而后使用 ``geth import filename`` 把数据导入新节点。
+参考 `这个链接 <staticnodes>`_
 
 ..  _cr-static-nodes:
 
-Static Nodes, Trusted Nodes, and Boot Nodes
+静态节点、信任节点和引导节点
 ================================================================================
 
-Geth supports a feature called static nodes if you have certain peers you always want to connect to. Static nodes are re-connected on disconnects. You can configure permanent static nodes by putting something like the following into ``<datadir>/static-nodes.json`` (this should be the same folder that your ``chaindata`` and ``keystore`` folders are in)
+Geth支持一个叫做“静态节点”的特性。当你有若干固定的节点总是希望能连接到时，你可以使用静态节点在连接断开时自动重连。你可以在 ``<datadir>/static-nodes.json`` 中加入以下设置来配置永久的静态节点。（这个目录应该与你的 ``chaindata`` 和 ``keystore`` 目录在同一个目录下。）
 
 .. code-block:: Javascript
 
@@ -158,18 +158,18 @@ Geth supports a feature called static nodes if you have certain peers you always
   	"enode://pubkey@ip:port"
   ]
 
-You can also add static nodes at runtime via the Javascript console using ``admin.addPeer()``
+你也可以在运行时使用 ``admin.addPeer()`` 命令通过JavaScript命令行添加静态节点。
 
 .. code-block:: Console
 
   > admin.addPeer("enode://f4642fa65af50cfdea8fa7414a5def7bb7991478b768e296f5e4a54e8b995de102e0ceae2e826f293c481b5325f89be6d207b003382e18a8ecba66fbaf6416c0@33.4.2.1:30303")
 
-Common problems with connectivity
+关于连通性的一般问题
 --------------------------------------------------------------------------------
 
-Sometimes you just can't get connected. The most common reasons are:
+有时你就是连接不上，最常见的原因可能是：
 
-* Your local time might be incorrect. An accurate clock is required to participate in the Ethereum network. Check your OS for how to resync your clock (example ``sudo ntpdate -s time.nist.gov``) because even 12 seconds too fast can lead to 0 peers.
-* Some firewall configurations can prevent UDP traffic from flowing. You can use the static nodes feature or ``admin.addPeer()`` on the console to configure connections by hand.
+* 你的本地时间可能不正确。在以太坊网络中需要精确的时钟。查看你的操作系统如何同步时钟（例如 ``sudo ntpdate -s time.nist.gov`` ）因为即使只是快12秒，都有可能导致一个节点都找不到。
+* 有些防火墙设置会屏蔽UDP数据广播。你可以使用静态节点特性或在控制台使用 ``admin.addPeer()`` 来手工配置连接。
 
-To start geth without the discovery protocol, you can use the ``--nodiscover`` parameter. You only want this if you are running a test node or an experimental test network with fixed nodes.
+你可以使用 ``--nodiscover`` 参数启动geth，使之不使用节点发现协议。只有在你正运行一个测试节点或者使用测试网络中的固定节点时你才需要这么做。

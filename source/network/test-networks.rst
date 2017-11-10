@@ -1,62 +1,60 @@
 .. _test-networks:
 
 ********************************************************************************
-Test Networks
+测试网络
 ********************************************************************************
 
-Morden testnet
+Morden测试网络
 ================================================================================
-Morden is a public Ethereum alternative testnet. It is expected to
-continue throughout the Frontier and Homestead milestones of the software.
+Morden是一个公开的以太坊备选测试网络。它将在以太坊的Frontier到Homestead里程碑期间一直存在。
 
-Usage
+使用方法
 --------------------------------------------------------------------------------
 
-eth (C++ client)
+eth（C++客户端）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This is supported natively on 0.9.93 and above. Pass the ``--morden`` argument in when starting any of the clients. e.g.:
+从0.9.93及以上版本支持，可以在启动客户端时使用 ``--morden`` 以选择测试网络。例如：
 
 .. code:: Console
 
    > eth --morden
 
-PyEthApp (Python client)
+PyEthApp（Python客户端）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-PyEthApp supports the morden network from v1.0.5 onwards:
+PyEthApp从1.0.5版本开始支持Morden网络：
 
 .. code:: Console
 
    > pyethapp --profile morden run
 
-geth (Go client)
+geth（Go客户端）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: Console
 
    > geth --testnet
 
-Details
+详情
 --------------------------------------------------------------------------------
+除了以下参数外，所有参数都与以太坊主网络相同：
 All parameters are the same as the main Ethereum network except:
 
--  Network Name: **Morden**
--  Network Identity: 2
--  genesis.json (given below);
--  Initial Account Nonce (``IAN``) is 2^20 (instead of 0 in all previous
-   networks).
+-  网络名称： **Morden**
+-  网络标识： 2
+-  genesis.json （下边会给出）
+-  初始账户Nonce（ ``IAN`` ）为2^20（而不是像之前的网络那样为0）
 
-   -  All accounts in the state trie have nonce >= ``IAN``.
-   -  Whenever an account is inserted into the state trie it is
-      initialised with nonce = ``IAN``.
+   -  在状态前缀树中的所有账户Nonce均 >= ``IAN`` 。
+   -  每当一个账户被加入状态前缀树时，Nonce都会被初始化为 = ``IAN`` 。
 
--  Genesis generic block hash:
+-  初始区块哈希：
    ``0cd786a2425d16f152c658316c423e6ce1181e15c3295826d7c9904cba9ce303``
--  Genesis generic state root:
+-  初始状态前缀树根：
    ``f3f4696bbf3b3b07775128eb7a3763279a394e382130f27c21e70233e04946a9``
 
-Morden's genesis.json
+Morden的genesis.json
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: JSON
@@ -79,34 +77,31 @@ Morden's genesis.json
 			}
 	}
 
-Getting Morden testnet ether
+获得Morden测试网络的以太币
 --------------------------------------------------------------------------------
 
-Two ways to obtain Morden testnet ether:
+有两种途径可以获得Morden测试网络的以太币：
 
-- Mine using your CPU/GPU, (see :ref:`mining`).
-- Use the `Ethereum wei faucet <https://zerogox.com/ethereum/wei_faucet>`__.
+- 用你的CPU/GPU来挖矿。（参考 :ref:`mining` ）
+- 使用 `Ethereum wei faucet <https://zerogox.com/ethereum/wei_faucet>`__ 。
 
 
 ********************************************************************************
-Setting up a local private testnet
+配置一个本地的测试网络
 ********************************************************************************
 
 .. _custom-networks-eth:
 
-eth (C++ client)
+eth（C++客户端）
 ================================================================================
 
-
-It is possible to connect to or create a new network by using the --genesis and --config.
+可以使用 --genesis 和 --config 参数来连接或创建一个新的网络。
 
 .. code:: Console
 
   > eth --private "customChain" --config config.json --genesis genesis.json
 
-It is possible to use both --config and --genesis.
-
-In that case, the genesis block description provided by --config will be overwritten by the --genesis option.
+也可以同时使用 --config 和 --genesis 。在这种情况下，由 --config 提供的初始区块描述会被 --genesis 选项的设定所覆盖。
 
 .. code:: Console
 
@@ -116,21 +111,21 @@ In that case, the genesis block description provided by --config will be overwri
 
   --config <filename>
 
-.. note:: <filename> contains a JSON description of the network:
+.. note:: <filename> 包含了一个网络信息的JSON描述：
 
-	- sealEngine (engine use to mine block)
+	- sealEngine （挖矿引擎）
 
-		"Ethash" is the Ethereum proof of work engine (used by the live network).
+		"Ethash" 是以太坊工作量证明引擎（被当前网络使用）。
 
-		"NoProof" no proof of work is needed to mine a block.
+		"NoProof" 挖矿时不需要工作量证明。
 
-	- params (general network information like minGasLimit, minimumDifficulty, blockReward, networkID)
+	- params （网络的一般信息，比如minGasLimit、minimumDifficulty、blockReward、networkID）
 
-	- genesis (genesis block description)
+	- genesis （初始区块描述）
 
-	- accounts (setup an original state that contains accounts/contracts)
+	- accounts （设置账户/合约的初始状态）
 
-Here is a Config sample (used by the Olympic network):
+这里是个Config样例（使用Olympic网络）：
 
 .. code:: JSON
 
@@ -181,9 +176,7 @@ Here is a Config sample (used by the Olympic network):
 
   --genesis <filename> (optional if the config option is provided and contains the genesis description).
 
-.. note:: <filename> contains a JSON description of the genesis block:
-
-The content is the same as the genesis field provided by the 'config' parameter:
+.. note:: <filename> 包含了一个初始区块的JSON描述，内容与‘config’参数提供的genesis字段相同：
 
 .. code:: JavaScript
 
@@ -199,29 +192,21 @@ The content is the same as the genesis field provided by the 'config' parameter:
   }
 
 
-
-
-geth (Go client)
+geth（Go客户端）
 ================================================================================
 
+在一个私有测试网络中，你可以通过预生成或者自己挖矿的方式获得以太币。这是个尝试以太坊的性价比最高的方式，因为你不必自己在最新的测试网络中挖矿或者去寻找以太币来源。
 
-You either pre-generate or mine your own ether on a private
-testnet. It is a much more cost effective way of trying out
-Ethereum and you can avoid having to mine or find Morden test ether.
+需要在私有链中指定的主要配置是：
+ - 自定义Genesis文件（即初始区块信息，译者注）
+ - 自定义数据目录
+ - 自定义网络ID
+ - （推荐）禁止节点发现
 
-The things that are required to specify in a private chain are:
- - Custom Genesis File
- - Custom Data Directory
- - Custom NetworkID
- - (Recommended) Disable Node Discovery
-
-The genesis file
+Genesis文件
 --------------------------------------------------------------------------------
 
-The genesis block is the start of the blockchain - the first
-block, block 0, and the only block that does not point to a predecessor
-block. The protocol ensures that no other node will agree with your version of the
-blockchain unless they have the same genesis block, so you can make as many private testnet blockchains as you'd like!
+初始区块（创世区块）是区块链的开始 - 即第一个区块，区块0，并且是唯一一个没有前导区块的区块。基于协议，不会有其他节点批准你的区块链版本，除非它们也拥有同样的初始区块。所以你想创建多少私有测试网络就可以创建多少。
 
 :file:`CustomGenesis.json`
 
@@ -235,120 +220,116 @@ blockchain unless they have the same genesis block, so you can make as many priv
       "coinbase": "0x3333333333333333333333333333333333333333",     "alloc": {     }
   }
 
-Save a file called :file:`CustomGenesis.json`.
-You will reference this when starting your geth node using the following command:
+保存一个文件叫做 :file:`CustomGenesis.json` ，它将用来初始化你的geth节点，通过以下命令：
 
 ``geth init /path/to/CustomGenesis.json``
 
-.. note:: By default geth will use the same directory for network related files as for the public mainnet. Thus you are advised to set a custom ``--datadir`` to keep the public network's chaindata from bing reset.
+.. note:: geth默认会使用与公链主网络相同的目录。所以你需要使用 ``--datadir`` 来给测试网络指定一个单独的目录以避免公链数据被重置。
 
-Command line parameters for private network
+针对私有网络的命令行参数
 --------------------------------------------------------------------------------
 
-There are some command line options (also called “flags”) that are
-necessary in order to make sure that your network is private. We already covered the genesis flag, but we need a few more. Note that all of the commands below are to be used in the geth Ethereum client.
+有一些命令行选项（也可以叫做“标志”）是用来确保你的网络保持私有状态的。我们已经看过了genesis标志，但我们还需要一些。请注意，以下命令适用于geth以太坊客户端。
 
 ``--nodiscover``
 
-Use this to make sure that your node is not discoverable by people who do not manually add you. Otherwise, there is a chance that your node may be inadvertently added to a stranger's blockchain if they have the same genesis file and network id.
+使用这个选项以确保除非其他人手工添加你的节点，否则你的节点不会被自动发现。如果其它某个陌生人恰好使用了跟你同样的genesis文件和网络id，不使用这个选项，你的节点可能会被无端加入他们创建的区块链网络中。
 
 ``--maxpeers 0``
 
-Use maxpeers 0 if you do not want anyone else connecting to your test chain. Alternatively, you can adjust this number if you know exactly how many peers you want connecting to your node.
+如果你不希望其他人连接到你的区块链，请使用这个选项。当然，如果你知道有多少节点会连接到你的网络，你也可以调整这个数字。
 
 ``--rpc``
 
-This will enable RPC interface on your node. This is generally enabled by default in Geth.
-
+这个选项会在你的节点上打开RPC接口。在Geth中这个选项是缺省打开的。
 
 ``--rpcapi "db,eth,net,web3"``
 
-This dictates what APIs that are allowed to be accessed over RPC. By default, Geth enables the web3 interface over RPC.
+这个选项指定了哪些API可以通过RPC方式使用。缺省情况下，Geth允许web3接口。
 
-**IMPORTANT: Please note that offering an API over the RPC/IPC interface will give everyone access to the API who can access this interface (e.g. dapp's). Be careful which API's you enable. By default geth enables all API's over the IPC interface and only the db,eth,net and web3 API's over the RPC interface.**
+**重要：请注意，通过RPC/IPC方式提供API接口，将允许能访问到接口的所有人使用相应API（比如dapp's，即去中心化应用）。请慎重地打开API。缺省地，Geth客户端允许通过IPC使用所有API，而通过RPC则只能使用db、eth、net和web3的API。**
 
 ``--rpcport "8080"``
 
-Change 8000 to any port that is open on your network. The default for geth is 8080.
+8080可以改为任何你网络中允许的端口。Geth的缺省端口是8080。
 
 ``--rpccorsdomain "http://chriseth.github.io/browser-solidity/"``
 
-This dictates what URLs can connect to your node in order to perform RPC client tasks. Be very careful with this and type a specific URL rather than the wildcard (*) which would allow any URL to connect to your RPC instance.
+这个选项指定了哪些URL可以连接到你的节点来执行RPC客户端任务。请谨慎使用这个选项，指定一个特定的URL，而不是使用通配符（*）来允许所有URL连接到你的RPC实例。
 
 ``--datadir "/home/TestChain1"``
 
-This is the data directory that your private chain data will be stored in (under the :file:`nubits` . Choose a location that is separate from your public Ethereum chain folder.
-
+这个选项是指定你的私有链数据的存储目录。请选择你的以太坊客户端主目录以外的目录。
 
 ``--port "30303"``
 
-This is the "network listening port", which you will use to connect with other peers manually.
-
+这是“网络监听端口”，你可以用它来手工连接其他节点。
 
 ``--identity "TestnetMainNode"``
 
-This will set up an identity for your node so it can be identified more easily in a list of peers.
-Here is an example of how these identities show up on the network.
+这将会给你节点加一个标识，以使它更容易的被标识在节点列表中。
 
-Launching ``geth``
+以下是一个这些标识如何在网络中显示的例子。
+
+启动 ``geth``
 --------------------------------------------------------------------------------
 
-After you have created your custom genesis block JSON file and created a directory for your blockchain data, type the following command into your console that has access to geth:
+当你创建了自定义初始区块的JSON文件，并为你的区块链创建了数据目录之后，就可以使用以下命令访问geth：
 
 .. code-block:: Console
 
   geth --identity "MyNodeName" --rpc --rpcport "8080" --rpccorsdomain "*" --datadir "C:\chains\TestChain1" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" --networkid 1999 init /path/to/CustomGenesis.json
 
-.. note:: Please change the flags to match your custom settings.
+.. note:: 请把相关参数修改为适合你自己的配置。
 
-This will initialize your genesis block.  To interact with geth through the console enter: 
+它将会初始化你的初始区块。键入以下命令，就可以与geth进行交互了：
 
 .. code-block:: Console
 
   geth --identity "MyNodeName" --rpc --rpcport "8080" --rpccorsdomain "*" --datadir "C:\chains\TestChain1" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" --networkid 1999 console
 
-You will need to start your geth instance with your custom chain command every time you want to access your custom chain. If you just type "geth" in your console, it will not remember all of the flags you have set.
+你每次要访问你的自定义链之前，你都需要使用自定义命令启动geth实例。如果你只用“geth”命令启动，它不会记住你的所有自定义选项。
 
-The full list of methods available through the javascript console is available on `the geth wiki on github <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console>`_
+javascript命令行中可使用的完整方法一览，请参考 `the geth wiki on github <https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console>`_ 。
 
-If you already have a geth node running, you can attach another geth instance to it using:
+如果你已经运行了一个geth节点，你可以将其他geth实例与它联结在一起：
 
 .. code-block:: Console
 
   geth attach
 
-Now you'll need to initialize a new account on the testnest, and set it as your etherbase (the address that will receive mining rewards).
+现在你需要在测试网路中初始化一个新账户，并把它作为你的etherbase（接收挖矿奖励的地址）。
 
-In the javascript console type
+在javascript控制台输入：
 
 .. code-block:: Console
 
   personal.newAccount("password")
 
-.. note:: Replace with the password of your choice
+.. note:: 把password替换为你的密码。
 
-Now we'll set it as the etherbase:
+现在将它设定为etherbase：
 
 .. code-block:: Console
 
   miner.setEtherbase(personal.listAccounts[0])
 
-If successful, the console will print "true"
+如果成功，命令行会打印“true”。
 
-Finally, you are ready to start mining test ether:
+最终你就可以开始挖矿了：
 
 .. code-block:: Console
 
   miner.start()
 
-Pre-allocating ether to your account
+给你的账户预分配以太币
 --------------------------------------------------------------------------------
 
-A difficulty of "0x400" allows you to mine Ether very quickly on your private testnet chain. If you create your chain and start mining, you should have hundreds of ether in a matter of minutes which is way more than enough to test transactions on your network. If you would still like to pre-allocate Ether to your account, you will need to:
+一个“0x400”的难度将允许你在你的私有测试链上快速挖出以太币。在你创建了你的链并开始挖矿之后，你会在数分钟内就拥有几百以太币，这将足够你在测试网络中执行交易了。如果你仍想给你的账户预分配以太币，你可以这样做：
 
-1. Create a new Ethereum account after you create your private chain
-2. Copy your new account address
-3. Add the following command to your Custom_Genesis.json file:
+1、在创建私有链之后创建一个新的账户
+2、拷贝新账户的地址
+3、将以下命令加到你的自定义初始区块文件中
 
 .. code-block:: Javascript
 
@@ -358,13 +339,13 @@ A difficulty of "0x400" allows you to mine Ether very quickly on your private te
 	  { "balance": "20000000000000000000" }
   }
 
-.. note:: Replace ``0x1fb891f92eb557f4d688463d0d7c560552263b5a`` with your account address.
+.. note:: 将 ``0x1fb891f92eb557f4d688463d0d7c560552263b5a`` 替换为你的账户地址。
 
-Save your genesis file and rerun your private chain command. Once geth is fully loaded, close it by .
+保存新的初始区块文件，重新运行你的私有链。一旦geth加载完毕，使用 . 关闭它。
 
-We want to assign an address to the variable ``primary`` and check its balance.
+我们要把一个地址分配到变量 ``primary`` 中，并检查它余额。
 
-Run the command ``geth account list`` in your terminal to see what account # your new address was assigned.
+在你的终端上执行 ``geth account list`` 以确认你的新地址被分配到哪个账户上。
 
 .. code-block:: Console
 
@@ -374,29 +355,29 @@ Run the command ``geth account list`` in your terminal to see what account # you
    Account #2: {e470b1a7d2c9c5c6f03bbaa8fa20db6d404a0c32}
    Account #3: {f4dd5c3794f1fd0cdc0327a83aa472609c806e99}
 
+确认哪个账户是你预分配了以太币的。
 Take note of which account # is the one that you pre-allocated ether to.
-Alternatively, you can launch the console with ``geth console`` (keep the same parameters as when you launched ``geth`` first). Once the prompt appears, type
+或者你可以用 ``geth console`` 启动控制台（使用与开始启动 ``geth`` 时相同的参数）。提示符出现之后，输入：
 
 .. code-block:: Console
 
   > eth.accounts
 
-This will return the array of account addresses you possess.
+它将返回你现在掌握的账户地址。
 
 .. code-block:: Console
 
   > primary = eth.accounts[0]
 
-.. note:: Replace ``0`` with your account's index. This console command should return your primary Ethereum address.
+.. note:: 把 ``0`` 替换为你的账户索引。这个命令将返回你的主以太坊地址。
 
-Type the following command:
+输入以下命令：
 
 .. code-block:: Console
 
   > balance = web3.fromWei(eth.getBalance(primary), "ether");
 
-This should return ``7.5`` indicating you have that much ether in your account. The reason we had to put such a large number in the alloc section of your genesis file is because the "balance" field takes a number in wei which is the smallest denomination of the Ethereum currency ether (see _`Ether`).
-
+这将会返回 ``7.5`` ，表明你的账户有很多以太币。我们在初始区块文件中指定了那么大数字的原因是余额字段使用的单位是wei，是以太坊货币维度中最小的单位（参见 :ref:`ether` ）。
 
 * https://www.reddit.com/r/ethereum/comments/3kdnus/question_about_private_chain_mining_dont_upvote/
 
