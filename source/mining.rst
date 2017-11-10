@@ -319,48 +319,45 @@ Debug矿工程序：
 
 性能评估
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Mining power tends to scale with memory bandwidth. Our implementation is written in OpenCL, which is typically supported better by AMD GPUs over NVidia. Empirical evidence confirms that AMD GPUs offer a better mining performance in terms of price than their NVidia counterparts.
+挖矿能力基本上会随内存及带宽的增加而提高。AMD的GPU会比NVidia的更好的支持我们用OpenCL写成的算法实现。实验证明，同价位的AMD GPU较NVidia竞品可以提供更好的挖矿表现。
 
-To benchmark a single-device setup you can use ethminer in benchmarking mode through the -M option:
+要对一个独立的设备进行性能评估，你可以通过使用ethminer的评估模式参数 -M ：
 
 .. code-block:: bash
 
    ethminer -G -M
 
-If you have many devices and you'll like to benchmark each individually, you can use the --opencl-device option similarly to the previous section:
+如果你有很多设备，想单独评估某个时，你可以在上述脚本中添加 --opencl-device 选项：
 
 .. code-block:: bash
 
  ethminer -G -M --opencl-device X
 
-Use ethminer ``--list-devices`` to list possible numbers to substitute for the X {0, 1, 2,...}.
+使用ethminer的 ``--list-devices`` 来列出上述命令中可选的设备序号X {0, 1, 2, ...}。
 
+要在Windows系统中进行挖矿，首先 `下载geth的windows客户端 <https://build.ethereum.org/builds/Windows%20Go%20master%20branch/>`_ 。
 
+* 解压Geth并启动命令行窗口。使用 `cd` 命令切换到Geth的数据文件夹。
+* 用 ``geth --rpc`` 启动Geth。
 
-To start mining on Windows, first `download the geth windows binary <https://build.ethereum.org/builds/Windows%20Go%20master%20branch/>`_.
+执行以上命令以后，以太坊区块链就会开始下载数据。有时你的本地防火墙会阻止数据同步（它应该会提示你），这种情况，请点击 "Allow access" （允许访问）。
 
-* Unzip Geth (right-click and select unpack) and launch Command Prompt. Use `cd` to navigate to the location of the Geth data folder. (e.g. ``cd /`` to go to the ``C:`` drive)
-* Start geth by typing ``geth --rpc``.
+* 首先 `下载并安装ethminer <http://cryptomining-blog.com/tag/ethminer-cuda-download/>`_ 这个C++挖矿软件（你的防火墙或系统服务会自动反应，允许其访问网络）。
+* 打开另一个命令行窗口（保留第一个的运行状态），输入 ``cd /Program\ Files/Ethereum(++)/release`` 来切换目录。
+* 确保 `geth` 已经完成区块链同步。然后 ``ethminer -G`` 命令开始挖矿。
 
-As soon as you enter this, the Ethereum blockchain will start downloading. Sometimes your firewall may block the synchronisation process (it will prompt you when doing so). If this is the case, click "Allow access".
+这时也许会出现一些问题。如果你得到一个错误提示，你可以用 ``Ctrl+C`` 组合键中止挖矿。如果错误提示 "Insufficient Memory" 说明你的GPU没有足够的内存来进行挖矿。
 
-* First `download and install ethminer <http://cryptomining-blog.com/tag/ethminer-cuda-download/>`_, the C++ mining software (your firewall or Windows itself may act up, allow access)
-* Open up another Command Prompt (leave the first one running!), change directory by typing ``cd /Program\ Files/Ethereum(++)/release``
-* Now make sure `geth` has finished syncing the blockchain. If it is not syncing any longer, you can start the mining process by typing ``ethminer -G`` at the command prompt
-
-At this point some problems may appear. If you get an error, you can abort the miner by pressing ``Ctrl+C``. If the error says
-"Insufficient Memory", your GPU does not have enough memory to mine ether.
-
-Pool mining
+矿池挖矿
 ================================================================================
 
-Mining pools are cooperatives that aim to smooth out expected revenue by pooling the mining power of participating miners. In return, they usually charge you 0-5% of your mining rewards. The mining pool submits blocks with proof of work from a central account and redistributes the reward to participants in proportion to their contributed mining power.
+矿池就是指为了稳定预期收益而将挖矿能力池化的矿工合作组织。作为回报，他们通常会将你的挖矿收益的最多5%支付给你。这种矿池由一个中心账户提供有工作量证明的区块，然后将收益按各合作矿工的挖矿能力重新分配。
 
-.. warning::  Most mining pools involve third party, central components which means they are not trustless. In other words, pool operators can run away with your earnings. Act with caution. There are a number of trustless, decentralised pools with open source codebase.
+.. warning:: 多数矿池包含第三方、中心化的组件，这意味着他们不可信。换句话说，矿池操作者可以带着你的收益跑掉。要小心。另外也有一部分去信任、去中心化的基于开源项目的矿池。
 
-.. warning:: Mining pools only outsource proof of work calculation, they do not validate blocks or run the VM to check state transitions brought about by executing the transactions. This effectively make pools behave like single nodes in terms of security, so their growth poses a centralisation risk of a `51% attack <https://learncryptography.com/cryptocurrency/51-attack>`_. Make sure you follow the network capacity distribution and do not allow pools to grow too large.
+.. warning:: 矿池仅提供工作量证明计算，他们不做区块校验或者运行VM对交易执行结果所导致的状态转移进行检查。在安全方面讲，这样的特性使矿池更像是一个单一的节点，所以矿池的增大和增多会导致中心化 `51%攻击 <https://learncryptography.com/cryptocurrency/51-attack>`_ 风险的提高。所以请遵从网络计算能力分散化的原则，不要使矿池变得太过巨大。（也就是说，请尽量不要再加入那些计算能力已经很大的矿池了，译者注。）
 
-Mining pools
+一些矿池
 --------------------------------------------------------------------
 
 * `coinotron`_
@@ -397,7 +394,7 @@ Mining pools
 .. _cryptopool: http://ethereum.cryptopool.online/
 
 
-Mining resources
+挖矿相关参考资源
 =======================================================
 
 * `Top miners of last 24h on etherchain <https://etherchain.org/statistics/miners>`_
@@ -412,8 +409,8 @@ Mining resources
 
 .. _POS vs POW:
 
-POS vs POW
------------------------------
+权益证明和工作量证明（POS vs POW）
+--------------------------------------------------------------------
 
 * https://www.reddit.com/r/ethereum/comments/38db1z/eli5_the_difference_between_pos_and_pow/
 * https://blog.ethereum.org/2014/11/25/proof-stake-learned-love-weak-subjectivity/
