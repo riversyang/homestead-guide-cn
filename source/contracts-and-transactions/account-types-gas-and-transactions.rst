@@ -155,93 +155,42 @@ contract creation  53000        在homestead版本中变更，从21000区块开�
 
 合约账户总体上说是为了4个目的而服务的：
 
-* Maintain a data store representing something which is useful to either 
-other contracts or to the outside world; one example of this is a contract 
-that simulates a currency, and another is a contract that records 
-membership in a particular organization.
-* Serve as a sort of externally-owned account with a more complicated 
-access policy; this is called a "forwarding contract" and typically 
-involves simply resending incoming messages to some desired destination 
-only if certain conditions are met; for example, one can have a forwarding 
-contract that waits until two out of a given three private keys have 
-confirmed a particular message before resending it (ie. multisig). More 
-complex forwarding contracts have different conditions based on the 
-nature of the message sent. The simplest use case for this functionality 
-is a withdrawal limit that is overrideable via some more complicated 
-access procedure. A wallet contract is a good example of this.
-* Manage an ongoing contract or relationship between multiple users. 
-Examples of this include a financial contract, an escrow with some 
-particular set of mediators, or some kind of insurance. One can also 
-have an open contract that one party leaves open for any other party to 
-engage with at any time; one example of this is a contract that 
-automatically pays a bounty to whoever submits a valid solution to some 
-mathematical problem, or proves that it is providing some computational 
-resource.
-* Provide functions to other contracts, essentially serving as a software 
-library.
+* 维持一些对其他合约或者外部世界有用处的数据的存储。比如，用一个合约来模拟一种货币，或者用一个合约来记录参与特定组织的成员。
+* 用来作为一种有更复杂的访问策略的外部账户，这可以叫做“forwarding contract”，它们可以在满足特定条件的情况下，将传入的消息转发给特定的接收方。比如，一个合约可以在得到3个特定私钥其中的两个对某个特定消息的确认之后，将消息进行转发（例如多重签名）。更复杂的“forwarding contract”可以根据消息的不同设置不同的条件。最简单的使用场景就是通过更为复杂的访问步骤来改变取回数据的限定条件。钱包合约就是一个很好的例子。
+* 管理多个用户间的持续的合约或者特定的联系。这种例子包括财务合约、一些特定的第三方监管服务或某些保险。另有一种开放性的合约，由一方打开，其他参与方可以随时参加。这种合约的例子就是那种自动支付赏金给那些解决了某些特定的数学问题、或者证明自己提供了一些计算资源的人。
+* 为其他合约提供函数，大体上可以认为是作为软件库来使用。
 
-Contracts interact with each other through an activity that is alternately 
-called either "calling" or "sending messages". A "message" is an object 
-containing some quantity of ether, a byte-array of data of any size, the 
-addresses of a sender and a recipient. When a contract receives a message, 
-it has the option of returning some data, which the original sender of 
-the message can then immediately use. In this way, sending a message is 
-exactly like calling a function.
+合约与其他合约交互的动作，是通过“调用（calling）”和“发送消息（sending messages）”完成的。一个“消息“，是包含了一定量的以太币、任意大小的字节数据和发送方、接收方地址的一个对象。当一个合约接收到一个消息时，它可以返回一些数据给消息发送方使用，这样，发送一个消息也就像调用一个函数一样。
 
-Because contracts can play such different roles, we expect that contracts 
-will be interacting with each other. As an example, consider a situation 
-where Alice and Bob are betting 100 GavCoin that the temperature in San 
-Francisco will not exceed 35ºC at any point in the next year. However, 
-Alice is very security-conscious, and as her primary account uses a 
-forwarding contract which only sends messages with the approval of two 
-out of three private keys. Bob is paranoid about quantum cryptography, 
-so he uses a forwarding contract which passes along only messages that 
-have been signed with Lamport signatures alongside traditional ECDSA 
-(but because he's old fashioned, he prefers to use a version of Lamport 
-sigs based on SHA256, which is not supported in Ethereum directly).
+因为合约可以扮演这些不同的角色，我们可以要求它们之间进行更多的交互。作为一个示例，我们可以想象一个情况：Alice和Bob正在打一个100 GavCoin的赌，赌旧金山下一年内的温度任何时候都不会超过35ºC。然而Alice是个很有安全意识的人，她的主账户使用了一个forwarding contract，只有当三分之二的私钥通过之后才能向外发送消息。Bob则是个对统计密码学持怀疑态度的人，所以他使用了一个只能发送由Lamport签名（一种一次性的单向签名算法，译者注）和传统ECDSA签名（即椭圆曲线签名算法，译者注）共同处理过的消息的forwarding contract（但因为他的守旧，他使用了一个以太坊不直接支持的基于SHA256的Lamport签名算法）。
 
-The betting contract itself needs to fetch data about the San Francisco 
-weather from some contract, and it also needs to talk to the GavCoin 
-contract when it wants to actually send the GavCoin to either Alice or 
-Bob (or, more precisely, Alice or Bob's forwarding contract). We can show 
-the relationships between the accounts thus:
+这个对赌合约自己需要从其他合约取得旧金山的天气数据，它还需要和GavCoin合约交互，当它要实际给Alice或Bob（更准确地说，是给他们的forwarding contrack）发送GavCoin的时候。我可以用下图来表示账户间的关系：
 
 ..  image:: ../img/contract_relationship.png
 ..
    :align: center
 
-When Bob wants to finalize the bet, the following steps happen:
+当Bob希望结束对赌的时候，下述步骤将会发生：
 
-1. A transaction is sent, triggering a message from Bob's EOA to his 
-forwarding contract.
-2. Bob's forwarding contract sends the hash of the message and the 
-Lamport signature to a contract which functions as a Lamport signature 
-verification library.
-3. The Lamport signature verification library sees that Bob wants a 
-SHA256-based Lamport sig, so it calls the SHA256 library many times as 
-needed to verify the signature.
-4. Once the Lamport signature verification library returns 1, signifying 
-that the signature has been verified, it sends a message to the contract 
-representing the bet.
-5. The bet contract checks the contract providing the San Francisco 
-temperature to see what the temperature is.
-6. The bet contract sees that the response to the messages shows that 
-the temperature is above 35ºC, so it sends a message to the GavCoin 
-contract to move the GavCoin from its account to Bob's forwarding contract.
+1、一个交易被发出，触发一个由Bob的外部账户发送到他的forwarding contract的消息。
 
-Note that the GavCoin is all "stored" as entries in the GavCoin contract's 
-database; the word "account" in the context of step 6 simply means that 
-there is a data entry in the GavCoin contract storage with a key for the 
-bet contract's address and a value for its balance. After receiving this 
-message, the GavCoin contract decreases this value by some amount and 
-increases the value in the entry corresponding to Bob's forwarding 
-contract's address. We can see these steps in the following diagram:
+2、Bob的forwarding contract发送消息的哈希值和Lamport签名给一个用来做Lamport签名校验库的合约。
+
+3、Lamport签名校验库发现Bob需要基于SHA256的Lamport签名，于是它需要调用SHA256库若干次来校验签名。
+
+4、一旦Lamport签名校验库返回1，也就是说签名已经校验成功，它会给对赌合约发送一个消息。
+
+5、对赌合约会检查提供温度数据的合约取得旧金山的温度数据。
+
+6、如果对赌合约发现温度数据中有超过35ºC的数据，它就会给GavCoin合约发送一个消息，来将合约账户中的GavCoin转移到Bob的forwarding contract。
+
+注意，GavCoin全部都在GavCoin合约的数据库中存储，上边步骤6中所说的“合约账户”是指GavCoin合约的内部会有一个以这个对赌合约地址为键，以其余额为值的数据项。当收到这个消息之后，GavCoin合约会从这个地址减掉一定的数额，给Bob的forwarding contract地址增加相应的数额。我们可以在下图中看到这些步骤：
 
 ..  image:: ../img/contract_relationship2.png
 ..
    :align: center
 
-Signing transactions offline
+离线签名交易
 ================================================================================
 
 [ Maybe add this to the FAQ and point to the ethkey section of 
