@@ -22,6 +22,7 @@
 .. toctree::
    :maxdepth: 4
 
+   preface-for-cn-translation.rst
    introduction/index.rst
    ethereum-clients/index.rst
    connecting-to-clients/index.rst
