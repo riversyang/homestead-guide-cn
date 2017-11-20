@@ -69,113 +69,54 @@
 
 大体上讲，消息就像交易，除了它是由合约产生的，而不是外部用户。当合约代码执行 ``CALL`` 或 ``DELEGATECALL`` 操作码时会产生并执行一个消息。像交易一样，消息会导致接收者账号执行它的代码。这样，合约就可以与其他合约建立联系，就像外部用户之间用交易建立联系那样。
 
-What is gas?
+什么是气？
 ================================================================================
 
-Ethereum implements an execution environment on the blockchain called 
-the Ethereum Virtual Machine (EVM). Every node participating in the 
-network runs the EVM as part of the block verification protocol. They go 
-through the transactions listed in the block they are verifying and run 
-the code as triggered by the transaction within the EVM. Each and every 
-full node in the network does the same calculations and stores the same 
-values. Clearly Ethereum is not about optimising efficiency of computation. 
-Its parallel processing is redundantly parallel. This is to offer an 
-efficient way to reach consensus on the system state without needing 
-trusted third parties, oracles or violence monopolies. But importantly 
-they are not there for optimal computation. The fact that contract 
-executions are redundantly replicated across nodes, naturally makes them 
-expensive, which generally creates an incentive not to use the blockchain 
-for computation that can be done offchain.
+以太坊在区块链上实现了一个被称为以太坊虚拟机（EVM）的执行环境。网络中的每个节点都会将EVM作为区块校验协议的一部分来运行。它们会逐个检查正在验证的区块中的所有交易，并在EVM中执行这些交易所触发的代码。网络中的每个全节点都会进行相同的计算并保存相同的结果。显然，以太坊并不是在做计算效率的优化，它这种并行计算是无必要的；这是为了提供一种无需第三方、权威机构或垄断组织的方式来达到系统状态的共识。这当然不是为了优化计算，事实上，合约是在各个节点之上无必要的重复执行的，这使合约变得很昂贵。所以总体上说，并不鼓励在链上运行那些可以脱离区块链完成的计算。
 
-When you are running a decentralized application (dapp), it interacts 
-with the blockchain to read and modify its state, but dapps will typically 
-only put the business logic and state that are crucial for consensus on 
-the blockchain.
+当你在运行一个去中心化应用（dapp）的时候，它会使用区块链来读取和修改它的状态。但这些应用仅在区块链上存放那些对达成共识最为重要的业务逻辑和状态。
 
-When a contract is executed as a result of being triggered by a message 
-or transaction, every instruction is executed on every node of the 
-network. This has a cost: for every executed operation there is a 
-specified cost, expressed in a number of gas units.
+当一个合约被一个消息或交易触发而执行的时候，每个预设指令都会被在网络中的所有节点上执行。这会导致一个结果：每个被执行的操作都会有一个用气的数量来衡量的特定花销。
 
-Gas is the name for the execution fee that senders of transactions need 
-to pay for every operation made on an Ethereum blockchain. The name gas 
-is inspired by the view that this fee acts as cryptofuel, driving the 
-motion of smart contracts. Gas is purchased for ether from the miners 
-that execute the code. Gas and ether are decoupled deliberately since 
-units of gas align with computation units having a natural cost, while 
-the price of ether generally fluctuates as a result of market forces. 
-The two are mediated by a free market: the price of gas is actually 
-decided by the miners, who can refuse to process a transaction with a 
-lower gas price than their minimum limit. To get gas you simply need to 
-add ether to your account. The Ethereum clients automatically purchase 
-gas for your ether in the amount you specify as your maximum expenditure 
-for the transaction.
+气是交易的发送方需要为在以太坊区块链上执行每个操作而支付的执行费用的名称。这个费用可以想象为一种驱动智能合约执行的加密燃油，气这个名称的灵感就来源于此。气是从那些执行代码的矿工那里用以太币的形式购置的。气和以太币被故意作为不同的概念，是因为气相当于计算单位的自然消耗，而以太币的价格一般会因市场原因而波动。一个自由市场会调和两者的关系：气的价格实际上是由矿工们决定的，它们可以拒绝那些气的价格低于它们的最低限的交易。要获得气，你只需要为你的账户添加以太币即可。以太坊客户端会根据你为交易所指定的最大开支自动用你的以太币购置气。
 
-The Ethereum protocol charges a fee per computational step that is 
-executed in a contract or transaction to prevent deliberate attacks and 
-abuse on the Ethereum network. Every transaction is required to include 
-a gas limit and a fee that it is willing to pay per gas. Miners have the 
-choice of including the transaction and collecting the fee or not. If the 
-total amount of gas used by the computational steps spawned by the 
-transaction, including the original message and any sub-messages that may 
-be triggered, is less than or equal to the gas limit, then the transaction 
-is processed. If the total gas exceeds the gas limit, then all changes are 
-reverted, except that the transaction is still valid and the fee can still 
-be collected by the miner. All excess gas not used by the transaction 
-execution is reimbursed to the sender as Ether. You do not need to worry 
-about overspending, since you are only charged for the gas you consume. 
-This means that it is useful as well as safe to send transactions with a 
-gas limit well above the estimates.
+为了阻止故意的攻击或对以太坊网络的滥用，以太坊协议规定执行合约或交易中的每个计算步骤都需要支付费用。每个交易都需要包含气的上限和希望为每个气所支付的费用。矿工们可以决定是否包含某个交易并获得相应的费用。如果交易所产生的所有计算步骤（包含原始消息和可能被触发的所有其他消息）所需要的气的总量小于等于交易中指定的气的上限，交易会被处理。如果实际消耗的气的总量超过交易中气的上限，所有的变动都会被回复原样，除了交易仍然有效，且费用仍可以被矿工收取。所有在交易执行过程中没有被消耗的多余的气，会被作为以太币返还给发送方。你不需要担心超支，因为你最多只会被收取你在交易中所充入的所有气（即你为交易指定的气的上限，译者注）。这意味着为你的交易指定一个超出预估的气的上限是有用并且安全的。
 
-Estimating transaction costs
+估算交易的费用
 ================================================================================
 
-The total ether cost of a transaction is based on 2 factors:
+一个交易的总费用取决于两个因素：
 
-``gasUsed`` is the total gas that is consumed by the transaction
+``gasUsed`` 交易中所消耗的气的总量
 
-``gasPrice`` price (in ether) of one unit of gas specified in the 
-transaction
+``gasPrice`` 交易中所指定的气的价格（用以太币为单位）
 
-**Total cost = gasUsed * gasPrice**
+**总费用 = gasUsed * gasPrice**
 
 gasUsed
 --------------------------------------------------------------------------------
 
-Each operation in the EVM was assigned a number of how much gas it 
-consumes. ``gasUsed`` is the sum of all the gas for all the operations 
-executed. There is a `spreadsheet <http://ethereum.stackexchange.com/q/52/42>`_ 
-which offers a glimpse to some of the analysis behind this.
+EVM中的每个操作都会对应一个其消耗的气的数值。 ``gasUsed`` 即是所有操作所消耗的气的总和。 `这份表格 <http://ethereum.stackexchange.com/q/52/42>`_ 提供了相关的一些分析。
 
-For estimating ``gasUsed``, there is an `estimateGas API <http://ethereum.stackexchange.com/q/266/42>`_ 
-that can be used but has some caveats.
+这里有份 `estimateGas API <http://ethereum.stackexchange.com/q/266/42>`_ 可以帮助你预估 ``gasUsed`` ，但其中也有些需要小心的地方。
 
 gasPrice
 --------------------------------------------------------------------------------
 
-A user constructs and signs a transaction, and each user may specify 
-whatever ``gasPrice`` they desire, which can be zero. However, the 
-Ethereum clients launched at Frontier had a default gasPrice of 0.05e12 
-wei. As miners optimize for their revenue, if most transactions are being 
-submitted with a gasPrice of 0.05e12 wei, it would be difficult to 
-convince a miner to accept a transaction that specified a lower, or zero, 
-gasPrice.
+一个用户构造并签名了一个交易之后，每个用户都可以指定一个他们希望的 ``gasPrice`` ，这甚至可以设为0。然而，在Frontier版本的以太坊客户端中gasPrise会有一个默认值0.05e12 wei。由于矿工们会优化他们的收入，所以如果大多数交易的gasPrise都是0.05e12 wei的话，你就很难让矿工去接受一个低于这个数值甚至为0的gasPrise了。
 
-Example transaction cost
+交易费用示例
 --------------------------------------------------------------------------------
 
-Let’s take a contract that just adds 2 numbers. The EVM OPCODE ``ADD`` 
-consumes 3 gas.
+让我们使用一个仅仅对两个数字做加法的合约。EVM操作码 ``ADD`` 会消耗3个气。
 
-The approximate cost, using the default gas price (as of January 2016), 
-would be:
+使用默认气价（2016年1月时）的大概的费用为：
 
 3 \* 0.05e12 = 1.5e11 wei
 
-Since 1 ether is 1e18 wei, the total cost would be 0.00000015 Ether.
+由于1以太币等于1e18 wei，所以总费用等于0.00000015以太币。
 
-This is a simplification since it ignores some costs, such as the cost of 
-passing the 2 numbers to contract, before they can even be added.
+这是一个简化，因为它忽略了一些费用，比如在两个数字被相加之前，它们需要先被发送给合约。
 
 * `question <http://ethereum.stackexchange.com/q/324/42>`_
 * `gas fees <http://ether.fund/tool/gas-fees>`_
@@ -185,51 +126,34 @@ passing the 2 numbers to contract, before they can even be added.
 =================  =========    =============================
 Operation Name     Gas Cost     Remark
 =================  =========    =============================
-step               1            default amount per execution cycle
-stop               0            free
-suicide            0            free
-sha3               20
-sload              20           get from permanent storage
-sstore             100          put into permanent storage
-balance            20
-create             100          contract creation
-call               20           initiating a read-only call
-memory             1            every additional word when expanding memory
-txdata             5            every byte of data or code for a transaction
-transaction        500          base fee transaction
-contract creation  53000        changed in homestead from 21000
+step               1            每个执行循环的默认数额 
+stop               0            免费
+suicide            0            免费
+sha3               20           哈希运算，译者注
+sload              20           从永久存储获取数据
+sstore             100          向永久存储保存数据
+balance            20           获取余额，译者注
+create             100          创建合约
+call               20           开始只读调用
+memory             1            扩大内存时每个额外的字
+txdata             5            交易中的每字节数据或代码
+transaction        500          基础交易费
+contract creation  53000        在homestead版本中变更，从21000区块开始的创建合约费用
 =================  =========    =============================
 
-Account interactions example - betting contract
+账户交互示例 - 对赌合约
 ================================================================================
 
-As previously mentioned, there are two types of accounts:
+如前文所述，有两种类型的合约：
 
-* **Externally owned account (EOAs)**: an account controlled by a private 
-key, and if you own the private key associated with the EOA you have the 
-ability to send ether and messages from it.
-* **Contract**: an account that has its own code, and is controlled by 
-code.
+* **外部账户（EOAs）** ：由私钥控制的账户，如果你拥有EOA的私钥，你就可以用它来发送以太币或者消息。
+* **合约账户** ：拥有自己的代码，并由代码控制的账户。
 
-By default, the Ethereum execution environment is lifeless; nothing 
-happens and the state of every account remains the same. However, any 
-user can trigger an action by sending a transaction from an externally 
-owned account, setting Ethereum's wheels in motion. If the destination of 
-the transaction is another EOA, then the transaction may transfer some 
-ether but otherwise does nothing. However, if the destination is a 
-contract, then the contract in turn activates, and automatically runs 
-its code.
+默认情况下，以太坊的执行环境是没有任何活动的，所有账户的状态都是一样的。然而，任何用户都可以从一个外部账户发送一个交易从而使以太坊开始运转。如果交易的发送目标是另一个外部账户，那么交易会转移一些以太币但没有任何其他事发生。而如果交易的发送目标是一个合约账户，那么合约就会被激活，其中的代码就会被运行。
 
-The code has the ability to read/write to its own internal storage (a 
-database mapping 32-byte keys to 32-byte values), read the storage of the 
-received message, and send messages to other contracts, triggering their 
-execution in turn. Once execution stops, and all sub-executions triggered 
-by a message sent by a contract stop (this all happens in a deterministic 
-and synchronous order, ie. a sub-call completes fully before the parent 
-call goes any further), the execution environment halts once again, until 
-woken by the next transaction.
+这些代码可以从它所控制的内部存储（一个由32字节的键和32字节的值所构成的数据库）读写数据，可以读取接收到的消息，可以将消息发送给其他合约而触发它们的顺序执行。一旦合约执行结束，即所有由合约发送的消息所触发的执行（这是一个可预计的、同步的顺序，就是说父调用会等待子调用完全结束才会继续执行）都停止之时，执行环境会被再次挂起，直到下一个交易发生。
 
-Contracts generally serve four purposes:
+合约账户总体上说是为了4个目的而服务的：
 
 * Maintain a data store representing something which is useful to either 
 other contracts or to the outside world; one example of this is a contract 
