@@ -277,20 +277,12 @@ Mutan（不推荐）
 
 在以上的例子中并没有边界效应，所以 ``sendTransaction`` 仅仅消耗了气，增加了宇宙里的总熵。
 
-Contract metadata
+合约元数据
 ================================================================================
 
-In the previous sections we explained how you create a contract on the
-blockchain. Now we will deal with the rest of the compiler output, the
-**contract metadata** or contract info.
+在上面的章节里我们解释了你如何创建在区块链上创建一个合约。现在我们来看一下编译器余下的输出， **合约元数据** 或者叫合约信息。
 
-When interacting with a contract you did not create you might want
-documentation or to look at the source code.  Contract authors are encouraged
-to make such information available by registering it on the blockchain or
-through a third party service, such as `EtherChain
-<https://www.etherchain.org/contracts>`_. The ``admin`` API provides
-convenience methods to fetch this bundle for any contract that chose to
-register.
+当与一个不是你自己创建的合约进行交互的时候，你也许会希望看到它的文档或者源码。合约作者被鼓励来在区块链上注册这样的信息或者通过一个类似于 `EtherChain <https://www.etherchain.org/contracts>`_ 的第三方服务来进行发布。 ``admin`` API提供了方便的方法来获取选择了注册的任何合约的具体信息。
 
 .. code:: js
 
@@ -299,13 +291,10 @@ register.
     var source = info.source;
     var abiDef = info.abiDefinition
 
+用这种途径可以运作的底层机制是：
 
-The underlying mechanism that makes this work is is that:
-
-*  contract info is uploaded somewhere identifiable by a *URI* which
-   is publicly accessible
-*  anyone can find out what the *URI* is only knowing the contracts
-   address
+*  合约信息被上传到某处，由一个 *URI* 标示为可以公开访问
+*  任何仅知道合约地址的人都可以知道这个 *URI* 
 
 These requirements are achieved using a 2 step blockchain registry. The first
 step registers the contract code (hash) with a content hash in a contract
