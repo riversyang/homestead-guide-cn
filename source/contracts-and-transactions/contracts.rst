@@ -291,35 +291,23 @@ Mutan（不推荐）
     var source = info.source;
     var abiDef = info.abiDefinition
 
-用这种途径可以运作的底层机制是：
+确保这种方法可以运作的底层机制是：
 
 *  合约信息被上传到某处，由一个 *URI* 标示为可以公开访问
 *  任何仅知道合约地址的人都可以知道这个 *URI* 
 
-These requirements are achieved using a 2 step blockchain registry. The first
-step registers the contract code (hash) with a content hash in a contract
-called ``HashReg``. The second step registers a url with the content hash in
-the ``UrlHint`` contract. These `registry contracts
-<https://github.com/ethereum/go-ethereum/blob/develop/common/registrar/contracts.go>`__
-were part of the Frontier release and have carried on into Homestead.
+这些需求是通过两步区块链注册实现的。第一步注册是通过一个叫做 ``HashReg`` 的合约对要做注册的合约代码进行内容哈希。第二步则是用第一步中生成的内容哈希，通过 ``UrlHint`` 这个合约来注册一个URL。这种 `合约注册机制 <https://github.com/ethereum/go-ethereum/blob/develop/common/registrar/contracts.go>`__ 是Frontier版本的一部分，被拿到了Homestead版本中。
 
-By using this scheme, it is sufficient to know a contract's address to look up the url and fetch the actual contract metadata info bundle.
+基于这种方案，我们就可以通过已知的合约地址来查询url，从而获得实际的合约元数据信息包。
 
-So if you are a conscientious contract creator, the steps are the following:
+至此我们可以小结下合约创建的步骤：
 
-1. Deploy the contract itself to the blockchain
-2. Get the contract info json file.
-3. Deploy contract info json file to any url of your choice
-4. Register codehash ->content hash -> url
+* 1、把合约本身发布到区块链上
+* 2、取得合约信息json文件
+* 3、把合约信息json文件发布到你选择的url上
+* 4、注册 代码哈希 -> 内容哈希 -> url
 
-The JS API makes this process very easy by providing helpers. Call
-``admin.register`` to extract info from the contract, write out its json
-serialisation in the given file, calculates the content hash of the file and
-finally registers this content hash to the contract's code hash. Once you
-deployed that file to any url, you can use ``admin.registerUrl`` to register
-the url with your content hash on the blockchain as well. (Note that in case a
-fixed content addressed model is used as document store, the url-hint is no
-longer necessary.)
+JS API提供了助手使这个过程非常简单。调用 ``admin.register`` 可以从合约取得其合约信息，把这些json内容写入到一个文件，计算这个文件的内容哈希，最后用合约的代码哈希来注册内容哈希。当你把这个内容文件发布到某个url之后，你可以使用 ``admin.registerUrl`` 来用你的内容哈希把url注册到区块链上。（注意，如果以固定内容地址模式来存储文档，那就不需要再使用url-hint这个合约了。）
 
 .. code-block:: js
 
@@ -342,27 +330,16 @@ longer necessary.)
       }
     });
 
-
-Testing contracts and transactions
+测试合约和交易
 ================================================================================
 
-Often you need to resort to a low level strategy of testing and debugging
-contracts and transactions. This section introduces some debug tools and
-practices you can use. In order to test contracts and transactions without
-real-word consequences, you best test it on a private blockchain. This can be
-achieved with configuring an alternative network id (select a unique integer)
-and/or disable peers. It is recommended practice that for testing you use an
-alternative data directory and ports so that you never even accidentally clash
-with your live running node (assuming that runs using the defaults. Starting
-your ``geth`` with in VM debug mode with profiling and highest logging
-verbosity level is recommended:
+你一般需要用一些底层的策略来测试、调试合约和交易。这节会介绍一些调试工具。为了不涉及真实共识逻辑来测试合约和交易，最好的方式时使用私有区块链。这可以通过设置一个特殊的网络id（比如选一个特殊的整数）并禁止掉其他节点来做到。推荐的方式是使用独立的数据目录和网络端口，以免因为误操作影响到你正在使用的区块链网络（如果你使用默认设置的话）。推荐你使用带分析的最高日志等级的VM debug模式启动 ``geth`` 。
 
 .. code:: bash
 
     geth --datadir ~/dapps/testing/00/ --port 30310 --rpcport 8110 --networkid 4567890 --nodiscover --maxpeers 0 --vmdebug --verbosity 6 --pprof --pprofport 6110 console 2>> ~/dapp/testint/00/00.log
 
-Before you can submit any transactions, you need set up your private test
-chain. See :ref:`test-networks`.
+在提交交易之前，你需要先设置好你的私有测试链。请参考 :ref:`test-networks` 。
 
 .. code:: js
 
@@ -388,7 +365,7 @@ chain. See :ref:`test-networks`.
     miner.stop();
     balance = web3.fromWei(eth.getBalance(primary), "ether");
 
-After you create transactions, you can force process them with the following lines:
+创建交易之后，你可以用以下命令强制处理它们：
 
 .. code:: js
 
@@ -396,7 +373,7 @@ After you create transactions, you can force process them with the following lin
     admin.sleepBlocks(1);
     miner.stop();
 
-You can check your pending transactions with:
+你可以检查待处理的交易：
 
 .. code:: js
 
@@ -407,7 +384,7 @@ You can check your pending transactions with:
     // print all pending txs
     eth.getBlock("pending", true).transactions
 
-If you submitted contract creation transaction, you can check if the desired code actually got inserted in the current blockchain:
+如果你提交了创建合约的交易，你可以检查合约代码是否已经被加入当前的区块链：
 
 .. code:: js
 
