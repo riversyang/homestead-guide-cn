@@ -1,40 +1,40 @@
 ********************************************************************************
-Web3 Base Layer Services
+Web3基础层服务
 ********************************************************************************
 
-In addition to the Ethereum blockchain, more components are being developed that decentralise other important aspects of web applications.
+作为以太坊区块链的补充，使web应用程序的很多其他重要部分去中心化的更多组件也被开发了出来。
 
 .. image:: ../img/ethereum-protocols.png
 
-Swarm - Decentralised data storage and distribution
+Swarm - 去中心化数据存储和分发
 ================================================================================
 
-Swarm is a peer to peer data sharing network in which files are addressed by the hash of their content. Similar to Bittorrent, it is possible to fetch the data from many nodes at once and as long as a single node hosts a piece of data, it will remain accessible everywhere. This approach makes it possible to distribute data without having to host any kind of server - data accessibility is location independent.
+Swarm是一个点到点数据共享网络，文件会由它们的内容哈希作为地址。像Bittorrent一样，可以从很多节点同时获取数据，每个节点只提供一部分数据，从任何地点都可以访问。这种方法使不使用任何服务器就可以分发数据，数据访问也不依赖位置。
 
-Other nodes in the network can be incentivised to replicate and store the data themselves, obviating the need for hosting services when the original nodes are not connected to the network.
+网络中的其他节点能够被激励来复制和存储数据，从而免除当原始节点没有接入网络时对托管服务的需要。
 
-
-Whisper - Decentralised messaging
+Whisper - 去中心化消息
 ================================================================================
 
-A protocol for private, secure communication directly between nodes.
+一个允许节点间直接进行私密、安全通信的协议。
 
 --------
 
-Furthermore, standard contracts are being created to make the development and usage of distributed applications easier:
+而且，一些标准的合约也已经被创建出来，使开发和使用分布式应用程序变得简单：
 
-Name registry
+名称注册
 ================================================================================
 
-Because dapps can be stored anywhere, including the Swarm network, the name registry maps names to their content or location. This is a decentralised alternative to the Domain Name System (DNS).
+由于Dapp可以被保存到任何地方，包含Swarm网络，名称注册可以将名称和它们的内容或地址进行映射。这其实就是一种去中心化的域名系统（DNS）。
 
-See https://github.com/ethereum/EIPs/issues/26
+参考 https://github.com/ethereum/EIPs/issues/26
 
-Contract registry
+合约注册
 ================================================================================
 
-To publish the source code of a specific contract, its address has to be mapped to it. The contract registry stores this mapping. Users can then look up this mapping and verify the contract byte code.
+要发布特定合约的源代码，就必须要映射到它的地址。合约注册服务保存了这些映射。用户可以查找这个映射来校验合约代码。
 
-See
+参考
+
 * global registrar code
 * namereg API
