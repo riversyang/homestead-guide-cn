@@ -81,3 +81,7 @@
 - `tflux99 <https://github.com/tflux99>`_
 - `Tim H <https://github.com/hobti01>`_
 - `xyzether <https://github.com/xyzether>`_
+
+中文版翻译：
+
+- `Rivers Yang <https://github.com/riversyang>`_

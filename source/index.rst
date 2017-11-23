@@ -15,7 +15,7 @@
 
 这份参考文档是以太坊 :ref:`community` 的志愿者们经年累月持续合作的产物。尽管还没有得到 :ref:`foundation` 的正式认证，我们仍然希望你发现它是很有用的，我们也衷心地欢迎新的 :ref:`contributors`。
 
-这份中文版文档由 `Rivers Yang <https://github.com/riversyang>`_ 翻译。
+这份中文版文档由 `Rivers Yang <https://github.com/riversyang>`_ 翻译制作。
 
 目录
 ===============================================================================
