@@ -30,20 +30,11 @@
    名声（reputation）
       一个被其他实体所相信 (1) 有能力完成某项任务， (2) 在某些情况下值得信任（例如即使有短期获益的可能，也不会背叛其他人）的身份所拥有的财产（所有物）。
 
-   escrow
-      If two mutually-untrusting entities are engaged in commerce, they 
-      may wish to pass funds through a mutually trusted third party and 
-      instruct that party to send the funds to the payee only when 
-      evidence of product delivery has been shown. This reduces the risk 
-      of the payer or payee committing fraud. Both this construction and 
-      the third party is called escrow.
+   第三方监管（escrow）
+      如果两个互不信任的实体有意进行交易，他们也许会希望通过一个他们分别信任的第三方来处理资金转移；只有当产品交付的证明确认之后，资金才会被划转给收款方。这降低了付款方或者收款方进行欺诈的风险。这个过程和这个第三方就被叫做escrow。
 
-   deposit
-      Digital property placed into a contract involving another party 
-      such that if certain conditions are not satisfied that property is 
-      automatically forfeited and either credited to a counterparty as 
-      insurance against the conditions, or destroyed (= burnt = equally 
-      distributed) or donated to some charitable funds.
+   保证金（deposit）
+      一些数字资产可以被加入一个合约，并在合约中包含另一方；当一个特定的条件无法达成时，这些数字资产会自动丧失，被奖励给认定这个条件的另一方，或者销毁掉（= 消费掉 = 被分发出去），或者被捐赠给一些信托基金。这些数字资产就是所谓的押金。
 
    web of trust
       The idea that if A highly rates B, and B highly rates C, then A is 
