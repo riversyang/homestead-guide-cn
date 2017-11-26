@@ -36,46 +36,20 @@
    保证金（deposit）
       一些数字资产可以被加入一个合约，并在合约中包含另一方；当一个特定的条件无法达成时，这些数字资产会自动丧失，被奖励给认定这个条件的另一方，或者销毁掉（= 消费掉 = 被分发出去），或者被捐赠给一些信托基金。这些数字资产就是所谓的押金。
 
-   web of trust
-      The idea that if A highly rates B, and B highly rates C, then A is 
-      likely to trust C. Complicated and powerful mechanisms for 
-      determining the reliability of specific individuals in specific 
-      concepts can theoretically be gathered from this principle.
+   信任网络（web of trust）
+      这是一种设想：如果A高度认可B，并且B高度认可C，那么A可以信任C。基于这种原理，从理论上讲，判断特定概念中的特定个体间的可靠性的更复杂、更有效的算法，是可以被设计出来的。
 
-   incentive compatibility
-      A protocol is incentive-compatible if everyone is better off 
-      "following the rules" than attempting to cheat, at least unless a 
-      very large number of people agree to cheat together at the same 
-      time (collusion).
+   激励相融（incentive compatibility）
+      这是一种协议，如果任何人想要“不遵守规则”来尝试欺诈，那么除非大多数人都在同时同意这种欺诈（共谋），否则无法达成。
 
-   collusion
-      In an incentivized protocol scenario, when a number of participants 
-      *play together* (conspire) to game the rules to their own benefit.
+   共谋（collusion）
+      指在一种激励性的协议下，一部分参与者 *一起假扮* （密谋）基于规则为他们自己牟利。
 
-   token system
-      A fungible virtual good that can be traded. More formally, a token 
-      system is a database mapping addresses to numbers with the property 
-      that the primary allowed operation is a transfer of N tokens from 
-      A to B, with the conditions that N is non-negative, N is not greater 
-      than A's current balance, and a document authorizing the transfer is 
-      digitally signed by A. Secondary "issuance" and "consumption" 
-      operations may also exist, transaction fees may also be collected, 
-      and simultaneous multi-transfers with many parties may be possible. 
-      Typical use cases include currencies, cryptographic tokens inside of 
-      networks, company shares and digital gift cards.
+   代币系统（token system）
+      一种可以被交易的不可替换的虚拟货物。更正规的讲，一个代币系统就是一个将许多资产映射为地址的数据库。其中所允许的主要操作就是N个代币由A转移到B，N不能为负数，N不大于A的余额，并有一份文档记录这个由A签名的转移授权。此外，类似于“保险”和“消费”的操作也是可以存在的，交易费会被收取，多个实体间同时发生的多重交易也是可能的。典型的使用场景包含货币、网络中的加密代币、企业股份和数字礼品卡。
 
-   block
-      A block is a package of data that contains zero or more transactions, 
-      the hash of the previous block ("parent"), and optionally other data. 
-      The total set of blocks, with every block except for the initial 
-      "genesis block" containing the hash of its parent, is called the 
-      blockchain and contains the entire transaction history of a network. 
-      Note that some blockchain-based cryptocurrencies use the word "ledger" 
-      instead of blockchain; the two are roughly equivalent, although in 
-      systems that use the term "ledger" each block generally contains a 
-      full copy of the current state (e.g. currency balances, partially 
-      fulfilled contracts, registrations) of every account allowing users 
-      to discard outdated historical data.
+   区块（block）
+      一个区块就是一个数据包。包含了若干交易、前一区块（父区块）的哈希和其他可选数据。所有区块的总和就叫做区块链，包含了网络中所有交易的历史；除了最开始的“创世区块（genesis block）”以外，每个区块都包含一个它父区块的哈希。一些基于区块链的加密货币使用“账本（ledger）”一词，而不是区块链；但他们大体上是等价的。不过，在那些使用”账本“术语的系统中，每个区块一般会包含一个所有账户当前状态的完整拷贝（比如货币余额、部分满足的合约、登记项目等），来允许用户丢弃过时的历史数据。
 
 .. _dapp:
 
