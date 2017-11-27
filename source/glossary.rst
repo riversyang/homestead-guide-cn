@@ -54,71 +54,38 @@
 .. _dapp:
 
    dapp
-      Đapp
-      Stands for "decentralized application". Some say it is pronounced 
-      Ethapp due to the use of the `uppercase eth letter Ð <gl:eth-letter>`_.
+      即Đapp，就是“去中心化应用程序”。因为使用了 `大写的eth字母Ð <geth-letter_>`_ ，也可以把它读作Ethapp。
 
-   address
-      An Ethereum address represents an account. For EOA_, the address is 
-      derived as the last 20 bytes of the public key controlling the 
-      account, e.g., ``cd2a3d9f938e13cd947ec05abc7fe734df8dd826``. This is 
-      a hexadecimal_ format (base 16 notation), which is often indicated 
-      explicitly by appending ``0x`` to the address. Web3.js and console 
-      functions accept addresses with or  without this prefix but for 
-      transparency we encourage their use. Since each byte of the address 
-      is represented by 2 hex characters, a prefixed address is  42 
-      characters long. Several apps and APIs are also meant to implement 
-      the new `checksum-enabled address scheme <https://github.com/ethereum/EIPs/issues/55>`_ 
-      introduced in the Mist Ethereum wallet as of version 0.5.0.
+   地址（address）
+      一个以太坊地址代表了一个账户。对于 EOA_ ，地址是由控制账户的公钥的最后20字节获得的，例如 ``cd2a3d9f938e13cd947ec05abc7fe734df8dd826`` 。这是个 `16进制 <hexadecimal_>`_ 格式，一般更明确地以 ``0x`` 作为前缀。在Web3.js和控制台函数中使用地址时可以不加前缀，但我们推荐使用它们。由于每字节地址由两个16进制字符标示，所以加上前缀的地址长度就是42字节。很多应用和API都实现了从Mist以太坊钱包0.5.0版本开始引入的新的 `可校验地址规则（checksum-enabled address scheme） <https://github.com/ethereum/EIPs/issues/55>`_ 。
 
 .. _hexadecimal:
 
-   hexadecimal
-      Common representation format for byte sequencing. Its advantage is 
-      that values are represented in a compact format using two characters 
-      per byte (the characters ``[0-9][a-f]``).
+   16进制（hexadecimal）
+      表示字节序列的一般格式。它的优点是可以使用两个字符（字符 ``[0-9][a-f]`` ）来简洁地表示一字节数据的值。
 
-   ether
-      Ether is the name of the currency used within Ethereum. It is used 
-      to pay for computations within the EVM. Ambiguously, ether is also 
-      the name of a unit in the system;
+   以太币（ether）
+      以太币是以太坊中所使用的货币的名称。它用来支付EVM中的计算费用。此外略有歧义的，它也是系统中一个计量单位的名称。
 
 .. _EOA:
 
-   EOA
-      Externally Owned Account. An account controlled by a private key. 
-      If you own the private key associated with the EOA you have the 
-      ability to send ether and messages from it. Contract accounts also 
-      have an address, see :ref:`Accounts`. EOAs and contract accounts 
-      may be combined into a single account type during Serenity.
+   外部账户（EOA）
+      即Externally Owned Account，一个由唯一私钥控制的账户。如果你拥有一个EOA的私钥，你就可以使用它来发送以太币和消息。合约账户也有一个地址，参考 :ref:`Accounts` 。从Serenity版本开始，EOA和合约账户可以组合到同一个账户中。
 
 .. _gas:
 
-   gas
-      Name for the `cryptofuel` that is consumed when code is executed 
-      by the EVM. The gas is paid for execution fee for every operation 
-      made on an Ethereum blockchain.
+   气（gas）
+      即所谓 `加密燃油（cryptofuel）` 的名称，由EVM在执行代码时所消耗。气被用来支付以太坊区块链上的每个执行所需的费用。
 
 .. _gas limit:
 
-   gas limit
-      Gas limit can apply to both individual transactions, see 
-      `transaction gas limit <transaction-gas-limit_>`_ and to blocks, 
-      `block-gas-limit`. For individual transactions, the gas limit 
-      represents the maximum amount of gas you indicate you are willing 
-      to pay for a contract execution transaction. It is meant to 
-      protect users from getting their ether depleted when trying to 
-      execute buggy or malicious contracts. The block gas limit 
-      represents the maximum cumulative gas used for all the transactions 
-      in a block. With the launch of Homestead, the block gas limit floor 
-      will increase from 3,141,592 gas to 4,712,388 gas (~50% increase).
+   气的上限（gas limit）
+      气的上限可以被应用到单独的交易中，参考 `气价 <transaction-gas-limit_>`_ ，也可以被用在区块中 `block-gas-limit` 。对于单独的交易，气的上限表示了你希望为执行合约的交易所支付的最大的气的数量。它是为了保护用户，使他们的以太币不会在尝试执行一个大任务或者恶意合约时被花光。区块的气上限，代表了区块中所有交易的气的累积。随着Homestead的发布，区块的气上限从3,141,592提高到4,712,388（大约增加了50%）。
 
 .. _transaction-gas-limit:
 
-   gas price
-      Price in ether of one unit of gas specified in a transaction. With 
-      the launch of Homestead, the default gas price reduces from 50 
-      shannon to 20 shannon (~60% reduction).
+   气价（gas price）
+      即在交易中指定的每单位气所对应的以太币价格。随着Homestead的发布，默认的气价从50 shannon降低到20 shannon（大约降低了60%）。
 
    transaction
       The signed data package that stores a message to be sent from an 
