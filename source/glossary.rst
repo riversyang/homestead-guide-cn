@@ -87,127 +87,71 @@
    气价（gas price）
       即在交易中指定的每单位气所对应的以太币价格。随着Homestead的发布，默认的气价从50 shannon降低到20 shannon（大约降低了60%）。
 
-   transaction
-      The signed data package that stores a message to be sent from an 
-      externally owned account. Simply put, a transaction describes a 
-      transfer of information from an EOA to another EOA or a contract 
-      account.
+   交易（transaction）
+      一个由外部账户发出的签名数据包，其中保存一个消息。一个交易就是从一个外部账户到另一个外部账户或合约账户的信息转移。
 
-   message
-      A data transfer mechanism contracts use to communicate with other 
-      contracts. Messages can also be described as virtual objects that 
-      are never serialized and exist only in the Ethereum execution 
-      environment.
+   消息（message）
+      合约与合约之间进行数据传输的一种机制。消息也可以被描述为一种虚拟对象，它不会被序列化，并且仅存在于以太坊执行环境中。
 
    Web3
-      The exact definition of the Web3 paradigm is still taking form, 
-      but it generally refers to the phenomenon of increased 
-      connectedness between all kinds of devices, decentralization of 
-      services and applications, semantic storage of information online 
-      and application of artificial intelligence to the web.
-
-   DAO
-      See Decentralized Autonomous Organization.
+      Web3的确切定义仍在被讨论，但它一般是指由日益增长的各种可连接设备、去中心化服务和应用程序、在线信息的逻辑存储和人工智能应用程序所组成的网络。
 
    epoch
-      Epoch is the interval between each regeneration of the DAG used as 
-      seed by the PoW algorithm Ethash. The epoch in specified as 30000 
-      blocks.
+      Epoch是DAG的生成周期，DAG是PoW算法Ethash所使用的种子。Epoch被指定为30000个区块。（即每隔30000个区块需要重新生成DAG，译者注。）
 
-   elliptic curve (cryptography)
-      Refers to an approach to public-key cryptography based on the 
-      algebraic structure of elliptic curves over finite fields. 
-      See `elliptic curve cryptography <https://en.wikipedia.org/wiki/Elliptic_curve_cryptography>`_.
+   椭圆曲线（elliptic curve，密码学）
+      一个基于椭圆曲线代数结构的公钥密码学算法。参见 `椭圆曲线加密 <https://en.wikipedia.org/wiki/Elliptic_curve_cryptography>`_ 。
 
-   wallet
-      A wallet, in the most generic sense, refers to anything that can 
-      store ether or any other crypto token. In the crypto space in 
-      general, the term wallet is used to mean anything from a single 
-      private/public key pair (like a single paper wallet) all the way 
-      to applications that manage multiple key pairs, like the Mist 
-      Ethereum wallet.
+   钱包（wallet）
+      一般意义上说，钱包就是任何可以保存以太币或其他加密货币的载体。在加密货币领域，钱包一般是指从可以保存单一公私钥对到管理多个密钥对的任何载体，比如Mist以太坊钱包。
 
-   contract
-      A persistent piece of code on the Ethereum blockchain that 
-      encompasses a set of data and executable functions. These functions 
-      execute when Ethereum transactions are made to them with certain 
-      input parameters. Based on the input parameters, the functions will 
-      execute and interact with data within and outside of the contract.
+   合约（contract）
+      以太坊区块链上的一些持久化的代码，包含可执行函数的数据。当包含特定输入参数的以太坊交易发生时，这些函数可以运行。函数可以基于输入参数与合约内外的数据进行交互。
 
-   suicide
-      See self-destruct. ``selfdestruct`` acts as an alias to the 
-      deprecated ``suicide`` terminology in accordance with 
-      `EIP 6 \- Renaming SUICIDE OPCODE <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-6.md>`_.
+   自杀（suicide）
+      参考自毁。依照 `EIP 6 \- Renaming SUICIDE OPCODE <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-6.md>`_ ``自杀（suicide）`` 已不推荐使用。``自毁（selfdestruct）`` 是与其等价的术语。
 
-   selfdestruct
-      A global variable in the Solidity language that allows you to 
-      `\"destroy the current contract, sending its funds to the given 
-      address\" <https://solidity.readthedocs.org/en/latest/miscellaneous.html#global-variables>`_. 
-      ``selfdestruct`` acts as an alias to the deprecated ``suicide`` 
-      terminology in accordance with `EIP 6 \- Renaming SUICIDE OPCODE <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-6.md>`_. 
-      It frees up space on the blockchain and prevents future execution 
-      of the contract. The contract's address will still persist, but 
-      ether sent to it will be lost forever. The possibility to kill a 
-      contract has to be implemented by the contract creator him/herself 
-      using the Solidity ``selfdestruct`` function.
+   自毁（selfdestruct）
+      Solidity语言中的一个全局变量，允许你`“销毁当前合约，把它的资金发送到给定的地址上” <https://solidity.readthedocs.org/en/latest/miscellaneous.html#global-variables>`_ ，是已不推荐使用的术语自杀（suicide）的同义词。它会释放在区块链上的空间，并防止合约再被执行。合约的地址仍然回存在，但发送到其上的以太币会永远丢失。合约的创建者可以使用Solidity的 ``selfdestruct`` 函数来删掉合约。
 
-   transaction fee
-      Also known as gas cost, it is the amount of ether that the miners 
-      will charge for the execution of your transaction.
+   交易费（transaction fee）
+      也就是气费（gas cost），是为了执行你的交易所需要支付给矿工们的以太币的数量。
 
-   mining
-      The process of verifying transactions and contract execution on the 
-      Ethereum blockchain in exchange for a reward in ether with the mining 
-      of every block.
+   挖矿（mining）
+      在以太坊区块链上校验交易和合约的执行（挖到区块），以此来交换一个以以太币为单位的奖励的过程。
 
-   mining pool
-      The pooling of resources by miners, who share their processing 
-      power over a network, to split the reward equally, according to the 
-      amount of work they contributed to solving a block.
+   矿池（mining pool）
+      一个由矿工所组成的资源池，它们通过一个网络共享处理能力，依照解决一个区块所贡献的工作量分配收到的奖励。
 
-   mining reward
-      The amount of cryptographic tokens (in this case ether) that is 
-      given to the miner who mined a new block.
+   挖矿奖励（mining reward）
+      挖到一个新区块的矿工会被给予的加密货币（在这里是以太币）奖励。
 
-   state
-      Refers to a snapshot of all balances and data at a particular point 
-      in time on the blockchain, normally referring to the condition at a 
-      particular block.
+   状态（state）
+      区块链上所有余额和数据在某个时间点的快照，一般指某个特定区块的状况。
 
-   blockchain
-      An ever-extending series of data blocks that grows as new transactions 
-      are confirmed as part of a new block. Each new block is chained to 
-      the existing blockchain by a cryptographic proof-of-work.
+   区块链（blockchain）
+      一个永远增长的数据区块序列。当一个新交易被作为一个新区块的一部分被确认的时候，它会得以增长。每个新区块都会基于一个密码学的工作量证明（PoW）而添加到当前区块链的尾部。
 
-   peer
-      Other computers on the network also running an Ethereum node (Geth) 
-      with an exact copy of the blockchain that you have.
+   端点（peer）
+      网络上其他也在运行以太坊节点（Geth）的计算机，和你一样，它们也都有一个准确的区块链拷贝。
 
-   signing
-      Producing a piece of data from the data to be signed using your 
-      private key, to prove that the data originates from you.
+   签名（signing）
+      用你的私钥生成一些表示签名的数据，来证明数据的原始拥有者是你。
 
-   discovery (peer)
-      The process of 'gossiping' with other nodes in the network to find 
-      out the state of other nodes on the network.
+   发现（端点）
+      与网络中的其他‘攀谈’的过程，以此来获取其他节点的状态。
 
-   gas price oracle
-      A helper function of the Geth client that tries to find an 
-      appropriate default gas price when sending transactions.
+   权威气价（gas price oracle）
+      一个Geth客户端的辅助函数，在发送交易时可以找到一个合适的默认气价。
 
-   light client
-      A client program that allows users in low-capacity environments to 
-      still be able to execute and check the execution of transactions 
-      without needing to run a full Ethereum node (Geth).
+   轻客户端（light client）
+      允许用户在一个低容量环境中执行和检查交易执行，而不用去运行一个以太坊全节点（Geth）的客户端程序。
 
    etherbase
-      It is the default name of the account on your node that acts as 
-      your primary account. If you do mining, mining rewards will be 
-      credited to this account.
+      你的节点上的账户的默认名称，它会作为你的主账户。如果你进行挖矿，挖矿奖励会被存入这个账户。
 
    coinbase
-      Coinbase is analogous to etherbase, but is a more generic term 
-      for all cryptocurrency platforms.
+      一个与etherbase类似的概念，但也是个所有加密货币平台所通用的术语。
 
    balance
       The amount of cryptocurrency (in this case) belonging to an account.
