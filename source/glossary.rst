@@ -153,31 +153,25 @@
    coinbase
       一个与etherbase类似的概念，但也是个所有加密货币平台所通用的术语。
 
-   balance
-      The amount of cryptocurrency (in this case) belonging to an account.
+   余额（balance）
+      属于一个账户的加密货币（在现在这个事例里）的数量。
 
    solidity
-      Solidity is a high-level language whose syntax is similar to that 
-      of JavaScript and it is designed to compile to code for the 
-      Ethereum Virtual Machine.
+      Solidity是一个高级开发语言，语法规则接近Javascript。它被设计用来编译以太坊虚拟机的代码。
 
    serpent
-      Serpent is a high-level language whose syntax is similar to that of 
-      Python and it is designed to compile to code for the Ethereum 
-      Virtual Machine.
+      Serpent是一种高级开发语言，语法规则接近Python。它被设计用来编译以太坊虚拟机的代码。
 
    EVM
-      Ethereum Virtual Machine, the decentralized computing platform 
-      which forms the core of the Ethereum platform.
+      即以太坊虚拟机（Ethereum Virtual Machine），它是构成以太坊平台的去中心化核心计算平台。
 
-   virtual machine
+   虚拟机（virtual machine）
       In computing, it refers to an emulation of a particular computer 
       system.
+      在计算机领域，它指一种对特定的计算机系统的模拟。
 
-   peer to peer network
-      A network of computers that are collectively able to perform 
-      functionalities normally only possible with centralized, 
-      server-based services.
+   端到端网络（peer to peer network，P2P网络）
+      一个由计算机组成的网络，可以完成那些仅可能由中心化的、基于服务器的服务所完成的功能。
 
    decentralization
       The concept of moving the control and execution of computational 
