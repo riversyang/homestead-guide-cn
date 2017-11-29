@@ -1,6 +1,9 @@
+.. _about:
+
 ***************************************
 Homestead文档计划
 ***************************************
+
 |Gitter|
 
 .. |Gitter| image:: img/homestead-guide.svg

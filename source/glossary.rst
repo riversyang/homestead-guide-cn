@@ -8,431 +8,423 @@
 .. _geth-letter:
 
    Đ
-      Đ, `D with stroke <https://en.wikipedia.org/wiki/D_with_stroke>`_, is used in Old English, Middle English, Icelandic, and Faroese to stand for an uppercase letter "Eth". It is used in words like ĐEV or Đapp (decentralized application), where the Đ is the Norse letter "eth". The uppercase eth (Ð) is also used to symbolize the cryptocurrency Dogecoin.
+      Đ， `加了横线的D <https://en.wikipedia.org/wiki/D_with_stroke>`_ 是在古英语、中世纪英语以及冰岛语、法罗斯群岛语中的一个大写字母"Eth"。它被用在像ĐEV或Đapp（去中心化应用）这样的词中，在这里，Đ是一个斯堪的纳维亚语的字母"eth"。大写的eth（Đ）也被用来做加密货币Dogecoin（Doge币）的象征。
 
 .. _dec-app:
 
-   decentralized application (= dapp_)
-      Service that operates without a central trusted party. An application  that enables direct interaction/agreements/communication between end users and/or resources without a middleman. See :ref:`dapps`.
+   去中心化应用 (= dapp_)
+      脱离中心化的信任机构而运作的服务。一种允许脱离中间人而使最终用户/资源可以直接进行互动、达成协议或交换信息的应用程序。参考 :ref:`dapps` 。
 
    DAO
-      decentralized autonomous organization
-      DAO is type of contract on the blockchain (or a suite of contracts) that is supposed to codify, enforce or automate the workings of an organization including governance, fund-raising, operations, spending and expansion.
+      去中心化自治组织。DAO是区块链上的一种类型的合约（或者一套合约），它可以制定规则、强制执行或自动化包括组织管理、资金筹措、实操、开销和扩张在内的一些组织级的工作。
 
-   identity
-      A set of cryptographically verifiable interactions that have the property that they were all created by the same person.
+   身份（identity）
+      由同一个人创建的一组可以通过某种方式进行验证的交互。
 
-   digital identity
-      The set of cryptographically verifiable transactions signed by the same public key define the digital identity's behavior. In many real world scenarios (voting) it is desireable that digital identities coincide with real world identities. Ensuring this without violence is an unsolved problem.
+   数字身份（digital identity）
+      一组使用相同公钥签名的、可以进行验证的交易，定义了数字身份的行为。在很多真实场景（比如投票）会希望数字身份可以和真实身份相符。如何非暴力地确保这一点，是个仍然未被解决的问题。
 
-   unique identity
-      A set of cryptographically verifiable interactions that have the property that they were all created by the same person, with the added constraint that one person cannot have multiple unique identities.
+   唯一身份（unique identity）
+      由同一个人创建的一组可以通过某种方式进行验证的交互，外加一个限定：一个人不会同时具有多个身份。
 
-   reputation
-      The property of an identity that other entities believe that identity to be either (1) competent at some specific task, or (2) trustworthy in some context, i.e., not likely to betray others even if short-term profitable.
+   名声（reputation）
+      一个被其他实体所相信 (1) 有能力完成某项任务， (2) 在某些情况下值得信任（例如即使有短期获益的可能，也不会背叛其他人）的身份所拥有的财产（所有物）。
 
-   escrow
-      If two mutually-untrusting entities are engaged in commerce, they may wish to pass funds through a mutually trusted third party and instruct that party to send the funds to the payee only when evidence of product delivery has been shown. This reduces the risk of the payer or payee committing fraud. Both this construction and the third party is called escrow.
+   第三方监管（escrow）
+      如果两个互不信任的实体有意进行交易，他们也许会希望通过一个他们分别信任的第三方来处理资金转移；只有当产品交付的证明确认之后，资金才会被划转给收款方。这降低了付款方或者收款方进行欺诈的风险。这个过程和这个第三方就被叫做escrow。
 
-   deposit
-      Digital property placed into a contract involving another party such that if certain conditions are not satisfied that property is automatically forfeited and either credited to a counterparty as insurance against the conditions, or destroyed (= burnt = equally distributed) or donated to some charitable funds.
+   保证金（deposit）
+      一些数字资产可以被加入一个合约，并在合约中包含另一方；当一个特定的条件无法达成时，这些数字资产会自动丧失，被奖励给认定这个条件的另一方，或者销毁掉（= 消费掉 = 被分发出去），或者被捐赠给一些信托基金。这些数字资产就是所谓的押金。
 
-   web of trust
-      The idea that if A highly rates B, and B highly rates C, then A is likely to trust C. Complicated and powerful mechanisms for determining the reliability of specific individuals in specific concepts can theoretically be gathered from this principle.
+   信任网络（web of trust）
+      这是一种设想：如果A高度认可B，并且B高度认可C，那么A可以信任C。基于这种原理，从理论上讲，判断特定概念中的特定个体间的可靠性的更复杂、更有效的算法，是可以被设计出来的。
 
-   incentive compatibility
-      A protocol is incentive-compatible if everyone is better off "following the rules" than attempting to cheat, at least unless a very large number of people agree to cheat together at the same time (collusion).
+   激励相融（incentive compatibility）
+      这是一种协议，如果任何人想要“不遵守规则”来尝试欺诈，那么除非大多数人都在同时同意这种欺诈（共谋），否则无法达成。
 
-   collusion
-      In an incentivized protocol scenario, when a number of participants *play together* (conspire) to game the rules to their own benefit.
+   共谋（collusion）
+      指在一种激励性的协议下，一部分参与者 *一起假扮* （密谋）基于规则为他们自己牟利。
 
-   token system
-      A fungible virtual good that can be traded. More formally, a token system is a database mapping addresses to numbers with the property that the primary allowed operation is a transfer of N tokens from A to B, with the conditions that N is non-negative, N is not greater than A's current balance, and a document authorizing the transfer is digitally signed by A. Secondary "issuance" and "consumption" operations may also exist, transaction fees may also be collected, and simultaneous multi-transfers with many parties may be possible. Typical use cases include currencies, cryptographic tokens inside of networks, company shares and digital gift cards.
+   代币系统（token system）
+      一种可以被交易的不可替换的虚拟货物。更正规的讲，一个代币系统就是一个将许多资产映射为地址的数据库。其中所允许的主要操作就是N个代币由A转移到B，N不能为负数，N不大于A的余额，并有一份文档记录这个由A签名的转移授权。此外，类似于“保险”和“消费”的操作也是可以存在的，交易费会被收取，多个实体间同时发生的多重交易也是可能的。典型的使用场景包含货币、网络中的加密代币、企业股份和数字礼品卡。
 
-   block
-      A block is a package of data that contains zero or more transactions, the hash of the previous block ("parent"), and optionally other data. The total set of blocks, with every block except for the initial "genesis block" containing the hash of its parent, is called the blockchain and contains the entire transaction history of a network. Note that some blockchain-based cryptocurrencies use the word "ledger" instead of blockchain; the two are roughly equivalent, although in systems that use the term "ledger" each block generally contains a full copy of the current state (e.g. currency balances, partially fulfilled contracts, registrations) of every account allowing users to discard outdated historical data.
+   区块（block）
+      一个区块就是一个数据包。包含了若干交易、前一区块（父区块）的哈希和其他可选数据。所有区块的总和就叫做区块链，包含了网络中所有交易的历史；除了最开始的“创世区块（genesis block）”以外，每个区块都包含一个它父区块的哈希。一些基于区块链的加密货币使用“账本（ledger）”一词，而不是区块链；但他们大体上是等价的。不过，在那些使用”账本“术语的系统中，每个区块一般会包含一个所有账户当前状态的完整拷贝（比如货币余额、部分满足的合约、登记项目等），来允许用户丢弃过时的历史数据。
 
 .. _dapp:
 
    dapp
-      Đapp
-      Stands for "decentralized application". Some say it is pronounced Ethapp due to the use of the `uppercase eth letter Ð <gl:eth-letter>`_.
+      即Đapp，就是“去中心化应用程序”。因为使用了 `大写的eth字母Ð <geth-letter_>`_ ，也可以把它读作Ethapp。
 
-   address
-      An Ethereum address represents an account. For EOA_, the address is derived as the last 20 bytes of the public key controlling the account, e.g., ``cd2a3d9f938e13cd947ec05abc7fe734df8dd826``. This is a hexadecimal_ format (base 16 notation), which is often indicated explicitly by appending ``0x`` to the address. Web3.js and console functions accept addresses with or  without this prefix but for transparency we encourage their use. Since each byte of the address is represented by 2 hex characters, a prefixed address is  42 characters long. Several apps and APIs are also meant to implement the new `checksum-enabled address scheme <https://github.com/ethereum/EIPs/issues/55>`_  introduced in the Mist Ethereum wallet as of version 0.5.0.
+   地址（address）
+      一个以太坊地址代表了一个账户。对于 EOA_ ，地址是由控制账户的公钥的最后20字节获得的，例如 ``cd2a3d9f938e13cd947ec05abc7fe734df8dd826`` 。这是个 `16进制 <hexadecimal_>`_ 格式，一般更明确地以 ``0x`` 作为前缀。在Web3.js和控制台函数中使用地址时可以不加前缀，但我们推荐使用它们。由于每字节地址由两个16进制字符标示，所以加上前缀的地址长度就是42字节。很多应用和API都实现了从Mist以太坊钱包0.5.0版本开始引入的新的 `可校验地址规则（checksum-enabled address scheme） <https://github.com/ethereum/EIPs/issues/55>`_ 。
 
 .. _hexadecimal:
 
-   hexadecimal
-      Common representation format for byte sequencing. Its advantage is that values are represented in a compact format using two characters per byte (the characters ``[0-9][a-f]``).
+   16进制（hexadecimal）
+      表示字节序列的一般格式。它的优点是可以使用两个字符（字符 ``[0-9][a-f]`` ）来简洁地表示一字节数据的值。
 
-   ether
-      Ether is the name of the currency used within Ethereum. It is used to pay for computations within the EVM. Ambiguously, ether is also the name of a unit in the system;
+   以太币（ether）
+      以太币是以太坊中所使用的货币的名称。它用来支付EVM中的计算费用。此外略有歧义的，它也是系统中一个计量单位的名称。
 
 .. _EOA:
 
-   EOA
-      Externally Owned Account. An account controlled by a private key. If you own the private key associated with the EOA you have the ability to send ether and messages from it. Contract accounts also have an address, see :ref:`Accounts`. EOAs and contract accounts may be combined into a single account type during Serenity.
+   外部账户（EOA）
+      即Externally Owned Account，一个由唯一私钥控制的账户。如果你拥有一个EOA的私钥，你就可以使用它来发送以太币和消息。合约账户也有一个地址，参考 :ref:`Accounts` 。从Serenity版本开始，EOA和合约账户可以组合到同一个账户中。
 
 .. _gas:
 
-   gas
-      Name for the `cryptofuel` that is consumed when code is executed by the EVM. The gas is paid for execution fee for every operation made on an Ethereum blockchain.
-
+   气（gas）
+      即所谓 `加密燃油（cryptofuel）` 的名称，由EVM在执行代码时所消耗。气被用来支付以太坊区块链上的每个执行所需的费用。
 
 .. _gas limit:
 
-   gas limit
-      Gas limit can apply to both individual transactions, see `transaction gas limit <transaction-gas-limit_>`_ and to blocks, `block-gas-limit`. For individual transactions, the gas limit represents the maximum amount of gas you indicate you are willing to pay for a contract execution transaction. It is meant to protect users from getting their ether depleted when trying to execute buggy or malicious contracts. The block gas limit represents the maximum cumulative gas used for all the transactions in a block. With the launch of Homestead, the block gas limit floor will increase from 3,141,592 gas to 4,712,388 gas (~50% increase).
+   气的上限（gas limit）
+      气的上限可以被应用到单独的交易中，参考 `气价 <transaction-gas-limit_>`_ ，也可以被用在区块中 `block-gas-limit` 。对于单独的交易，气的上限表示了你希望为执行合约的交易所支付的最大的气的数量。它是为了保护用户，使他们的以太币不会在尝试执行一个大任务或者恶意合约时被花光。区块的气上限，代表了区块中所有交易的气的累积。随着Homestead的发布，区块的气上限从3,141,592提高到4,712,388（大约增加了50%）。
 
 .. _transaction-gas-limit:
 
-   gas price
-      Price in ether of one unit of gas specified in a transaction. With the launch of Homestead, the default gas price reduces from 50 shannon to 20 shannon (~60% reduction).
+   气价（gas price）
+      即在交易中指定的每单位气所对应的以太币价格。随着Homestead的发布，默认的气价从50 shannon降低到20 shannon（大约降低了60%）。
 
-   transaction
-      The signed data package that stores a message to be sent from an externally owned account. Simply put, a transaction describes a transfer of information from an EOA to another EOA or a contract account.
+   交易（transaction）
+      一个由外部账户发出的签名数据包，其中保存一个消息。一个交易就是从一个外部账户到另一个外部账户或合约账户的信息转移。
 
-   message
-      A data transfer mechanism contracts use to communicate with other contracts. Messages can also be described as virtual objects that are never serialized and exist only in the Ethereum execution environment.
+   消息（message）
+      合约与合约之间进行数据传输的一种机制。消息也可以被描述为一种虚拟对象，它不会被序列化，并且仅存在于以太坊执行环境中。
 
    Web3
-      The exact definition of the Web3 paradigm is still taking form, but it generally refers to the phenomenon of increased connectedness between all kinds of devices, decentralization of services and applications, semantic storage of information online and application of artificial intelligence to the web.
-
-   DAO
-      See Decentralized Autonomous Organization.
+      Web3的确切定义仍在被讨论，但它一般是指由日益增长的各种可连接设备、去中心化服务和应用程序、在线信息的逻辑存储和人工智能应用程序所组成的网络。
 
    epoch
-      Epoch is the interval between each regeneration of the DAG used as seed by the PoW algorithm Ethash. The epoch in specified as 30000 blocks.
+      Epoch是DAG的生成周期，DAG是PoW算法Ethash所使用的种子。Epoch被指定为30000个区块。（即每隔30000个区块需要重新生成DAG，译者注。）
 
-   elliptic curve (cryptography)
-      Refers to an approach to public-key cryptography based on the algebraic structure of elliptic curves over finite fields. See `elliptic curve cryptography <https://en.wikipedia.org/wiki/Elliptic_curve_cryptography>`_.
+   椭圆曲线（elliptic curve，密码学）
+      一个基于椭圆曲线代数结构的公钥密码学算法。参见 `椭圆曲线加密 <https://en.wikipedia.org/wiki/Elliptic_curve_cryptography>`_ 。
 
-   wallet
-      A wallet, in the most generic sense, refers to anything that can store ether or any other crypto token. In the crypto space in general, the term wallet is used to mean anything from a single private/public key pair (like a single paper wallet) all the way to applications that manage multiple key pairs, like the Mist Ethereum wallet.
+   钱包（wallet）
+      一般意义上说，钱包就是任何可以保存以太币或其他加密货币的载体。在加密货币领域，钱包一般是指从可以保存单一公私钥对到管理多个密钥对的任何载体，比如Mist以太坊钱包。
 
-   contract
-      A persistent piece of code on the Ethereum blockchain that encompasses a set of data and executable functions. These functions execute when Ethereum transactions are made to them with certain input parameters. Based on the input parameters, the functions will execute and interact with data within and outside of the contract.
+   合约（contract）
+      以太坊区块链上的一些持久化的代码，包含可执行函数的数据。当包含特定输入参数的以太坊交易发生时，这些函数可以运行。函数可以基于输入参数与合约内外的数据进行交互。
 
-   suicide
-      See self-destruct. ``selfdestruct`` acts as an alias to the deprecated ``suicide`` terminology in accordance with `EIP 6 \- Renaming SUICIDE OPCODE <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-6.md>`_.
+   自杀（suicide）
+      参考自毁。依照 `EIP 6 \- Renaming SUICIDE OPCODE <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-6.md>`_ ``自杀（suicide）`` 已不推荐使用。``自毁（selfdestruct）`` 是与其等价的术语。
 
-   selfdestruct
-      A global variable in the Solidity language that allows you to `\"destroy the current contract, sending its funds to the given address\" <https://solidity.readthedocs.org/en/latest/miscellaneous.html#global-variables>`_. ``selfdestruct`` acts as an alias to the deprecated ``suicide`` terminology in accordance with `EIP 6 \- Renaming SUICIDE OPCODE <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-6.md>`_. It frees up space on the blockchain and prevents future execution of the contract. The contract's address will still persist, but ether sent to it will be lost forever. The possibility to kill a contract has to be implemented by the contract creator him/herself using the Solidity ``selfdestruct`` function.
+   自毁（selfdestruct）
+      Solidity语言中的一个全局变量，允许你`“销毁当前合约，把它的资金发送到给定的地址上” <https://solidity.readthedocs.org/en/latest/miscellaneous.html#global-variables>`_ ，是已不推荐使用的术语自杀（suicide）的同义词。它会释放在区块链上的空间，并防止合约再被执行。合约的地址仍然回存在，但发送到其上的以太币会永远丢失。合约的创建者可以使用Solidity的 ``selfdestruct`` 函数来删掉合约。
 
-   transaction fee
-      Also known as gas cost, it is the amount of ether that the miners will charge for the execution of your transaction.
+   交易费（transaction fee）
+      也就是气费（gas cost），是为了执行你的交易所需要支付给矿工们的以太币的数量。
 
-   mining
-      The process of verifying transactions and contract execution on the Ethereum blockchain in exchange for a reward in ether with the mining of every block.
+   挖矿（mining）
+      在以太坊区块链上校验交易和合约的执行（挖到区块），以此来交换一个以以太币为单位的奖励的过程。
 
-   mining pool
-      The pooling of resources by miners, who share their processing power over a network, to split the reward equally, according to the amount of work they contributed to solving a block.
+   矿池（mining pool）
+      一个由矿工所组成的资源池，它们通过一个网络共享处理能力，依照解决一个区块所贡献的工作量分配收到的奖励。
 
-   mining reward
-      The amount of cryptographic tokens (in this case ether) that is given to the miner who mined a new block.
+   挖矿奖励（mining reward）
+      挖到一个新区块的矿工会被给予的加密货币（在这里是以太币）奖励。
 
-   state
-      Refers to a snapshot of all balances and data at a particular point in time on the blockchain, normally referring to the condition at a particular block.
+   状态（state）
+      区块链上所有余额和数据在某个时间点的快照，一般指某个特定区块的状况。
 
-   blockchain
-      An ever-extending series of data blocks that grows as new transactions are confirmed as part of a new block. Each new block is chained to the existing blockchain by a cryptographic proof-of-work.
+   区块链（blockchain）
+      一个永远增长的数据区块序列。当一个新交易被作为一个新区块的一部分被确认的时候，它会得以增长。每个新区块都会基于一个密码学的工作量证明（PoW）而添加到当前区块链的尾部。
 
-   peer
-      Other computers on the network also running an Ethereum node (Geth) with an exact copy of the blockchain that you have.
+   端点（peer）
+      网络上其他也在运行以太坊节点（Geth）的计算机，和你一样，它们也都有一个准确的区块链拷贝。
 
-   signing
-      Producing a piece of data from the data to be signed using your private key, to prove that the data originates from you.
+   签名（signing）
+      用你的私钥生成一些表示签名的数据，来证明数据的原始拥有者是你。
 
-   discovery (peer)
-      The process of 'gossiping' with other nodes in the network to find out the state of other nodes on the network.
+   发现（端点）
+      与网络中的其他‘攀谈’的过程，以此来获取其他节点的状态。
 
-   gas price oracle
-      A helper function of the Geth client that tries to find an appropriate default gas price when sending transactions.
+   权威气价（gas price oracle）
+      一个Geth客户端的辅助函数，在发送交易时可以找到一个合适的默认气价。
 
-   light client
-      A client program that allows users in low-capacity environments to still be able to execute and check the execution of transactions without needing to run a full Ethereum node (Geth).
+   轻客户端（light client）
+      允许用户在一个低容量环境中执行和检查交易执行，而不用去运行一个以太坊全节点（Geth）的客户端程序。
 
    etherbase
-      It is the default name of the account on your node that acts as your primary account. If you do mining, mining rewards will be credited to this account.
+      你的节点上的账户的默认名称，它会作为你的主账户。如果你进行挖矿，挖矿奖励会被存入这个账户。
 
    coinbase
-      Coinbase is analogous to etherbase, but is a more generic term for all cryptocurrency platforms.
+      一个与etherbase类似的概念，但也是个所有加密货币平台所通用的术语。
 
-   balance
-      The amount of cryptocurrency (in this case) belonging to an account.
+   余额（balance）
+      属于一个账户的加密货币（在现在这个事例里）的数量。
 
    solidity
-      Solidity is a high-level language whose syntax is similar to that of JavaScript and it is designed to compile to code for the Ethereum Virtual Machine.
+      Solidity是一个高级开发语言，语法规则接近Javascript。它被设计用来编译以太坊虚拟机的代码。
 
    serpent
-      Serpent is a high-level language whose syntax is similar to that of Python and it is designed to compile to code for the Ethereum Virtual Machine.
+      Serpent是一种高级开发语言，语法规则接近Python。它被设计用来编译以太坊虚拟机的代码。
 
    EVM
-      Ethereum Virtual Machine, the decentralized computing platform which forms the core of the Ethereum platform.
+      即以太坊虚拟机（Ethereum Virtual Machine），它是构成以太坊平台的去中心化核心计算平台。
 
-   virtual machine
-      In computing, it refers to an emulation of a particular computer system.
+   虚拟机（virtual machine）
+      在计算机领域，它指一种对特定的计算机系统的模拟。
 
-   peer to peer network
-      A network of computers that are collectively able to perform functionalities normally only possible with centralized, server-based services.
+   端到端网络（peer to peer network，即P2P网络）
+      一个由计算机组成的网络，可以完成那些仅可能由中心化的、基于服务器的服务所完成的功能。
 
-   decentralization
-      The concept of moving the control and execution of computational processes away from a central entity.
+   去中心化（decentralization）
+      一种将控制和计算处理的执行从中心化的实体中移出的概念。
 
-   distributed hash table
-      A distributed hash table (DHT) is a class of a decentralized distributed system that provides a lookup service similar to a hash table: (key, value) pairs are stored in a DHT, and any participating node can efficiently retrieve the value associated with a given key.
+   分布式哈希表（Distributed Hash Table，DHT）
+      分布式哈希表是一种去中心化的分布式系统，可以提供类似于哈希表功能的查找服务。DHT中保存的是键、值对，网络中的任何节点都可以通过特定键高效地取得相应的值。
 
-   NAT
-      Network address translation (NAT) is a methodology of remapping one IP address space into another by modifying network address information in Internet Protocol (IP) datagram packet headers while they are in transit across a traffic routing device.
+   网络地址翻译（Network Address Translation，NAT）
+      一种将一个IP地址重映射到其他地址的方法。这是通过在网络路由设备中传输数据包时修改数据包头数据中的网络协议（IP）信息而做到的。
 
    nonce
-      Number Used Once or Number Once. A nonce, in information technology, is a number generated for a specific use, such as session authentication. Typically, a nonce is some value that varies with time, although a very large random number is sometimes used. In general usage, nonce means “for the immediate occasion” or “for now.”
-      In the case of Blockchain Proof of Work scenarios, the hash value, found by a Miner, matching the network's Difficulty thus proving the Block Validity is called Nonce as well.
+      即一次性数字。在信息技术里，nonce就是为了某个特定目的而生成的数字，比如会话验证（session authentication）。典型地，nonce应该是一些随时间而变化的数值，因而有时会使用一个很大的随机数。一般而言，nonce意味着“邻近的时刻”或者“临时”。在区块链的工作量证明场景中，适合当前网络难度来证明区块有效性的那些由矿工找到的哈希值，被称为Nonce。
 
-   proof-of-work
-      Often seen in its abbreviated form "PoW", it refers to a mathematical value that can act as the proof of having solved a resource and time consuming computational problem.
+   工作量证明（proof-of-work）
+      指一个数学上的值，可以证明已经解决了一个消耗资源和时间的计算问题。一般以缩写形式“PoW”出现。
 
-   proof-of-stake
-      An alternative method of mining blocks that require miners to demonstrate their possession of a certain amount of the currency of the network in question. This works on the principle that miners will be disincentivized to try to undermine a network in which they have a stake. PoS is less wasteful than PoW, but is still often used together with it to provide added security to the network.
+   权益证明（proof-of-stake）
+      挖矿操作的一种替代方法，需要矿工通过回答问题的方式证明它们拥有一定量的网络货币。这基于一个原理，就是矿工们不应该会去尝试破坏一个它们拥有权益的网络。权益证明一般以缩写形式“PoS”出现。与PoW相比，PoS可以降低算力的浪费，但它同样也可以给网络提供额外的安全性。
 
    CASPER
-      Casper is a security-deposit based economic consensus protocol. This means that nodes, so called “bonded validators”, have to place a security deposit (an action we call “bonding”) in order to serve the consensus by producing blocks. If a validator produces anything that Casper considers “invalid”, the deposit is forfeited along with the privilege of participating in the consensus process.
+      Casper是一个基于保证金的经济学共识协议。这意味着被称为“bonded validators”的节点，需要为了在通过产生区块而达成共识的时候缴纳一份保证金（我们称之为“bonding”的一种行为）。如果一个验证器（即某个节点）产生了一个被Casper认为“无效”的数据，它就会丧失这个保证金和继续参与共识过程的权力。
 
-   consensus
-      The agreement among all nodes in the network about the state of the Ethereum network.
+   共识（consensus）
+      指网络中所有节点关于以太坊网络状态的一致认同。
 
    homestead
-      Homestead is the second major version release of the Ethereum platform. Homestead includes several protocol changes and a networking change that makes possible further network upgrades: `EIP\-2 Main homestead hardfork changes <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.mediawiki>`_; `EIP\-7 Hardfork EVM update (DELEGATECALL) <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-7.md>`_; `EIP\-8 devp2p forward compatibility <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-8.md>`_. Homestead will launch when block 1,150,000 is reached on the Mainnet. On the Testnet, Homestead will launch at block 494,000.
+      Homestead是以太坊平台的第二个主版本。它包含了很多未来网络升级所需的协议改动和网络改动：`EIP\-2 Main homestead hardfork changes <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.mediawiki>`_ ； `EIP\-7 Hardfork EVM update (DELEGATECALL) <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-7.md>`_ ； `EIP\-8 devp2p forward compatibility <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-8.md>`_ 。他已经在主网络到达1,150,000区块时被引入了。在测试网路中，它是在494,000区块时被引入的。
 
    metropolis
-      The third stage of Ethereum's release. This is the stage when the user interfaces come out (e.g. Mist), including a dapp store, and non-technical users should feel comfortable joining at this point.
+      以太坊的第三个发布版本。这是个用户界面出现的阶段（比如Mist），包括dapp商店。非技术背景的用户也可以在这个时候舒服的加入了。
 
    serenity
-      The fourth stage of Ethereum's release. This is when things are going to get fancy: the network is going to change its mining process from Proof-of-Work to Proof-of-Stake.
+      以太坊的第四个发布阶段。这将是我们希望将网络中的挖矿过程由工作量证明迁移到权益证明的时候。
 
    frontier
-      Ethereum was planned to be released in four major steps with Frontier being the name for the first phase. The Frontier release went live on July 30th, 2015. The command line Frontier phase was mainly meant to get mining operations going with the full reward of 5 ether per block and also to promote the emergence of ether exchanges. Frontier surpassed earlier modest expectations and has nurtured tremendous growth of the ecosystem.
+      以太坊被计划为执行四个主要的阶段，Frontier是第一阶段的名称。Frontier版本已经在2015年7月30日发布。在这个命令行方式的Frontier阶段，每个区块奖励都被定为5以太币，并允许以太币的兑换。Frontier大大超过了早期的预料，使以太坊的生态系统得到了巨大的成长。
 
    olympic
-      The Frontier pre-release, which launched on May 9th 2015. It was meant for developers to help test the limits of the Ethereum blockchain.
+      Frontier的先期发布版本，于2015年5月9日上线。它是为了使开发者可以测试以太坊区块链的各种边界限制。
 
    morden
-      Morden is the first Ethereum alternative testnet. It is expected to continue throughout the Frontier and Homestead era.
+      Morden是以太坊的第一个替代性测试网络。预计它会从Frontier到Homestead阶段一直持续存在。
 
-   testnet
-      A mirror network of the production Ethereum network that is meant for testing. See Morden.
+   测试网络（testnet）
+      为测试目的而存在的以太坊生产环境的镜像网络。参见morden。
 
-   private chain
-      A fully private blockchain is a blockchain where write permissions are kept centralized to one organization.
+   私链（private chain）
+      私链就是一个写入权限中心化地由一个组织所掌握的区块链。
 
-   consortium chain
-      A blockchain where the consensus process is controlled by a pre-selected set of nodes.
+   联盟链（consortium chain）
+      一个共识处理由预设的若干节点所控制的区块链。
 
-   micropayment
-      A micropayment is a financial transaction involving a very small sum of money (<1 USD) and usually one that occurs online.
+   微支付（micropayment）
+      微支付就是经常在线上活动发生的，交易额很小（小于1美元）的财务交易。
 
-   sharding
-      The splitting of the space of possible accounts (contracts are accounts too) into subspaces, for example, based on first digits of their numerical addresses. This allows for contract executions to be executed within 'shards' instead of network wide, allowing for faster transactions and greater scalability.
+   分片（sharding）
+      将可能的账户（合约也属于账户）空间切分为子空间的处理，比如基于它们的数字地址的首数字。这可以使合约在‘片’上执行，而不是在整个网络中，从而使交易更快速完成，并提供了一种更强的可扩展性。
 
-   hash
-      A cryptographic function which takes an input (or 'message') and returns a fixed-size alphanumeric string, which is called the hash value (sometimes called a message digest, a digital fingerprint, a digest or a checksum). A hash function (or hash algorithm) is a process by which a document (i.e. a piece of data or file) is processed into a small piece of data (usually 32 bytes) which looks completely random, and from which no meaningful data can be recovered about the document, but which has the important property that the result of hashing one particular document is always the same. Additionally, it is crucially important that it is computationally infeasible to find two documents that have the same hash. Generally, changing even one letter in a document will completely randomize the hash; for example, the SHA3 hash of "Saturday" is ``c38bbc8e93c09f6ed3fe39b5135da91ad1a99d397ef16948606cdcbd14929f9d``, whereas the SHA3 hash of "Caturday" is ``b4013c0eed56d5a0b448b02ec1d10dd18c1b3832068fbbdc65b98fa9b14b6dbf``. Hashes are usually used as a way of creating a globally agreed-upon identifier for a particular document that cannot be forged.
+   哈希（hash）
+      一个密码学功能，它可以接受一个输入（或‘消息’），产生一个定长的字符串，被称为哈希值（有时也称为消息摘要、数字指纹、摘要或者检查计数）。哈希函数（或哈希算法）是一种将文档（比如一部分数据或文件）变换为一个较小数据（通常是32字节）的处理。哈希值看起来是完全随机的，并且与文档毫无关联的数据，但特定的文档经过哈希处理所得到的值总是一样的。此外最重要的是，要找到两个具有同样哈希值的文档是极为困难的计算处理。一般而言，即使两个文档中只有一个字母的不同，它们也会产生完全不同的哈希值。比如，“Saturday”的SHA3哈希值是 ``c38bbc8e93c09f6ed3fe39b5135da91ad1a99d397ef16948606cdcbd14929f9d`` ，而“Caturday”的SHA3哈希值则是 ``b4013c0eed56d5a0b448b02ec1d10dd18c1b3832068fbbdc65b98fa9b14b6dbf`` 。哈希总是被用做生成某个特定文档的不可伪造的全局唯一标示的方法。
 
-   crypto-fuel
-      Similar to 'gas', referring to the amount of cryptocurrency required to power a transaction.
+   加密燃油（crypto-fuel）
+      就是‘气’，指处理交易所需要的加密货币数量。
 
-   cryptoeconomics
-      The economics of cryptocurrencies.
+   加密经济学（cryptoeconomics）
+      即加密货币的经济学。
 
-   protocol
-      A standard used to define a method of exchanging data over a computer network.
+   协议（protocol）
+      一个用来定义通过计算机网络交换数据的方法的标准。
 
-   block validation
-      The checking of the coherence of the cryptographic signature of the block with the history stored in the entire blockchain.
+   区块认可（block validation）
+      即通过存储在区块链上的历史数据对区块的密码学签名进行合法性校验。
 
-   blocktime
-      The average time interval between the mining of two blocks.
+   区块时间（blocktime）
+      挖矿产生两个区块的平均时间间隔。
 
-   network hashrate
-      The number of hash calculations the network can make per second collectively.
+   网络哈希率（network hashrate）
+      网络中节点每秒可以完成的哈希计算次数总和。
 
-   hashrate
-      The number of hash calculations made per second.
+   哈希率（hashrate）
+      每秒可以完成的哈希计算次数。
 
-   serialization
-      The process of converting a data structure into a sequence of bytes. Ethereum internally uses an encoding format called recursive-length prefix encoding (RLP), described in the `RLP section of the wiki <https://github.com/ethereum/wiki/wiki/RLP>`_.
+   序列化（serialization）
+      把数据结构变换为字节序列的处理。以太坊内部使用一个被成为Recursive-Length Prefix（RLP）编码的格式，在 `wiki的RLP这一节 <https://github.com/ethereum/wiki/wiki/RLP>`_ 中有具体描述。
 
-   double spend
-      A deliberate blockchain fork, where a user with a large amount of mining power sends a transaction to purchase some produce, then after receiving the product creates another transaction sending the same coins to themselves. The attacker then creates a block, at the same level as the block containing the original transaction but containing the second transaction instead, and starts mining on the fork. If the attacker has more than 50% of all mining power, the double spend is guaranteed to succeed eventually at any block depth. Below 50%, there is some probability of success, but it is usually only substantial at a depth up to about 2-5; for this reason, most cryptocurrency exchanges, gambling sites and financial services wait until six blocks have been produced ("six confirmations") before accepting a payment.
+   双花（double spend）
+      一个故意的区块链分叉；一个有大量挖矿算力的用户发送了一个交易来订购一些产出，然后当收到相应的产品之后，创建另一个交易，将与之前交易里的花销等量的代币再发送给自己。攻击者会在与原始交易同级的地方创建一个包含了第二个交易的新区块，然后在这个新的分支上开始挖矿。如果攻击者拥有超过全部挖矿算力50%的算力，就可以确保双花在任何区块深度上都能最终实现。如果攻击者的算力不足50%，那么虽然有可能会实现，但最多只能维持2到5个区块；所以，大多数加密货币交易、对赌网站和财务服务，会等到第六个区块产生才接受一个支付交易。
 
-   SPV client
-    A client that downloads only a small part of the blockchain, allowing users of low-power or low-storage hardware like smartphones and laptops to maintain almost the same guarantee of security by sometimes selectively downloading small parts of the state without needing to spend megabytes of bandwidth and gigabytes of storage on full blockchain validation and maintenance. See light client.
+   SPV客户端（SPV client）
+      一个仅下载区块链的一小部分的客户端，允许用户在低算力或低存储的硬件（比如智能手机和手提电脑）上来获得同样的安全保障，仅在必要的时候下载一部分状态信息。这种客户端不需要花费很高的带宽或存储去校验和维持全部的区块链数据。参考轻客户端。
 
    uncle
-      Uncles are blockchain blocks found by a miner, when a different miner has already found another block for the corresponding place in the blockchain. They are called “stale blocks”. The parent of an Uncle is an ancestor of the inserting block, located at the tip of the blockchain. In contrast to the Bitcoin network, Ethereum rewards stale blocks as well in order to avoid to penalize miners with a bad connection to the network. This is less critical in the Bitcoin network, because the Block Time there is much higher (~10 minutes) than on the Ethereum network (aimed to ~15 seconds).
+      Uncle就是某个矿工在其他矿工已经找到的区块的相同位置找到的区块，它们被称为“stale blocks”。Uncle的父区块是要插入的区块的一个祖先，可以定位到区块链的尖端。与比特币网络不同，为了避免对于那些网络条件欠佳的矿工的惩罚，“stale blocks”也会得到奖励。因为比特币网络的区块时间（约10分钟）比在以太坊网络中（小于15秒）高出很多，所以这个问题在比特币网络中并不严重。
 
    GHOST
-      Greedy Heaviest-Observed Sub-Tree is an alternative chain-selection method that is designed to incentivize stale blocks (uncles) as well, thus reducing the incentive for pool mining. In GHOST, even the confirmation given by stale blocks to previous blocks are considered valid, and the miners of the stale blocks are also rewarded with a mining reward.
+      即Greedy Heaviest-Observed Sub-Tree，是一种特殊的链选择（chain-selection）方法，它被设计用来激励stale blocks（uncle），从而降低对矿池挖矿的激励。在GHOST中，即使是由stale block给出的对先前区块的确认也是有效的，产出stale block的矿工也会得到挖矿奖励。
 
    merkle patricia tree
-      Merkle Patricia trees provide a cryptographically authenticated data structure that can be used to store all (key, value) bindings. They are fully deterministic, meaning that a Patricia tree with the same (key,value) bindings is guaranteed to be exactly the same down to the last byte and therefore have the same root hash, provide O(log(n)) efficiency for inserts, lookups and deletes, and are much easier to understand and code than more complex comparison-based alternatives like red-black trees.
+      Merkle Patricia tree提供了一种密码学的验证数据结构，能够存储所有的（键，值）绑定。它们是完全可预测的，就是说具有相同的（键，值）绑定的Patricia tree会确保其下的所有字节都相同，所以会有相同的根哈希（root hash）。它为插入、查找和删除提供了0(log(n))的复杂度，并且比像红黑树（red-black tree）这种更复杂的基于比较的可选方案更容易理解和用编码实现。
 
    DAG
-      DAG stands for Directed Acyclic Graph. It is a graph, a set of nodes and links between nodes, that has very special properties. Ethereum uses a DAG in Ethash, the Ethereum Proof of Work (POW) algorithm.The Ethash DAG takes a long time to be generated, which is done by a Miner node into a cache file for each Epoch. The file data is then used when a value from this graph is required by the algorithm.
+      即Directed Acyclic Graph。它是一个由一组节点和节点间的连接所组成的图，具有非常特殊的属性。以太坊在其工作量证明算法Ethash中使用DAG。Ethash中使用的DAG会会花费较长的时间才能生成，它会在每次切换Epoch时被矿工节点生成并存入一个缓存文件，而后当算法需要时，从文件中取得相应的值。
 
    uncle rate
-      The number of uncles produced per block.
+      每个区块所产生的uncle数量。
 
    issuance
-      The minting and granting of new cryptocurrency to a miner who has found a new block.
+      对一个发现新区块的矿工进行的、新的加密货币的铸造和授予。
 
-   presale
-      Sale of cryptocurrency before the actual launch of the network.
+   预售（presale）
+      在网络实际发布之前的加密货币销售。
 
-   static node
-      A feature supported by Geth, the Golang Ethereum client, which makes it possible to always connect to specific peers. Static nodes are re-connected on disconnects. For details, see the :ref:`section on static nodes <cr-static-nodes>`.
+   静态节点（static node）
+      以太坊客户端Geth、Golang支持的一种特性，允许总是连接到特定的节点。静态节点会在断线时重新连接。请参考 :ref:`静态节点的章节 <cr-static-nodes>` 。
 
-   bootnode
-      The nodes which can be used to initiate the discovery process when running a node. The endpoints of these nodes are recorded in the Ethereum source code.
+   引导节点（bootnode）
+      当一个节点运行的时候，可以被用来初始化发现过程的节点。这些节点的接入点是在以太坊代码之中记载的。
 
-   exchange
-      An online marketplace which facilitates the exchange of crypto or fiat currencies based on the market exchange rate.
+   兑换（exchange）
+      一个在线交易市场，可以基于市场兑换比率进行加密货币和官方货币的兑换。
 
-   compiler
-      A program that translates pieces of code written in high level languages into low level executable code.
+   编译器（compiler）
+      一个可以将高级语言书写的代码变换为低级的可执行代码的程序。
 
-   genesis block
-      The first block in a blockchain.
+   创世区块（genesis block）
+      区块链中的第一个区块。
 
-   network id
-      A number which identifies a particular version of the Ethereum network.
+   网络ID（network id）
+      一个用来标示以太坊网络特定版本的数字。
 
-   block header
-      The data in a block which is unique to its content and the circumstances in which it was created. It includes the hash of the previous block's header, the version of the software the block is mined with, the timestamp and the merkle root hash of the contents of the block.
+   区块头（block header）
+      一个区块中一组数据，具有针对区块的内容和区块创建时的状况的唯一性。它包含了前一个区块头的哈希、挖出当前区块的软件版本、时间戳以及区块内容的merkle根哈希。
 
-   pending transaction
-      A transaction that is not yet confirmed by the Ethereum network.
+   待定的交易（pending transaction）
+      一个尚未被以太坊网络所确认的交易。
 
-   block propagation
-      The process of transmitting a confirmed block to all other nodes in the network.
+   区块广播（block propagation）
+      将一个已确认的区块传送给网络中的所有节点的过程。
 
-   sidechain
-      A blockchain that branches off a main blockchain and checks in periodically with the main blockchain. Besides that it runs independently from the main chain, and any security compromises in the sidechain will not affect the main chain.
+   侧链（sidechain）
+      从主链上分支出去的、周期性地进行检查的一个区块链。由于侧链是脱离主链独立运行的，所以其上的安全损害不会影响到主链。
 
    pegging
-      Locking down the exchange rate of the coins/tokens in two chains (usually a main and a side chain) in a certain direction.
+      单向地锁定两个链上的货币/代币兑换比率（通常是一个主链和一个侧链）。
 
    2-way pegging
-      Locking down the exchange rate of the coins/tokens in two chains (usually a main and a side chain) in both directions.
+      双向地锁定两个链上的货币/代币兑换比率（通常是一个主链和一个侧链）。
 
-   trustless
-      Refers to the ability of a network to trustworthily mediate transactions without any of the involved parties needing to trust anyone else.
+   去信任（trustless）
+      指一种网络能力，通过可信的方式完成交易，而不需要相关各方信任其他任何人。
 
    faucet
-      A website that dispenses (normally testnet) cryptocurrencies for free.
+      一个随意分发加密货币（一般是测试网络）的网站。
 
-   checksum
-      A count of the number of bits in a transmission that is included with the unit so that the receiving end can verify that the entirety of the message has been transmitted.
+   检查计数（checksum）
+      一次数据传输中的数据位计数，它会被包含在数据单元中，以便接收方可以验证所有的数据都被传输完成了。
 
    ICAP
-      Interexchange Client Address Protocol, an IBAN-compatible system for referencing and transacting to client accounts aimed to streamline the process of transferring funds, worry-free between exchanges and, ultimately, making KYC and AML concerns a thing of the past.
+      即Interexchange Client Address Protocol，是一个用来标示和处理用户账户的、兼容IBAN（国际银行账户编号）的系统。它旨在提高资金转移的效率、保证汇兑安全，最终，使KYC（Know Your Customer，指了解客户）和AML（Anti-money laundering，即反洗钱）顾虑成为过去。
 
-   private key
-      A private key is a string of characters known only to the owner, that is paired with a public key to set off algorithms for text encryption and decryption.
+   私钥（private key）
+      私钥是一个仅拥有者才知道的字符串，和其所对应的公钥一起被文本加密解密算法所使用。
 
-   public key
-      A string of characters derived from a private key that can be made public. The public key can be used to verify the authenticity of any signature created using the private key.
+   公钥（public key）
+      一个由私钥衍生出来的字符串，可以公开。它被用来校验由私钥生成的签名的真实性。
 
-   encryption
-      Encryption is the conversion of electronic data into a form unreadable by anyone except the owner of the correct decryption key. It can further be described as a process by which a document (plaintext) is combined with a shorter string of data, called a key (e.g. ``c85ef7d79691fe79573b1a7064c19c1a9819ebdbd1faaab1a8ec92344438aaf4``), to produce an output (ciphertext) which can be "decrypted" back into the original plaintext by someone else who has the key, but which is incomprehensible and computationally infeasible to decrypt for anyone who does not have the key.
+   编码（encryption）
+      编码就是一个将电子数据变换为其他人不可读的格式的处理，只有拥有正确的解码密钥的人才能获知原始数据。就是将一个称为密钥的较短的字符数据（比如 ``c85ef7d79691fe79573b1a7064c19c1a9819ebdbd1faaab1a8ec92344438aaf4`` ）混合进原始数据（纯文本）中产生一个输出（加密文本），这个输出可以被持有密钥的人“解码”为原始的数据，但其他任何没有密钥的人都无法进行解码。
 
-   digital signature
-      A mathematical scheme for demonstrating the authenticity of a digital message or documents.
+   数字签名（digital signature）
+      一个用来证明一个数字消息或文档真实性的数学方案。
 
-   port
-      A network port is a communication endpoint used by a one of the existing standards of establishing a network conversation (e.g. TCP, UDP).
+   端口（port）
+      一个网络端口就是由实现网络数据交互的现成标准（比如TCP、UDP）所使用的通信端点。
 
    RPC
-      Remote Procedure Call, a protocol that a program uses to request a service from a program located in another computer in a network without having to understand the network details.
+      即Remote Procedure Call，是一种无需了解网络细节，就可以从网络中的远程计算机上请求一个服务的程序协议。
 
    IPC
-      Interprocess communication (IPC) is a set of programming interfaces that allow a programmer to coordinate activities among different program processes that can run concurrently in an operating system.
+      即Interprocess communication，是一组变成接口，允许程序员在一个操作系统中跨多个程序进程完成一些协作任务。
 
    attach
-      The command used to initiate the Ethereum Javascript console.
+      一个可以初始化以太坊Javascript控制台的命令。
 
    daemon
-      A computer program that runs as a background process instead of in direct control by an interactive user.
+      一种后台运行的计算机程序，不直接与用户进行交互。
 
-   system service
-      See base layer service
+   系统服务（system service）
+      参考base layer service
 
-   base layer service
-      Services such as SWARM and Whisper which are built into the Ethereum platform.
+   基础服务（base layer service）
+      像Swarm和Whisper这样内置在以太坊平台的服务。
 
    js
       Javascript.
 
-   syncing
-      The process of downloading the entire blockchain.
+   同步（syncing）
+      下载全部区块链数据的过程。
 
-   fast sync
-      Instead of processing the entire block-chain one link at a time, and replay all transactions that ever happened in history, fast syncing downloads the transaction receipts along the blocks, and pulls an entire recent state database.
+   快速同步（fast sync）
+      快速同步仅下载区块的交易收据并拉取最新的状态数据库，而不是一次性处理全部区块链并回顾所有历史交易。
 
    ASIC
-      Application-specific integrated circuit, in this case referring to an integrated circuit custom built for cryptocurrency mining.
+      即Application-specific integrated circuit，在这里指专为加密货币挖矿所设计的特制集成电路。
 
-   memory-hard
-      Memory hard functions are processes that experience a drastic decrease in speed or feasibility when the amount of available memory even slightly decreases.
+   强存储（memory-hard）
+      强存储功能就是那些即使有效存储略微降低，也会使速度和可用性大幅降低的处理。
 
    keyfile
-      Every account's private key/address pair exists as a single keyfile. These are JSON text files which contains the encrypted private key of the account, which can only be decrypted with the password entered during account creation.
+      每个账户的私钥/地址对都被保存在一个keyfile里边。这是一个包含了账户的加密私钥的JSON文本文件，只有创建账户过程中输入的密码才能对其进行解密。
 
-   ICAP format
-      The format of the IBANs defined using the `Inter-exchange Client Address Protocol <https://github.com/ethereumjs/ethereumjs-icap>`_.
+   ICAP格式（ICAP format）
+      使用 `Inter-exchange Client Address Protocol <https://github.com/ethereumjs/ethereumjs-icap>`_ 定义的IBAN（国际银行账户编号）格式。
 
-   block(chain) explorer
-      A website that allows easy searching and extraction of data from the blockchain.
+   区块链浏览器（block chain explorer）
+      一个允许简单的从区块链搜索和导出数据的网络站点。
 
    geth
-      Ethereum client implemented in the Golang programming language, based on the protocol as defined in the Ethereum Yellow Paper.
+      基于以太坊黄皮书定义的协议，用Golang程序设计语言实现的以太坊客户端。
 
    eth
-      Ethereum client implemented in the C++ programming language, based on the protocol as defined in the Ethereum Yellow Paper.
+      基于以太坊黄皮书定义的协议，用C++程序设计语言实现的以太坊客户端。
 
    ethereumjs
-      Ethereum client implemented in the Javascript/Node programming language, based on the protocol as defined in the Ethereum Yellow Paper.
+      基于以太坊黄皮书定义的协议，用Javascript程序设计语言实现的以太坊客户端。
 
    pyethereum
-      Ethereum client implemented in the Python programming language, based on the protocol as defined in the Ethereum Yellow Paper.
+      基于以太坊黄皮书定义的协议，用Python程序设计语言实现的以太坊客户端。
 
    ethereumj
-      Ethereum client implemented in the Java programming language, based on the protocol as defined in the Ethereum Yellow Paper.
+      基于以太坊黄皮书定义的协议，用Java程序设计语言实现的以太坊客户端。
 
    ethereumh
-      Ethereum client implemented in the Haskell programming language, based on the protocol as defined in the Ethereum Yellow Paper.
+      基于以太坊黄皮书定义的协议，用Maskell程序设计语言实现的以太坊客户端。
 
    parity
-      Ethereum client implemented in the Rust programming language, based on the protocol as defined in the Ethereum Yellow Paper.
+      基于以太坊黄皮书定义的协议，用Rush程序设计语言实现的以太坊客户端。
 
-   difficulty
-      In very general terms, the amount of effort required to mine a new block. With the launch of Homestead, the `difficulty adjustment algorithm will change <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.mediawiki>`_.
+   难度（difficulty）
+      最简单的讲，就是挖到一个新区块所需的工作量。随着Homestead的发布，`难度调整算法也改变了 <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.mediawiki>`_ 。
 
-   account
-      Accounts are a central part of the Ethereum network and are an essential part of any transaction or contract. In Ethereum, there are two types of accounts: Externally Owned accounts (EOA) and Contract accounts.
+   账户（account）
+      账户是以太坊网络的中心部分，也是任何交易或合约的必要组成部分。在以太坊中由两种类型的账户：外部账户（EOA）和合约账户。
 
-   HLL (obsolete)
-      Acronym for Higher Level Language, which is what Serpent and Solidity are. HLL is what early Ðapp developers called Ethereum programming languages that did not touch the low level elements. This phrase has been phased out.
+   HLL (obsolete，淘汰的)
+      即Higher Level Language，就是Serpent和Solidity这样的语言。HLL也是早期的Ðapp开发者对不涉及低级元素的以太坊程序设计语言的称呼，这个习语已经被逐步废除了。
 
-   CLL (obsolete)
-      Acronym for C Like Language, which Mutan was. This acronym has been phased out.
+   CLL (obsolete，淘汰的)
+      即C Like Language，就是Mutan这样的语言。这个缩写也已经被废除了。
 
-   ES1, ES2, and ES3 (obsolete)
-      "Ethereum Script" versions 1,2 and 3. There were early versions of what would become the Ethereum Virtual Machine (EVM).
+   ES1, ES2, and ES3 (obsolete，淘汰的)
+      "Ethereum Script"的版本1，2和3。这些是以太坊虚拟机（EVM）的早期版本。
 
-   log event
-      Contracts are triggered by transactions executed as part of the block verification. If conceived of as a function call, contract execution is asynchronous, and therefore they have no return value. Instead contracts communicate to the outside world with log events. The log events are part of the transaction receipt which is produced when the transaction is executed.
-      The receipts are stored in the receipt trie, the integrity of which is guaranteed by the fact that the current root of the receipt trie is part of the block header alongside the roots of state and state-trie. In a broad sense from the external perspective receipts are part of the Ethereum system state except that they are not readable contracts internally.
+   日志事件（log event）
+      合约是被作为区块验证的一部分的交易执行所触发的。如果把它们想象成为函数调用，那么合约执行就是异步的，所以它们没有返回值。取而代之地，它们是用日志事件与外部世界进行通信的。日志事件是交易收据的一部分，是在交易执行时产生的。收据是被保存在收据二叉树上的，收据二叉树是作为区块头的一部分，和状态二叉树的根状态一起保存的，这保证了它的完整性。更广义地从外部来看，除了这些收据不是能从内部读取的合约以外，它们是以太坊系统状态的一个组成部分。
 
    .. hardware wallet
    .. brain wallet

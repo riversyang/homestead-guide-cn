@@ -70,7 +70,7 @@ PRC接口使用了一些不在JSON-RPC 2.0规范中的公约：
    > curl --data '{"jsonrpc":"2.0","method": "eth_getCompilers", "id": 3}' localhost:8545
    {"id":3,"jsonrpc":"2.0","result":["Solidity"]}
 
-我们看到Solidity编译器是可用的。如果它不可用，请参照 `这里 <http://solidity.readthedocs.org/en/latest/installing-solidity.html>`_ 。
+我们看到Solidity编译器是可用的。如果它不可用，请参考 `安装Solidity <http://solidity.readthedocs.org/en/latest/installing-solidity.html>`_ 。
 
 下一步就是把Multiply7合约编译为可以发动到EVM的字节码。
 
@@ -118,7 +118,7 @@ PRC接口使用了一些不在JSON-RPC 2.0规范中的公约：
    > web3.sha3("multiply(uint256)").substring(0, 8)
    "c6888fa1"
 
-更多细节请参考 `这里 <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI#function-selector>`_ 。
+更多细节请参考 `函数选择器 <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI#function-selector>`__ 。
 
 下一个步骤就是对参数进行编码，我们只有一个uint256，让我们假定以6作为参数值。这个ABI文档 `章节 <https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI#argument-encoding>`_ 具体说明了如何编码成uint256类型。
 
