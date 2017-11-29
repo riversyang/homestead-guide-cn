@@ -166,179 +166,102 @@
       即以太坊虚拟机（Ethereum Virtual Machine），它是构成以太坊平台的去中心化核心计算平台。
 
    虚拟机（virtual machine）
-      In computing, it refers to an emulation of a particular computer 
-      system.
       在计算机领域，它指一种对特定的计算机系统的模拟。
 
-   端到端网络（peer to peer network，P2P网络）
+   端到端网络（peer to peer network，即P2P网络）
       一个由计算机组成的网络，可以完成那些仅可能由中心化的、基于服务器的服务所完成的功能。
 
-   decentralization
-      The concept of moving the control and execution of computational 
-      processes away from a central entity.
+   去中心化（decentralization）
+      一种将控制和计算处理的执行从中心化的实体中移出的概念。
 
-   distributed hash table
-      A distributed hash table (DHT) is a class of a decentralized 
-      distributed system that provides a lookup service similar to a 
-      hash table: (key, value) pairs are stored in a DHT, and any 
-      participating node can efficiently retrieve the value associated 
-      with a given key.
+   分布式哈希表（Distributed Hash Table，DHT）
+      分布式哈希表是一种去中心化的分布式系统，可以提供类似于哈希表功能的查找服务。DHT中保存的是键、值对，网络中的任何节点都可以通过特定键高效地取得相应的值。
 
-   NAT
-      Network address translation (NAT) is a methodology of remapping 
-      one IP address space into another by modifying network address 
-      information in Internet Protocol (IP) datagram packet headers 
-      while they are in transit across a traffic routing device.
+   网络地址翻译（Network Address Translation，NAT）
+      一种将一个IP地址重映射到其他地址的方法。这是通过在网络路由设备中传输数据包时修改数据包头数据中的网络协议（IP）信息而做到的。
 
    nonce
-      Number Used Once or Number Once. A nonce, in information technology, 
-      is a number generated for a specific use, such as session 
-      authentication. Typically, a nonce is some value that varies with 
-      time, although a very large random number is sometimes used. 
-      In general usage, nonce means “for the immediate occasion” or “for 
-      now.”
-      In the case of Blockchain Proof of Work scenarios, the hash value, 
-      found by a Miner, matching the network's Difficulty thus proving 
-      the Block Validity is called Nonce as well.
+      即一次性数字。在信息技术里，nonce就是为了某个特定目的而生成的数字，比如会话验证（session authentication）。典型地，nonce应该是一些随时间而变化的数值，因而有时会使用一个很大的随机数。一般而言，nonce意味着“邻近的时刻”或者“临时”。在区块链的工作量证明场景中，适合当前网络难度来证明区块有效性的那些由矿工找到的哈希值，被称为Nonce。
 
-   proof-of-work
-      Often seen in its abbreviated form "PoW", it refers to a 
-      mathematical value that can act as the proof of having solved a 
-      resource and time consuming computational problem.
+   工作量证明（proof-of-work）
+      指一个数学上的值，可以证明已经解决了一个消耗资源和时间的计算问题。一般以缩写形式“PoW”出现。
 
-   proof-of-stake
-      An alternative method of mining blocks that require miners to 
-      demonstrate their possession of a certain amount of the currency of 
-      the network in question. This works on the principle that miners 
-      will be disincentivized to try to undermine a network in which 
-      they have a stake. PoS is less wasteful than PoW, but is still 
-      often used together with it to provide added security to the 
-      network.
+   权益证明（proof-of-stake）
+      挖矿操作的一种替代方法，需要矿工通过回答问题的方式证明它们拥有一定量的网络货币。这基于一个原理，就是矿工们不应该会去尝试破坏一个它们拥有权益的网络。权益证明一般以缩写形式“PoS”出现。与PoW相比，PoS可以降低算力的浪费，但它同样也可以给网络提供额外的安全性。
 
    CASPER
-      Casper is a security-deposit based economic consensus protocol. 
-      This means that nodes, so called “bonded validators”, have to place 
-      a security deposit (an action we call “bonding”) in order to serve 
-      the consensus by producing blocks. If a validator produces anything 
-      that Casper considers “invalid”, the deposit is forfeited along 
-      with the privilege of participating in the consensus process.
+      Casper是一个基于保证金的经济学共识协议。这意味着被称为“bonded validators”的节点，需要为了在通过产生区块而达成共识的时候缴纳一份保证金（我们称之为“bonding”的一种行为）。如果一个验证器（即某个节点）产生了一个被Casper认为“无效”的数据，它就会丧失这个保证金和继续参与共识过程的权力。
 
-   consensus
-      The agreement among all nodes in the network about the state of 
-      the Ethereum network.
+   共识（consensus）
+      指网络中所有节点关于以太坊网络状态的一致认同。
 
    homestead
-      Homestead is the second major version release of the Ethereum 
-      platform. Homestead includes several protocol changes and a 
-      networking change that makes possible further network upgrades: 
-      `EIP\-2 Main homestead hardfork changes <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.mediawiki>`_; 
-      `EIP\-7 Hardfork EVM update (DELEGATECALL) <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-7.md>`_; 
-      `EIP\-8 devp2p forward compatibility <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-8.md>`_. 
-      Homestead will launch when block 1,150,000 is reached on the 
-      Mainnet. On the Testnet, Homestead will launch at block 494,000.
+      Homestead是以太坊平台的第二个主版本。它包含了很多未来网络升级所需的协议改动和网络改动：`EIP\-2 Main homestead hardfork changes <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-2.mediawiki>`_ ； `EIP\-7 Hardfork EVM update (DELEGATECALL) <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-7.md>`_ ； `EIP\-8 devp2p forward compatibility <https://github.com/ethereum/EIPs/blob/master/EIPS/eip-8.md>`_ 。他已经在主网络到达1,150,000区块时被引入了。在测试网路中，它是在494,000区块时被引入的。
 
    metropolis
-      The third stage of Ethereum's release. This is the stage when the 
-      user interfaces come out (e.g. Mist), including a dapp store, and 
-      non-technical users should feel comfortable joining at this point.
+      以太坊的第三个发布版本。这是个用户界面出现的阶段（比如Mist），包括dapp商店。非技术背景的用户也可以在这个时候舒服的加入了。
 
    serenity
-      The fourth stage of Ethereum's release. This is when things are 
-      going to get fancy: the network is going to change its mining 
-      process from Proof-of-Work to Proof-of-Stake.
+      以太坊的第四个发布阶段。这将是我们希望将网络中的挖矿过程由工作量证明迁移到权益证明的时候。
 
    frontier
-      Ethereum was planned to be released in four major steps with 
-      Frontier being the name for the first phase. The Frontier release 
-      went live on July 30th, 2015. The command line Frontier phase was 
-      mainly meant to get mining operations going with the full reward 
-      of 5 ether per block and also to promote the emergence of ether 
-      exchanges. Frontier surpassed earlier modest expectations and has 
-      nurtured tremendous growth of the ecosystem.
+      以太坊被计划为执行四个主要的阶段，Frontier是第一阶段的名称。Frontier版本已经在2015年7月30日发布。在这个命令行方式的Frontier阶段，每个区块奖励都被定为5以太币，并允许以太币的兑换。Frontier大大超过了早期的预料，使以太坊的生态系统得到了巨大的成长。
 
    olympic
-      The Frontier pre-release, which launched on May 9th 2015. It was 
-      meant for developers to help test the limits of the Ethereum 
-      blockchain.
+      Frontier的先期发布版本，于2015年5月9日上线。它是为了使开发者可以测试以太坊区块链的各种边界限制。
 
    morden
-      Morden is the first Ethereum alternative testnet. It is expected 
-      to continue throughout the Frontier and Homestead era.
+      Morden是以太坊的第一个替代性测试网络。预计它会从Frontier到Homestead阶段一直持续存在。
 
-   testnet
+   测试网络（testnet）
       A mirror network of the production Ethereum network that is meant 
       for testing. See Morden.
+      为测试目的而存在的以太坊生产环境的镜像网络。参见morden。
 
-   private chain
-      A fully private blockchain is a blockchain where write permissions 
-      are kept centralized to one organization.
+   私链（private chain）
+      私链就是一个写入权限中心化地由一个组织所掌握的区块链。
 
-   consortium chain
-      A blockchain where the consensus process is controlled by a 
-      pre-selected set of nodes.
+   联盟链（consortium chain）
+      一个共识处理由预设的若干节点所控制的区块链。
 
-   micropayment
-      A micropayment is a financial transaction involving a very small 
-      sum of money (<1 USD) and usually one that occurs online.
+   微支付（micropayment）
+      微支付就是经常在线上活动发生的，交易额很小（小于1美元）的财务交易。
 
-   sharding
-      The splitting of the space of possible accounts (contracts are 
-      accounts too) into subspaces, for example, based on first digits 
-      of their numerical addresses. This allows for contract executions 
-      to be executed within 'shards' instead of network wide, allowing 
-      for faster transactions and greater scalability.
+   分片（sharding）
+      将可能的账户（合约也属于账户）空间切分为子空间的处理，比如基于它们的数字地址的首数字。这可以使合约在‘片’上执行，而不是在整个网络中，从而使交易更快速完成，并提供了一种更强的可扩展性。
 
-   hash
-      A cryptographic function which takes an input (or 'message') and 
-      returns a fixed-size alphanumeric string, which is called the 
-      hash value (sometimes called a message digest, a digital fingerprint, 
-      a digest or a checksum). A hash function (or hash algorithm) is a 
-      process by which a document (i.e. a piece of data or file) is 
-      processed into a small piece of data (usually 32 bytes) which 
-      looks completely random, and from which no meaningful data can 
-      be recovered about the document, but which has the important 
-      property that the result of hashing one particular document is 
-      always the same. Additionally, it is crucially important that it 
-      is computationally infeasible to find two documents that have the 
-      same hash. Generally, changing even one letter in a document will 
-      completely randomize the hash; for example, the SHA3 hash of 
-      "Saturday" is ``c38bbc8e93c09f6ed3fe39b5135da91ad1a99d397ef16948606cdcbd14929f9d``, 
-      whereas the SHA3 hash of "Caturday" is ``b4013c0eed56d5a0b448b02ec1d10dd18c1b3832068fbbdc65b98fa9b14b6dbf``. 
-      Hashes are usually used as a way of creating a globally agreed-upon 
-      identifier for a particular document that cannot be forged.
+   哈希（hash）
+      一个密码学功能，它可以接受一个输入（或‘消息’），产生一个定长的字符串，被称为哈希值（有时也称为消息摘要、数字指纹、摘要或者检查计数）。哈希函数（或哈希算法）是一种将文档（比如一部分数据或文件）变换为一个较小数据（通常是32字节）的处理。哈希值看起来是完全随机的，并且与文档毫无关联的数据，但特定的文档经过哈希处理所得到的值总是一样的。此外最重要的是，要找到两个具有同样哈希值的文档是极为困难的计算处理。一般而言，即使两个文档中只有一个字母的不同，它们也会产生完全不同的哈希值。比如，“Saturday”的SHA3哈希值是 ``c38bbc8e93c09f6ed3fe39b5135da91ad1a99d397ef16948606cdcbd14929f9d`` ，而“Caturday”的SHA3哈希值则是 ``b4013c0eed56d5a0b448b02ec1d10dd18c1b3832068fbbdc65b98fa9b14b6dbf`` 。哈希总是被用做生成某个特定文档的不可伪造的全局唯一标示的方法。
 
-   crypto-fuel
-      Similar to 'gas', referring to the amount of cryptocurrency 
-      required to power a transaction.
+   加密燃油（crypto-fuel）
+      就是‘气’，指处理交易所需要的加密货币数量。
 
-   cryptoeconomics
-      The economics of cryptocurrencies.
+   加密经济学（cryptoeconomics）
+      即加密货币的经济学。
 
-   protocol
+   协议（protocol）
       A standard used to define a method of exchanging data over a 
       computer network.
+      一个用来定义通过计算机网络交换数据的方法的标准。
 
-   block validation
+   区块认可（block validation）
       The checking of the coherence of the cryptographic signature of 
       the block with the history stored in the entire blockchain.
+      即通过存储在区块链上的历史数据对区块的密码学签名进行合法性校验。
 
-   blocktime
-      The average time interval between the mining of two blocks.
+   区块时间（blocktime）
+      挖矿产生两个区块的平均时间间隔。
 
-   network hashrate
-      The number of hash calculations the network can make per second 
-      collectively.
+   网络哈希率（network hashrate）
+      网络中节点每秒可以完成的哈希计算次数总和。
 
-   hashrate
-      The number of hash calculations made per second.
+   哈希率（hashrate）
+      每秒可以完成的哈希计算次数。
 
-   serialization
-      The process of converting a data structure into a sequence of 
-      bytes. Ethereum internally uses an encoding format called 
-      recursive-length prefix encoding (RLP), described in the 
-      `RLP section of the wiki <https://github.com/ethereum/wiki/wiki/RLP>`_.
+   序列化（serialization）
+      把数据结构变换为字节序列的处理。以太坊内部使用一个被成为Recursive-Length Prefix（RLP）编码的格式，在 `wiki的RLP这一节 <https://github.com/ethereum/wiki/wiki/RLP>`_ 中有具体描述。
 
-   double spend
+   双花（double spend）
       A deliberate blockchain fork, where a user with a large amount of 
       mining power sends a transaction to purchase some produce, then 
       after receiving the product creates another transaction sending 
